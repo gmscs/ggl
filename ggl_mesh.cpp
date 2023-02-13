@@ -2,7 +2,7 @@
 
 namespace ggl {
     
-int load_obj(const std::string &file, std::vector <ggl::vector3<float>> &Vertices, std::vector <glm::vec3> &Normals, std::vector <glm::vec3> &Texcoords, std::vector<glm::vec3> &Tangents, std::vector<unsigned int> &Indices) {
+int load_obj(const std::string &file, std::vector <ggl::vector3<float>> &Vertices, std::vector <ggl::vector3<float>> &Normals, std::vector <ggl::vector3<float>> &Texcoords, std::vector<ggl::vector3<float>> &Tangents, std::vector<unsigned int> &Indices) {
     Assimp::Importer importer;
     int total_vertices = 0;
 	const aiScene* scene = importer.ReadFile(file, aiProcess_Triangulate);
