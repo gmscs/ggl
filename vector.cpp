@@ -339,6 +339,56 @@ T operator*(vector4<T> const &v, vector4<T> const& b) {
     return (v.x * b.x) + (v.y * b.y) + (v.z * b.z) + (v.w * b.w);
 }
 
+/* Bool operators */
+template<typename T>
+bool operator==(vector<T> const &v, vector<T> const &b) {
+    return v.x == b.x;
+}
+
+template<typename T>
+bool operator==(vector2<T> const &v, vector2<T> const &b) {
+    if(v.x == b.x && v.y == b.y) {
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool operator==(vector3<T> const &v, vector3<T> const &b) {
+    if(v.x == b.x && v.y == b.y && v.z == b.z) {
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool operator==(vector4<T> const &v, vector4<T> const &b) {
+    if(v.x == b.x && v.y == b.y && v.z == b.z && v.w == b.w) {
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool operator!=(vector<T> const &v, vector<T> const &b) {
+    return !(v == b);
+}
+
+template<typename T>
+bool operator!=(vector2<T> const &v, vector2<T> const &b) {
+    return !(v == b);
+}
+
+template<typename T>
+bool operator!=(vector3<T> const &v, vector3<T> const &b) {
+    return !(v == b);
+}
+
+template<typename T>
+bool operator!=(vector4<T> const &v, vector4<T> const &b) {
+    return !(v == b);
+}
+
 /* Magnitude */
 template<typename T>
 T mag(vector<T>& v) {

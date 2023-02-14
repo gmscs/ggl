@@ -28,5 +28,12 @@ int main() {
 
     ggl::vector4<float> ddd = ggl::vector4<float>(9, 9.5, 9, 9.5) - ggl::vector4<float>(2, 2.5, 2, 2.5);
     std::cout << ggl::to_string(ddd) << "\n";
+
+    ggl::vector3<int> eq1(1, 1, 1);
+    ggl::vector3<int> eq2(1, 2, 1);
+    bool t1 = eq1 == eq2;
+    bool t2 = eq1 != eq2;
+    std::cout << t1 << "\n";
+    std::cout << t2 << "\n";
     return 0;
 }

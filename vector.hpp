@@ -150,6 +150,24 @@ T operator*(vector3<T> const& v, vector3<T> const& v2);
 template<typename T>
 T operator*(vector4<T> const& v, vector4<T> const& v2);
 
+/* Bool operators */
+template<typename T>
+bool operator==(vector<T> const &v, vector<T> const &b);
+template<typename T>
+bool operator==(vector2<T> const &v, vector2<T> const &b);
+template<typename T>
+bool operator==(vector3<T> const &v, vector3<T> const &b);
+template<typename T>
+bool operator==(vector4<T> const &v, vector4<T> const &b);
+template<typename T>
+bool operator!=(vector<T> const &v, vector<T> const &b);
+template<typename T>
+bool operator!=(vector2<T> const &v, vector2<T> const &b);
+template<typename T>
+bool operator!=(vector3<T> const &v, vector3<T> const &b);
+template<typename T>
+bool operator!=(vector4<T> const &v, vector4<T> const &b);
+
 /* Magnitude */
 template<typename T>
 T mag(vector<T>& v);
