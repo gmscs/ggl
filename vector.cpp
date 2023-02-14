@@ -88,6 +88,146 @@ vector4<T>& vector4<T>::operator=(vector4<N> const &v) {
     return *this;
 }
 
+/* += */
+template<typename T>
+template<typename N>
+vector<T>& vector<T>::operator+=(vector<N> const &v) {
+    this->x += static_cast<T>(v.x);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector2<T>& vector2<T>::operator+=(vector2<N> const &v) {
+    this->x += static_cast<T>(v.x);
+    this->y += static_cast<T>(v.y);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector3<T>& vector3<T>::operator+=(vector3<N> const &v) {
+    this->x += static_cast<T>(v.x);
+    this->y += static_cast<T>(v.y);
+    this->z += static_cast<T>(v.z);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector4<T>& vector4<T>::operator+=(vector4<N> const &v) {
+    this->x += static_cast<T>(v.x);
+    this->y += static_cast<T>(v.y);
+    this->z += static_cast<T>(v.z);
+    this->w += static_cast<T>(v.w);
+    return *this;
+}
+
+/* -= */
+template<typename T>
+template<typename N>
+vector<T>& vector<T>::operator-=(vector<N> const &v) {
+    this->x -= static_cast<T>(v.x);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector2<T>& vector2<T>::operator-=(vector2<N> const &v) {
+    this->x -= static_cast<T>(v.x);
+    this->y -= static_cast<T>(v.y);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector3<T>& vector3<T>::operator-=(vector3<N> const &v) {
+    this->x -= static_cast<T>(v.x);
+    this->y -= static_cast<T>(v.y);
+    this->z -= static_cast<T>(v.z);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector4<T>& vector4<T>::operator-=(vector4<N> const &v) {
+    this->x -= static_cast<T>(v.x);
+    this->y -= static_cast<T>(v.y);
+    this->z -= static_cast<T>(v.z);
+    this->w -= static_cast<T>(v.w);
+    return *this;
+}
+
+/* *= */
+template<typename T>
+template<typename N>
+vector<T>& vector<T>::operator*=(N c) {
+    this->x *= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector2<T>& vector2<T>::operator*=(N c) {
+    this->x *= static_cast<T>(c);
+    this->y *= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector3<T>& vector3<T>::operator*=(N c) {
+    this->x *= static_cast<T>(c);
+    this->y *= static_cast<T>(c);
+    this->z *= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector4<T>& vector4<T>::operator*=(N c) {
+    this->x *= static_cast<T>(c);
+    this->y *= static_cast<T>(c);
+    this->z *= static_cast<T>(c);
+    this->w *= static_cast<T>(c);
+    return *this;
+}
+
+/* Sign flip */
+template<typename T>
+vector<T> operator-(vector<T> const &v) {
+    vector<T> new_vec;
+    new_vec.x = -v.x;
+    return new_vec;
+}
+
+template<typename T>
+vector2<T> operator-(vector2<T> const &v) {
+    vector2<T> new_vec;
+    new_vec.x = -v.x;
+    new_vec.y = -v.y;
+    return new_vec;
+}
+
+template<typename T>
+vector3<T> operator-(vector3<T> const &v) {
+    vector3<T> new_vec;
+    new_vec.x = -v.x;
+    new_vec.y = -v.y;
+    new_vec.z = -v.z;
+    return new_vec;
+}
+
+template<typename T>
+vector4<T> operator-(vector4<T> const &v) {
+    vector4<T> new_vec;
+    new_vec.x = -v.x;
+    new_vec.y = -v.y;
+    new_vec.z = -v.z;
+    new_vec.w = -v.w;
+    return new_vec;
+}
+
 /* Addition */
 template<typename T>
 vector<T> operator+(vector<T> const &v, vector<T> const& v2) {
@@ -252,6 +392,46 @@ vector4<T> normalize(vector4<T>& v) {
     new_vec.y = v.y / mag(v);
     new_vec.z = v.z / mag(v);
     new_vec.w = v.w / mag(v);
+    return new_vec;
+}
+
+/* Angle between 2 vectors */
+template<typename T>
+float angle(vector2<T>& v, vector2<T>& b) {
+    vector2<T> normalized_v = normalize(v);
+    vector2<T> normalized_b = normalize(b);
+    
+    return std::acos(v * b);
+}
+
+template<typename T>
+float angle(vector3<T>& v, vector3<T>& b) {
+    vector3<T> normalized_v = normalize(v);
+    vector3<T> normalized_b = normalize(b);
+    
+    return std::acos(v * b);
+}
+
+template<typename T>
+float angle(vector4<T>& v, vector4<T>& b) {
+    vector4<T> normalized_v = normalize(v);
+    vector4<T> normalized_b = normalize(b);
+    
+    return std::acos(v * b);
+}
+
+/* Cross product */
+template<typename T>
+float cross(vector2<T>& v, vector2<T>& b) {
+    return (v.x * b.y) - (v.y * b.x);
+}
+
+template<typename T>
+vector3<T> cross(vector3<T>& v, vector3<T>& b) {
+    vector3<T> new_vec;
+    new_vec.x = (v.y * b.z) - (v.z * b.y);
+    new_vec.y = (v.z * b.x) - (v.x * b.z);
+    new_vec.z = (v.x * b.y) - (v.y * b.x);
     return new_vec;
 }
 

@@ -18,6 +18,12 @@ struct vector {
 
     template<typename N>
     vector<T>& operator=(vector<N> const& v);
+    template<typename N>
+    vector<T>& operator+=(vector<N> const& v);
+    template<typename N>
+    vector<T>& operator-=(vector<N> const& v);
+    template<typename N>
+    vector<T>& operator*=(N c);
 
 };
 
@@ -36,6 +42,12 @@ struct vector2 {
 
     template<typename N>
     vector2<T>& operator=(vector2<N> const& v);
+    template<typename N>
+    vector2<T>& operator+=(vector2<N> const& v);
+    template<typename N>
+    vector2<T>& operator-=(vector2<N> const& v);
+    template<typename N>
+    vector2<T>& operator*=(N c);
 
 };
 
@@ -55,6 +67,12 @@ struct vector3 {
 
     template<typename N>
     vector3<T>& operator=(vector3<N> const& v);
+    template<typename N>
+    vector3<T>& operator+=(vector3<N> const& v);
+    template<typename N>
+    vector3<T>& operator-=(vector3<N> const& v);
+    template<typename N>
+    vector3<T>& operator*=(N c);
 
 };
 
@@ -75,8 +93,25 @@ struct vector4 {
 
     template<typename N>
     vector4<T>& operator=(vector4<N> const& v);
+    template<typename N>
+    vector4<T>& operator+=(vector4<N> const& v);
+    template<typename N>
+    vector4<T>& operator-=(vector4<N> const& v);
+    template<typename N>
+    vector4<T>& operator*=(N c);
 
 };
+
+/* Sign flip */
+template<typename T>
+vector<T> operator-(vector<T> const& v);
+template<typename T>
+vector2<T> operator-(vector2<T> const& v);
+template<typename T>
+vector3<T> operator-(vector3<T> const& v);
+template<typename T>
+vector4<T> operator-(vector4<T> const& v);
+
 /* Addition */
 template<typename T>
 vector<T> operator+(vector<T> const& v, vector<T> const& v2);
@@ -134,6 +169,20 @@ template<typename T>
 vector3<T> normalize(vector3<T>& v);
 template<typename T>
 vector4<T> normalize(vector4<T>& v);
+
+/* Angle */
+template<typename T>
+float angle(vector2<T>& v, vector2<T>& b);
+template<typename T>
+float angle(vector3<T>& v, vector3<T>& b);
+template<typename T>
+float angle(vector4<T>& v, vector4<T>& b);
+
+/* Cross product */
+template<typename T>
+float cross(vector2<T>& v, vector2<T>& b);
+template<typename T>
+vector3<T> cross(vector3<T>& v, vector3<T>& b);
 
 /* Vector to string */
 template<typename T>
