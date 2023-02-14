@@ -17,6 +17,7 @@
 #include "../stb/stb_image_write.h"
 
 #include "vector.cpp"
+#include "math.cpp"
 
 namespace ggl {
 

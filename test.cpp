@@ -35,5 +35,10 @@ int main() {
     bool t2 = eq1 != eq2;
     std::cout << t1 << "\n";
     std::cout << t2 << "\n";
+
+    std::cout << ggl::radians_to_degrees(1.570796) << "\n";
+    std::cout << ggl::degrees_to_radians((double)90.0) << "\n"; // must be floating point type
+    std::cout << ggl::degrees_to_radians(90.0f) << "\n"; // must be floating point type
+
     return 0;
 }
