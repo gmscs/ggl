@@ -36,6 +36,19 @@ int main() {
     std::cout << t1 << "\n";
     std::cout << t2 << "\n";
 
+    eq1 *= 3;
+    std::cout << ggl::to_string(eq1) << "\n";
+    ggl::vector3<int> eq3 = eq2 * 4;
+    std::cout << ggl::to_string(eq3) << "\n";
+
+    ggl::vector3<float> div1(4, 6, 8);
+    div1 /= 2;
+    std::cout << ggl::to_string(div1) << "\n";
+
+    ggl::vector3<float> div2(3, 9, 27);
+    ggl::vector3<float> div3 = div2 / 3;
+    std::cout << ggl::to_string(div3) << "\n";
+
     std::cout << ggl::radians_to_degrees(1.570796) << "\n";
     std::cout << ggl::degrees_to_radians((double)90.0) << "\n"; // must be floating point type
     std::cout << ggl::degrees_to_radians(90.0f) << "\n"; // must be floating point type

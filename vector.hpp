@@ -24,6 +24,8 @@ struct vector {
     vector<T>& operator-=(vector<N> const& v);
     template<typename N>
     vector<T>& operator*=(N c);
+    template<typename N>
+    vector<T>& operator/=(N c);
 
 };
 
@@ -48,6 +50,8 @@ struct vector2 {
     vector2<T>& operator-=(vector2<N> const& v);
     template<typename N>
     vector2<T>& operator*=(N c);
+    template<typename N>
+    vector2<T>& operator/=(N c);
 
 };
 
@@ -73,6 +77,8 @@ struct vector3 {
     vector3<T>& operator-=(vector3<N> const& v);
     template<typename N>
     vector3<T>& operator*=(N c);
+    template<typename N>
+    vector3<T>& operator/=(N c);
 
 };
 
@@ -99,6 +105,8 @@ struct vector4 {
     vector4<T>& operator-=(vector4<N> const& v);
     template<typename N>
     vector4<T>& operator*=(N c);
+    template<typename N>
+    vector4<T>& operator/=(N c);
 
 };
 
@@ -131,6 +139,26 @@ template<typename T>
 vector3<T> operator-(vector3<T> const& v, vector3<T> const& v2);
 template<typename T>
 vector4<T> operator-(vector4<T> const& v, vector4<T> const& v2);
+
+/* Multiplication */
+template<typename T, typename N>
+vector<T> operator*(vector<T> const &v, N c);
+template<typename T, typename N>
+vector2<T> operator*(vector2<T> const &v, N c);
+template<typename T, typename N>
+vector3<T> operator*(vector3<T> const &v, N c);
+template<typename T, typename N>
+vector4<T> operator*(vector4<T> const &v, N c);
+
+/* Division */ // TODO: types
+template<typename T, typename N>
+vector<T> operator/(vector<T> const &v, N c);
+template<typename T, typename N>
+vector2<T> operator/(vector2<T> const &v, N c);
+template<typename T, typename N>
+vector3<T> operator/(vector3<T> const &v, N c);
+template<typename T, typename N>
+vector4<T> operator/(vector4<T> const &v, N c);
 
 /* Dot product */
 template<typename T>

@@ -193,6 +193,41 @@ vector4<T>& vector4<T>::operator*=(N c) {
     return *this;
 }
 
+/* /= */
+template<typename T>
+template<typename N>
+vector<T>& vector<T>::operator/=(N c) {
+    this->x /= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector2<T>& vector2<T>::operator/=(N c) {
+    this->x /= static_cast<T>(c);
+    this->y /= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector3<T>& vector3<T>::operator/=(N c) {
+    this->x /= static_cast<T>(c);
+    this->y /= static_cast<T>(c);
+    this->z /= static_cast<T>(c);
+    return *this;
+}
+
+template<typename T>
+template<typename N>
+vector4<T>& vector4<T>::operator/=(N c) {
+    this->x /= static_cast<T>(c);
+    this->y /= static_cast<T>(c);
+    this->z /= static_cast<T>(c);
+    this->w /= static_cast<T>(c);
+    return *this;
+}
+
 /* Sign flip */
 template<typename T>
 vector<T> operator-(vector<T> const &v) {
@@ -295,6 +330,80 @@ vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
     new_vec.y = v.y - v2.y;
     new_vec.z = v.z - v2.z;
     new_vec.w = v.w - v2.w;
+    return new_vec;
+}
+
+/* Multiplication */
+template<typename T, typename N>
+vector<T> operator*(vector<T> const &v, N c) {
+    vector<T> new_vec;
+    new_vec.x = v.x * c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector2<T> operator*(vector2<T> const &v, N c) {
+    vector<T> new_vec;
+    new_vec.x = v.x * c;
+    new_vec.y = v.y * c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector3<T> operator*(vector3<T> const &v, N c) {
+    vector3<T> new_vec;
+    new_vec.x = v.x * c;
+    new_vec.y = v.y * c;
+    new_vec.z = v.z * c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector4<T> operator*(vector4<T> const &v, N c) {
+    vector4<T> new_vec;
+    new_vec.x = v.x * c;
+    new_vec.y = v.y * c;
+    new_vec.z = v.z * c;
+    new_vec.w = v.w * c;
+    return new_vec;
+}
+
+/* Division */
+template<typename T, typename N>
+vector<T> operator/(vector<T> const &v, N c) {
+    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+    vector<T> new_vec;
+    new_vec.x = v.x / c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector2<T> operator/(vector2<T> const &v, N c) {
+    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+    vector<T> new_vec;
+    new_vec.x = v.x / c;
+    new_vec.y = v.y / c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector3<T> operator/(vector3<T> const &v, N c) {
+    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+    vector3<T> new_vec;
+    new_vec.x = v.x / c;
+    new_vec.y = v.y / c;
+    new_vec.z = v.z / c;
+    return new_vec;
+}
+
+template<typename T, typename N>
+vector4<T> operator/(vector4<T> const &v, N c) {
+    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+    vector4<T> new_vec;
+    new_vec.x = v.x / c;
+    new_vec.y = v.y / c;
+    new_vec.z = v.z / c;
+    new_vec.w = v.w / c;
     return new_vec;
 }
 
