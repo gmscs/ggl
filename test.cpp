@@ -53,5 +53,9 @@ int main() {
     std::cout << ggl::degrees_to_radians((double)90.0) << "\n"; // must be floating point type
     std::cout << ggl::degrees_to_radians(90.0f) << "\n"; // must be floating point type
 
+    std::cout << ggl::abs(-789.7) << "\n";
+
+    std::cout << ggl::sqrt(10) << "\n"; // always converts to double
+
     return 0;
 }
