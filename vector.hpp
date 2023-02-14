@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <math.h> 
+#include <sstream>
 
 namespace ggl {
 
@@ -75,5 +77,72 @@ struct vector4 {
     vector4<T>& operator=(vector4<N> const& v);
 
 };
+/* Addition */
+template<typename T>
+vector<T> operator+(vector<T> const& v, vector<T> const& v2);
+template<typename T>
+vector2<T> operator+(vector2<T> const& v, vector2<T> const& v2);
+template<typename T>
+vector3<T> operator+(vector3<T> const& v, vector3<T> const& v2);
+template<typename T>
+vector4<T> operator+(vector4<T> const& v, vector4<T> const& v2);
+
+/* Subtraction */
+template<typename T>
+vector<T> operator-(vector<T> const& v, vector<T> const& v2);
+template<typename T>
+vector2<T> operator-(vector2<T> const& v, vector2<T> const& v2);
+template<typename T>
+vector3<T> operator-(vector3<T> const& v, vector3<T> const& v2);
+template<typename T>
+vector4<T> operator-(vector4<T> const& v, vector4<T> const& v2);
+
+/* Dot product */
+template<typename T>
+T dot(vector<T>& v, vector<T>& b);
+template<typename T>
+T dot(vector2<T>& v, vector2<T>& b);
+template<typename T>
+T dot(vector3<T>& v, vector3<T>& b);
+template<typename T>
+T dot(vector4<T>& v, vector4<T>& b);
+template<typename T>
+T operator*(vector<T> const& v, vector<T> const& v2);
+template<typename T>
+T operator*(vector2<T> const& v, vector2<T> const& v2);
+template<typename T>
+T operator*(vector3<T> const& v, vector3<T> const& v2);
+template<typename T>
+T operator*(vector4<T> const& v, vector4<T> const& v2);
+
+/* Magnitude */
+template<typename T>
+T mag(vector<T>& v);
+template<typename T>
+T mag(vector2<T>& v);
+template<typename T>
+T mag(vector3<T>& v);
+template<typename T>
+T mag(vector4<T>& v);
+
+/* Normalize */
+template<typename T>
+vector<T> normalize(vector<T>& v);
+template<typename T>
+vector2<T> normalize(vector2<T>& v);
+template<typename T>
+vector3<T> normalize(vector3<T>& v);
+template<typename T>
+vector4<T> normalize(vector4<T>& v);
+
+/* Vector to string */
+template<typename T>
+std::string to_string(vector<T>& v);
+template<typename T>
+std::string to_string(vector2<T>& v);
+template<typename T>
+std::string to_string(vector3<T>& v);
+template<typename T>
+std::string to_string(vector4<T>& v);
 
 }
