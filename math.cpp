@@ -25,8 +25,8 @@ double inline sqrt(T val) {
     double x;
     double v = static_cast<double>(val);
 
-    __asm__(
-        "fsqrt  \n\t"
+    __asm__ __inline__(
+        "fsqrt"
         : "=t"(x)
         : "0"(v)
     );

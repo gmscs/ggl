@@ -239,4 +239,4 @@ std::string to_string(vector3<T>& v);
 template<typename T>
 std::string to_string(vector4<T>& v);
 
-}
+} //namespace ggl

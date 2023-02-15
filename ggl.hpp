@@ -21,4 +21,4 @@
 
 namespace ggl {
 
-}//ggl
+}//namespace ggl
