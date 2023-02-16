@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <sstream>
 
 namespace ggl {
@@ -25,6 +24,8 @@ struct vector {
     vector<T>& operator*=(N c);
     template<typename N>
     vector<T>& operator/=(N c);
+    T const& operator[](int i) const;
+    T& operator[](int i);
 
 };
 
@@ -51,6 +52,8 @@ struct vector2 {
     vector2<T>& operator*=(N c);
     template<typename N>
     vector2<T>& operator/=(N c);
+    T const& operator[](int i) const;
+    T& operator[](int i);
 
 };
 
@@ -78,6 +81,8 @@ struct vector3 {
     vector3<T>& operator*=(N c);
     template<typename N>
     vector3<T>& operator/=(N c);
+    T const& operator[](int i) const;
+    T& operator[](int i);
 
 };
 
@@ -106,6 +111,8 @@ struct vector4 {
     vector4<T>& operator*=(N c);
     template<typename N>
     vector4<T>& operator/=(N c);
+    T const& operator[](int i) const;
+    T& operator[](int i);
 
 };
 

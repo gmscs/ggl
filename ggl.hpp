@@ -18,6 +18,7 @@
 
 #include "vector.cpp"
 #include "math.cpp"
+#include "matrix.cpp"
 
 namespace ggl {
 

@@ -43,7 +43,8 @@ int main() {
 
     ggl::vector3<float> div1(4, 6, 8);
     div1 /= 2;
-    std::cout << ggl::to_string(div1) << "\n";
+    std::cout << "div1: " << ggl::to_string(div1) << "\n";
+    std::cout << div1.length() << "\n";
 
     ggl::vector3<float> div2(3, 9, 27);
     ggl::vector3<float> div3 = div2 / 3;
@@ -57,5 +58,16 @@ int main() {
 
     std::cout << ggl::sqrt(10) << "\n"; // always converts to double
 
+    ggl::matrix2<int> m(v, v2);
+    std::cout << ggl::to_string(m.row1) << "\n" << ggl::to_string(m.row2) << "\n";
+
+    std::cout << div1[2] << "\n";
+    div1[2] = 7;
+    std::cout << div1[2] << "\n";
+    std::cout << ggl::to_string(div1) << "\n";
+
+    ggl::matrix4<float> m2;
+    std::cout << ggl::to_string(m2.row1) << "\n" << ggl::to_string(m2.row2) << "\n";
+    std::cout << ggl::to_string(m2.row3) << "\n" << ggl::to_string(m2.row4) << "\n";
     return 0;
 }
