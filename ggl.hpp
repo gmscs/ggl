@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <iostream>
 
 #include <GL/glew.h>
@@ -9,12 +10,12 @@
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 
-#define STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_WRITE_IMPLEMENTATION
+// #define STB_IMAGE_IMPLEMENTATION
+// #define STB_IMAGE_WRITE_IMPLEMENTATION
 
-#include "../stb/stb_image.h"
-#include "../stb/stb_image_resize.h"
-#include "../stb/stb_image_write.h"
+// #include "../stb/stb_image.h"
+// #include "../stb/stb_image_resize.h"
+// #include "../stb/stb_image_write.h"
 
 #include "vector.cpp"
 #include "math.cpp"
