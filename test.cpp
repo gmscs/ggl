@@ -3,6 +3,8 @@
 int main() {
     ggl::vector2<int> v2(3, 2);
     ggl::vector2<int> v(45, 1);
+    
+    std::cout << "Type: " << v.type() << "\n";
 
     std::cout << ggl::dot(v2, v) << "\n";
     std::cout << v2 * v << "\n";
@@ -28,6 +30,7 @@ int main() {
 
     ggl::vector4<float> ddd = ggl::vector4<float>(9, 9.5, 9, 9.5) - ggl::vector4<float>(2, 2.5, 2, 2.5);
     std::cout << ggl::to_string(ddd) << "\n";
+    std::cout << "Type: " << ddd.type() << "\n";
 
     ggl::vector3<int> eq1(1, 1, 1);
     ggl::vector3<int> eq2(1, 2, 1);
@@ -67,7 +70,22 @@ int main() {
     std::cout << ggl::to_string(div1) << "\n";
 
     ggl::matrix4<float> m2;
+    // TODO: proper matrix printing
     std::cout << ggl::to_string(m2.row1) << "\n" << ggl::to_string(m2.row2) << "\n";
-    std::cout << ggl::to_string(m2.row3) << "\n" << ggl::to_string(m2.row4) << "\n";
+    std::cout << ggl::to_string(m2.row3) << "\n" << ggl::to_string(m2.row4) << "\n" << "\n";
+
+    ggl::matrix3<float> div_mat(div1, div2, div3);
+    std::cout << ggl::to_string(div_mat.row1) << "\n" << ggl::to_string(div_mat.row2) << "\n";
+    std::cout << ggl::to_string(div_mat.row3) << "\n"<< "\n";
+
+    div_mat *= 2;
+    std::cout << ggl::to_string(div_mat.row1) << "\n" << ggl::to_string(div_mat.row2) << "\n";
+    std::cout << ggl::to_string(div_mat.row3) << "\n"<< "\n";
+
+    std::cout << ggl::to_string(div_mat[1]) << "\n";
+    std::cout << div_mat[1][0] << "\n";
+    std::cout << div_mat[1][1] << "\n";
+    std::cout << div_mat[1][2] << "\n";
+
     return 0;
 }

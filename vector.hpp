@@ -14,6 +14,10 @@ struct vector {
         return 1;
     }
 
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
     template<typename N>
     vector<T>& operator=(vector<N> const& v);
     template<typename N>
@@ -40,6 +44,10 @@ struct vector2 {
 
     static inline constexpr int length() {
         return 2;
+    }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
     }
 
     template<typename N>
@@ -71,6 +79,10 @@ struct vector3 {
         return 3;
     }
 
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
     template<typename N>
     vector3<T>& operator=(vector3<N> const& v);
     template<typename N>
@@ -99,6 +111,10 @@ struct vector4 {
 
     static inline constexpr int length() {
         return 4;
+    }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
     }
 
     template<typename N>

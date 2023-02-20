@@ -500,14 +500,14 @@ bool operator!=(vector4<T> const &v, vector4<T> const &b) {
 
 /* Brackets */
 template<typename T>
-T const& vector<T>::operator[](int i) const{
+T const& vector<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     return this->x;
 }
 
 template<typename T>
-T const& vector2<T>::operator[](int i) const{
+T const& vector2<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -515,7 +515,7 @@ T const& vector2<T>::operator[](int i) const{
 }
 
 template<typename T>
-T const& vector3<T>::operator[](int i) const{
+T const& vector3<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -524,7 +524,7 @@ T const& vector3<T>::operator[](int i) const{
 }
 
 template<typename T>
-T const& vector4<T>::operator[](int i) const{
+T const& vector4<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;

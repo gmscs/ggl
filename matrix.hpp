@@ -11,6 +11,25 @@ struct matrix2 {
     static inline constexpr int numRows() {
         return 2;
     }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
+    template<typename N>
+    matrix2<T>& operator=(matrix2<N> const& m);
+    template<typename N>
+    matrix2<T>& operator+=(matrix2<N> const& m);
+    template<typename N>
+    matrix2<T>& operator-=(matrix2<N> const& m);
+    template<typename N>
+    matrix2<T>& operator*=(matrix2<N> const& m);
+    template<typename N>
+    matrix2<T>& operator*=(N c);
+    template<typename N>
+    matrix2<T>& operator/=(N c);
+    vector2<T> const& operator[](int i) const;
+    vector2<T>& operator[](int i);
 };
 
 template<typename T>
@@ -26,6 +45,25 @@ struct matrix3 {
     static inline constexpr int numRows() {
         return 3;
     }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
+    template<typename N>
+    matrix3<T>& operator=(matrix3<N> const& m);
+    template<typename N>
+    matrix3<T>& operator+=(matrix3<N> const& m);
+    template<typename N>
+    matrix3<T>& operator-=(matrix3<N> const& m);
+    template<typename N>
+    matrix3<T>& operator*=(matrix3<N> const& m);
+    template<typename N>
+    matrix3<T>& operator*=(N c);
+    template<typename N>
+    matrix3<T>& operator/=(N c);
+    vector3<T> const& operator[](int i) const;
+    vector3<T>& operator[](int i);
 };
 
 template<typename T>
@@ -42,6 +80,25 @@ struct matrix4 {
     static inline constexpr int numRows() {
         return 4;
     }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
+    template<typename N>
+    matrix4<T>& operator=(matrix4<N> const& m);
+    template<typename N>
+    matrix4<T>& operator+=(matrix4<N> const& m);
+    template<typename N>
+    matrix4<T>& operator-=(matrix4<N> const& m);
+    template<typename N>
+    matrix4<T>& operator*=(matrix4<N> const& m);
+    template<typename N>
+    matrix4<T>& operator*=(N c);
+    template<typename N>
+    matrix4<T>& operator/=(N c);
+    vector4<T> const& operator[](int i) const;
+    vector4<T>& operator[](int i);
 };
 
 }//namespace ggl
