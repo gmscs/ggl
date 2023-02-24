@@ -45,7 +45,8 @@ int main() {
     std::cout << ggl::to_string(eq3) << "\n";
 
     ggl::vector3<float> div1(4, 6, 8);
-    div1 /= 2;
+    ggl::vector3<float> div(4, 6, 8);
+    div = div / 2;
     std::cout << "div1: " << ggl::to_string(div1) << "\n";
     std::cout << div1.length() << "\n";
 
@@ -53,9 +54,9 @@ int main() {
     ggl::vector3<float> div3 = div2 / 3;
     std::cout << ggl::to_string(div3) << "\n";
 
-    std::cout << ggl::radians_to_degrees(1.570796) << "\n";
-    std::cout << ggl::degrees_to_radians((double)90.0) << "\n"; // must be floating point type
-    std::cout << ggl::degrees_to_radians(90.0f) << "\n"; // must be floating point type
+    std::cout << "1.57ish Radians to Degrees: " << ggl::radians_to_degrees(1.570796) << "\n";
+    std::cout << "45 Degrees to Radians: " << ggl::degrees_to_radians(45) << "\n"; // converts to float
+    std::cout <<"90.5 Degrees to Radians: " <<  ggl::degrees_to_radians(90.5) << "\n";
 
     std::cout << ggl::abs(-789.7) << "\n";
 
@@ -70,22 +71,22 @@ int main() {
     std::cout << ggl::to_string(div1) << "\n";
 
     ggl::matrix4<float> m2;
-    // TODO: proper matrix printing
-    std::cout << ggl::to_string(m2.row1) << "\n" << ggl::to_string(m2.row2) << "\n";
-    std::cout << ggl::to_string(m2.row3) << "\n" << ggl::to_string(m2.row4) << "\n" << "\n";
+    ggl::print_mat(m2);
+    std::cout << "\n";    
 
     ggl::matrix3<float> div_mat(div1, div2, div3);
-    std::cout << ggl::to_string(div_mat.row1) << "\n" << ggl::to_string(div_mat.row2) << "\n";
-    std::cout << ggl::to_string(div_mat.row3) << "\n"<< "\n";
+    print_mat(div_mat);    
+    std::cout << "\n";    
 
     div_mat *= 2;
-    std::cout << ggl::to_string(div_mat.row1) << "\n" << ggl::to_string(div_mat.row2) << "\n";
-    std::cout << ggl::to_string(div_mat.row3) << "\n"<< "\n";
+    ggl::print_mat(div_mat);    
+    std::cout << "\n";    
 
     std::cout << ggl::to_string(div_mat[1]) << "\n";
     std::cout << div_mat[1][0] << "\n";
     std::cout << div_mat[1][1] << "\n";
     std::cout << div_mat[1][2] << "\n";
+    std::cout << "Matrix Type: " << div_mat.type() << "\n";
 
     return 0;
 }

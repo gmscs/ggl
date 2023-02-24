@@ -2,15 +2,21 @@
 
 namespace ggl {
 
-template<typename T>
-T radians_to_degrees(T radians) {
-    assert((void("radians_to_degrees only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+constexpr std::floating_point auto radians_to_degrees(std::floating_point auto radians) {
     return radians * (180/PI);
 }
 
-template<typename T>
-T degrees_to_radians(T degrees) {
-    assert((void("degrees_to_radians only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+float radians_to_degrees(int radians) {
+    radians = static_cast<float>(radians);
+    return radians * (180/PI);
+}
+
+constexpr std::floating_point auto degrees_to_radians(std::floating_point auto degrees) {
+    return degrees * (PI/180);
+}
+
+float degrees_to_radians(int degrees) {
+    degrees = static_cast<float>(degrees);
     return degrees * (PI/180);
 }
 
@@ -20,7 +26,7 @@ T abs(T val) {
     return val * -1;
 }
 
-template<typename T>
+template<typename T> // just for fun, use std::sqrt instead since it's faster
 double inline sqrt(T val) {
     double x;
     double v = static_cast<double>(val);

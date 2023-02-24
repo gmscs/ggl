@@ -101,4 +101,28 @@ struct matrix4 {
     vector4<T>& operator[](int i);
 };
 
+/* Sign flip */
+template<typename T>
+matrix2<T> operator-(matrix2<T> const& m);
+template<typename T>
+matrix3<T> operator-(matrix3<T> const& m);
+template<typename T>
+matrix4<T> operator-(matrix4<T> const& m);
+
+/* Addition */
+template<typename T>
+matrix2<T> operator+(matrix2<T> const& m, matrix2<T> const& m2);
+template<typename T>
+matrix3<T> operator+(matrix3<T> const& m, matrix3<T> const& m2);
+template<typename T>
+matrix4<T> operator+(matrix4<T> const& m, matrix4<T> const& m2);
+
+/* Printing */
+template<typename T>
+void print_mat(matrix2<T> const &m);
+template<typename T>
+void print_mat(matrix3<T> const &m);
+template<typename T>
+void print_mat(matrix4<T> const &m);
+
 }//namespace ggl

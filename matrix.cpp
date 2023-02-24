@@ -233,4 +233,59 @@ vector4<T>& matrix4<T>::operator[](int i) {
     return this->row4;
 }
 
+/* Sign flip */
+template<typename T>
+matrix2<T> operator-(matrix2<T> const &m) {
+    matrix2<T> new_mat;
+    new_mat.row1 = -m.row1;
+    new_mat.row2 = -m.row2;
+    return new_mat;
+}
+
+template<typename T>
+matrix3<T> operator-(matrix3<T> const &m) {
+    matrix3<T> new_mat;
+    new_mat.row1 = -m.row1;
+    new_mat.row2 = -m.row2;
+    new_mat.row3 = -m.row3;
+    return new_mat;
+}
+
+template<typename T>
+matrix4<T> operator-(matrix4<T> const &m) {
+    matrix4<T> new_mat;
+    new_mat.row1 = -m.row1;
+    new_mat.row2 = -m.row2;
+    new_mat.row3 = -m.row3;
+    new_mat.row4 = -m.row4;
+    return new_mat;
+}
+
+template<typename T>
+void print_mat(matrix2<T> const &m) {
+    int i = 0;
+    while(i < 2) {
+        std::cout << ggl::to_string(m[i]) << "\n";
+        i++;
+    }
+}
+
+template<typename T>
+void print_mat(matrix3<T> const &m) {
+    int i = 0;
+    while(i < 3) {
+        std::cout << ggl::to_string(m[i]) << "\n";
+        i++;
+    }
+}
+
+template<typename T>
+void print_mat(matrix4<T> const &m) {
+    int i = 0;
+    while(i < 4) {
+	    std::cout << ggl::to_string(m[i]) << "\n";
+        i++;
+    }
+}
+
 } //namespace ggl

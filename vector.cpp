@@ -664,28 +664,28 @@ vector3<T> cross(vector3<T>& v, vector3<T>& b) {
 
 /* Vector to String */
 template<typename T>
-std::string to_string(vector<T>& v) {
+std::string to_string(vector<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector2<T>& v) {
+std::string to_string(vector2<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector3<T>& v) {
+std::string to_string(vector3<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << ", " << v.z << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector4<T>& v) {
+std::string to_string(vector4<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "]";
     return stream.str();
