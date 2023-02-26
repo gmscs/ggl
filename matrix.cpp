@@ -3,20 +3,20 @@
 namespace ggl {
 
 template<typename T>
-matrix2<T>::matrix2() {
+constexpr matrix2<T>::matrix2() {
     this->row1 = vector2<T>();
     this->row2 = vector2<T>();
 }
 
 template<typename T>
-matrix3<T>::matrix3() {
+constexpr matrix3<T>::matrix3() {
     this->row1 = vector3<T>();
     this->row2 = vector3<T>();
     this->row3 = vector3<T>();
 }
 
 template<typename T>
-matrix4<T>::matrix4() {
+constexpr matrix4<T>::matrix4() {
     this->row1 = vector4<T>();
     this->row2 = vector4<T>();
     this->row3 = vector4<T>();
@@ -24,20 +24,41 @@ matrix4<T>::matrix4() {
 }
 
 template<typename T>
-matrix2<T>::matrix2(vector2<T> const &a, vector2<T> const &b) {
+constexpr matrix2<T>::matrix2(matrix2<T> const &m) {
+    this->row1 = vector2<T>(m.row1);
+    this->row2 = vector2<T>(m.row2);
+}
+
+template<typename T>
+constexpr matrix3<T>::matrix3(matrix3<T> const &m) {
+    this->row1 = vector3<T>(m.row1);
+    this->row2 = vector3<T>(m.row2);
+    this->row3 = vector3<T>(m.row3);
+}
+
+template<typename T>
+constexpr matrix4<T>::matrix4(matrix4<T> const &m) {
+    this->row1 = vector4<T>(m.row1);
+    this->row2 = vector4<T>(m.row2);
+    this->row3 = vector4<T>(m.row3);
+    this->row4 = vector4<T>(m.row4);
+}
+
+template<typename T>
+constexpr matrix2<T>::matrix2(vector2<T> const &a, vector2<T> const &b) {
     this->row1 = a;
     this->row2 = b;
 }
 
 template<typename T>
-matrix3<T>::matrix3(vector3<T> const &a, vector3<T> const &b, vector3<T> const &c) {
+constexpr matrix3<T>::matrix3(vector3<T> const &a, vector3<T> const &b, vector3<T> const &c) {
     this->row1 = a;
     this->row2 = b;
     this->row3 = c;
 }
 
 template<typename T>
-matrix4<T>::matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &c, vector4<T> const &d) {
+constexpr matrix4<T>::matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &c, vector4<T> const &d) {
     this->row1 = a;
     this->row2 = b;
     this->row3 = c;
@@ -46,7 +67,7 @@ matrix4<T>::matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &
 
 template<typename T>
 template<typename N>
-matrix2<T>& matrix2<T>::operator=(matrix2<N> const &m) {
+constexpr matrix2<T>& matrix2<T>::operator=(matrix2<N> const &m) {
     this->row1 = m.row1;
     this->row2 = m.row2;
     return *this;
@@ -54,7 +75,7 @@ matrix2<T>& matrix2<T>::operator=(matrix2<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix3<T>& matrix3<T>::operator=(matrix3<N> const &m) {
+constexpr matrix3<T>& matrix3<T>::operator=(matrix3<N> const &m) {
     this->row1 = m.row1;
     this->row2 = m.row2;
     this->row3 = m.row3;
@@ -63,7 +84,7 @@ matrix3<T>& matrix3<T>::operator=(matrix3<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix4<T>& matrix4<T>::operator=(matrix4<N> const &m) {
+constexpr matrix4<T>& matrix4<T>::operator=(matrix4<N> const &m) {
     this->row1 = m.row1;
     this->row2 = m.row2;
     this->row3 = m.row3;
@@ -73,7 +94,7 @@ matrix4<T>& matrix4<T>::operator=(matrix4<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix2<T>& matrix2<T>::operator+=(matrix2<N> const &m) {
+constexpr matrix2<T>& matrix2<T>::operator+=(matrix2<N> const &m) {
     this->row1 += m.row1;
     this->row2 += m.row2;
     return *this;
@@ -81,7 +102,7 @@ matrix2<T>& matrix2<T>::operator+=(matrix2<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix3<T>& matrix3<T>::operator+=(matrix3<N> const &m) {
+constexpr matrix3<T>& matrix3<T>::operator+=(matrix3<N> const &m) {
     this->row1 += m.row1;
     this->row2 += m.row2;
     this->row3 += m.row3;
@@ -90,7 +111,7 @@ matrix3<T>& matrix3<T>::operator+=(matrix3<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix4<T>& matrix4<T>::operator+=(matrix4<N> const &m) {
+constexpr matrix4<T>& matrix4<T>::operator+=(matrix4<N> const &m) {
     this->row1 += m.row1;
     this->row2 += m.row2;
     this->row3 += m.row3;
@@ -100,7 +121,7 @@ matrix4<T>& matrix4<T>::operator+=(matrix4<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix2<T>& matrix2<T>::operator-=(matrix2<N> const &m) {
+constexpr matrix2<T>& matrix2<T>::operator-=(matrix2<N> const &m) {
     this->row1 -= m.row1;
     this->row2 -= m.row2;
     return *this;
@@ -108,7 +129,7 @@ matrix2<T>& matrix2<T>::operator-=(matrix2<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix3<T>& matrix3<T>::operator-=(matrix3<N> const &m) {
+constexpr matrix3<T>& matrix3<T>::operator-=(matrix3<N> const &m) {
     this->row1 -= m.row1;
     this->row2 -= m.row2;
     this->row3 -= m.row3;
@@ -117,7 +138,7 @@ matrix3<T>& matrix3<T>::operator-=(matrix3<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix4<T>& matrix4<T>::operator-=(matrix4<N> const &m) {
+constexpr matrix4<T>& matrix4<T>::operator-=(matrix4<N> const &m) {
     this->row1 -= m.row1;
     this->row2 -= m.row2;
     this->row3 -= m.row3;
@@ -127,7 +148,7 @@ matrix4<T>& matrix4<T>::operator-=(matrix4<N> const &m) {
 
 template<typename T>
 template<typename N>
-matrix2<T>& matrix2<T>::operator*=(N c) {
+constexpr matrix2<T>& matrix2<T>::operator*=(N c) {
     this->row1 *= c;
     this->row2 *= c;
     return *this;
@@ -135,7 +156,7 @@ matrix2<T>& matrix2<T>::operator*=(N c) {
 
 template<typename T>
 template<typename N>
-matrix3<T>& matrix3<T>::operator*=(N c) {
+constexpr matrix3<T>& matrix3<T>::operator*=(N c) {
     this->row1 *= c;
     this->row2 *= c;
     this->row3 *= c;
@@ -144,7 +165,7 @@ matrix3<T>& matrix3<T>::operator*=(N c) {
 
 template<typename T>
 template<typename N>
-matrix4<T>& matrix4<T>::operator*=(N c) {
+constexpr matrix4<T>& matrix4<T>::operator*=(N c) {
     this->row1 *= c;
     this->row2 *= c;
     this->row3 *= c;
@@ -154,7 +175,7 @@ matrix4<T>& matrix4<T>::operator*=(N c) {
 
 template<typename T>
 template<typename N>
-matrix2<T>& matrix2<T>::operator/=(N c) {
+constexpr matrix2<T>& matrix2<T>::operator/=(N c) {
     this->row2 /= c;
     this->row1 /= c;
     return *this;
@@ -162,7 +183,7 @@ matrix2<T>& matrix2<T>::operator/=(N c) {
 
 template<typename T>
 template<typename N>
-matrix3<T>& matrix3<T>::operator/=(N c) {
+constexpr matrix3<T>& matrix3<T>::operator/=(N c) {
     this->row1 /= c;
     this->row2 /= c;
     this->row3 /= c;
@@ -171,7 +192,7 @@ matrix3<T>& matrix3<T>::operator/=(N c) {
 
 template<typename T>
 template<typename N>
-matrix4<T>& matrix4<T>::operator/=(N c) {
+constexpr matrix4<T>& matrix4<T>::operator/=(N c) {
     this->row1 /= c;
     this->row2 /= c;
     this->row3 /= c;
@@ -180,7 +201,7 @@ matrix4<T>& matrix4<T>::operator/=(N c) {
 }
 
 template<typename T>
-vector2<T> const& matrix2<T>::operator[](int i) const {
+constexpr vector2<T> const& matrix2<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -188,7 +209,7 @@ vector2<T> const& matrix2<T>::operator[](int i) const {
 }
 
 template<typename T>
-vector3<T> const& matrix3<T>::operator[](int i) const {
+constexpr vector3<T> const& matrix3<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -197,7 +218,7 @@ vector3<T> const& matrix3<T>::operator[](int i) const {
 }
 
 template<typename T>
-vector4<T> const& matrix4<T>::operator[](int i) const {
+constexpr vector4<T> const& matrix4<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -207,7 +228,7 @@ vector4<T> const& matrix4<T>::operator[](int i) const {
 }
 
 template<typename T>
-vector2<T>& matrix2<T>::operator[](int i) {
+constexpr vector2<T>& matrix2<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -215,7 +236,7 @@ vector2<T>& matrix2<T>::operator[](int i) {
 }
 
 template<typename T>
-vector3<T>& matrix3<T>::operator[](int i) {
+constexpr vector3<T>& matrix3<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -224,7 +245,7 @@ vector3<T>& matrix3<T>::operator[](int i) {
 }
 
 template<typename T>
-vector4<T>& matrix4<T>::operator[](int i) {
+constexpr vector4<T>& matrix4<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->numRows()));
     if(i == 0) return this->row1;
@@ -235,7 +256,7 @@ vector4<T>& matrix4<T>::operator[](int i) {
 
 /* Sign flip */
 template<typename T>
-matrix2<T> operator-(matrix2<T> const &m) {
+constexpr matrix2<T> operator-(matrix2<T> const &m) {
     matrix2<T> new_mat;
     new_mat.row1 = -m.row1;
     new_mat.row2 = -m.row2;
@@ -243,7 +264,7 @@ matrix2<T> operator-(matrix2<T> const &m) {
 }
 
 template<typename T>
-matrix3<T> operator-(matrix3<T> const &m) {
+constexpr matrix3<T> operator-(matrix3<T> const &m) {
     matrix3<T> new_mat;
     new_mat.row1 = -m.row1;
     new_mat.row2 = -m.row2;
@@ -252,7 +273,7 @@ matrix3<T> operator-(matrix3<T> const &m) {
 }
 
 template<typename T>
-matrix4<T> operator-(matrix4<T> const &m) {
+constexpr matrix4<T> operator-(matrix4<T> const &m) {
     matrix4<T> new_mat;
     new_mat.row1 = -m.row1;
     new_mat.row2 = -m.row2;
@@ -261,8 +282,40 @@ matrix4<T> operator-(matrix4<T> const &m) {
     return new_mat;
 }
 
+/* Multiplication */
 template<typename T>
-void print_mat(matrix2<T> const &m) {
+constexpr matrix2<T> operator*(matrix2<T> const &m, matrix2<T> const &m2) {
+    matrix2<T> new_mat;
+    new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]);
+    new_mat[0][1] = (m[0][0] * m2[0][1]) + (m[0][1] * m2[1][1]);
+
+    new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]);
+    new_mat[1][1] = (m[1][0] * m2[0][1]) + (m[1][1] * m2[1][1]);
+
+    return new_mat;
+}
+
+template<typename T>
+constexpr matrix3<T> operator*(matrix3<T> const &m, matrix3<T> const &m2) {
+    matrix3<T> new_mat;
+    new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]) + (m[0][2] * m2[2][0]);
+    new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]) + (m[1][2] * m2[2][0]);
+    new_mat[2][0] = (m[2][0] * m2[0][0]) + (m[2][1] * m2[1][0]) + (m[2][2] * m2[2][0]);
+
+    new_mat[0][1] = (m[0][0] * m2[0][1]) + (m[0][1] * m2[1][1]) + (m[0][2] * m2[2][1]);
+    new_mat[1][1] = (m[1][0] * m2[0][1]) + (m[1][1] * m2[1][1]) + (m[1][2] * m2[2][1]);
+    new_mat[2][1] = (m[2][0] * m2[0][1]) + (m[2][1] * m2[1][1]) + (m[2][2] * m2[2][1]);
+
+    new_mat[0][2] = (m[0][0] * m2[0][2]) + (m[0][1] * m2[1][2]) + (m[0][2] * m2[2][2]);
+    new_mat[1][2] = (m[1][0] * m2[0][2]) + (m[1][1] * m2[1][2]) + (m[1][2] * m2[2][2]);
+    new_mat[2][2] = (m[2][0] * m2[0][2]) + (m[2][1] * m2[1][2]) + (m[2][2] * m2[2][2]);
+
+    return new_mat;
+}
+
+/* Printing */
+template<typename T>
+constexpr void print_mat(matrix2<T> const &m) {
     int i = 0;
     while(i < 2) {
         std::cout << ggl::to_string(m[i]) << "\n";
@@ -271,7 +324,7 @@ void print_mat(matrix2<T> const &m) {
 }
 
 template<typename T>
-void print_mat(matrix3<T> const &m) {
+constexpr void print_mat(matrix3<T> const &m) {
     int i = 0;
     while(i < 3) {
         std::cout << ggl::to_string(m[i]) << "\n";
@@ -280,7 +333,7 @@ void print_mat(matrix3<T> const &m) {
 }
 
 template<typename T>
-void print_mat(matrix4<T> const &m) {
+constexpr void print_mat(matrix4<T> const &m) {
     int i = 0;
     while(i < 4) {
 	    std::cout << ggl::to_string(m[i]) << "\n";

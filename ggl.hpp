@@ -4,6 +4,8 @@
 #include <iostream>
 #include <math.h>
 #include <concepts>
+#include <cassert>
+#include <sstream>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

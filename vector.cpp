@@ -3,25 +3,25 @@
 namespace ggl {
 
 template<typename T>
-vector<T>::vector() {
+constexpr vector<T>::vector() {
     this->x = 0;
 }
 
 template<typename T>
-vector2<T>::vector2() {
+constexpr vector2<T>::vector2() {
     this->x = 0;
     this->y = 0;
 }
 
 template<typename T>
-vector3<T>::vector3() {
+constexpr vector3<T>::vector3() {
     this->x = 0;
     this->y = 0;
     this->z = 0;
 }
 
 template<typename T>
-vector4<T>::vector4() {
+constexpr vector4<T>::vector4() {
     this->x = 0;
     this->y = 0;
     this->z = 0;
@@ -29,25 +29,51 @@ vector4<T>::vector4() {
 }
 
 template<typename T>
-vector<T>::vector(T a) {
+constexpr vector<T>::vector(vector<T> const &v) {
+    this->x = v.x;
+}
+
+template<typename T>
+constexpr vector2<T>::vector2(vector2<T> const &v) {
+    this->x = v.x;
+    this->y = v.y;
+}
+
+template<typename T>
+constexpr vector3<T>::vector3(vector3<T> const &v) {
+    this->x = v.x;
+    this->y = v.y;
+    this->z = v.z;
+}
+
+template<typename T>
+constexpr vector4<T>::vector4(vector4<T> const &v) {
+    this->x = v.x;
+    this->y = v.y;
+    this->z = v.z;
+    this->w = v.w;
+}
+
+template<typename T>
+constexpr vector<T>::vector(T a) {
     this->x = a;
 }
 
 template<typename T>
-vector2<T>::vector2(T a, T b) {
+constexpr vector2<T>::vector2(T a, T b) {
     this->x = a;
     this->y = b;
 }
 
 template<typename T>
-vector3<T>::vector3(T a, T b, T c) {
+constexpr vector3<T>::vector3(T a, T b, T c) {
     this->x = a;
     this->y = b;
     this->z = c;
 }
 
 template<typename T>
-vector4<T>::vector4(T a, T b, T c, T d) {
+constexpr vector4<T>::vector4(T a, T b, T c, T d) {
     this->x = a;
     this->y = b;
     this->z = c;
@@ -56,14 +82,14 @@ vector4<T>::vector4(T a, T b, T c, T d) {
 
 template<typename T>
 template<typename N>
-vector<T>& vector<T>::operator=(vector<N> const &v) {
+constexpr vector<T>& vector<T>::operator=(vector<N> const &v) {
     this->x = static_cast<T>(v.x);
     return *this;
 }
 
 template<typename T>
 template<typename N>
-vector2<T>& vector2<T>::operator=(vector2<N> const &v) {
+constexpr vector2<T>& vector2<T>::operator=(vector2<N> const &v) {
     this->x = static_cast<T>(v.x);
     this->y = static_cast<T>(v.y);
     return *this;
@@ -71,7 +97,7 @@ vector2<T>& vector2<T>::operator=(vector2<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector3<T>& vector3<T>::operator=(vector3<N> const &v) {
+constexpr vector3<T>& vector3<T>::operator=(vector3<N> const &v) {
     this->x = static_cast<T>(v.x);
     this->y = static_cast<T>(v.y);
     this->z = static_cast<T>(v.z);
@@ -80,7 +106,7 @@ vector3<T>& vector3<T>::operator=(vector3<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector4<T>& vector4<T>::operator=(vector4<N> const &v) {
+constexpr vector4<T>& vector4<T>::operator=(vector4<N> const &v) {
     this->x = static_cast<T>(v.x);
     this->y = static_cast<T>(v.y);
     this->z = static_cast<T>(v.z);
@@ -91,14 +117,14 @@ vector4<T>& vector4<T>::operator=(vector4<N> const &v) {
 /* += */
 template<typename T>
 template<typename N>
-vector<T>& vector<T>::operator+=(vector<N> const &v) {
+constexpr vector<T>& vector<T>::operator+=(vector<N> const &v) {
     this->x += static_cast<T>(v.x);
     return *this;
 }
 
 template<typename T>
 template<typename N>
-vector2<T>& vector2<T>::operator+=(vector2<N> const &v) {
+constexpr vector2<T>& vector2<T>::operator+=(vector2<N> const &v) {
     this->x += static_cast<T>(v.x);
     this->y += static_cast<T>(v.y);
     return *this;
@@ -106,7 +132,7 @@ vector2<T>& vector2<T>::operator+=(vector2<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector3<T>& vector3<T>::operator+=(vector3<N> const &v) {
+constexpr vector3<T>& vector3<T>::operator+=(vector3<N> const &v) {
     this->x += static_cast<T>(v.x);
     this->y += static_cast<T>(v.y);
     this->z += static_cast<T>(v.z);
@@ -115,7 +141,7 @@ vector3<T>& vector3<T>::operator+=(vector3<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector4<T>& vector4<T>::operator+=(vector4<N> const &v) {
+constexpr vector4<T>& vector4<T>::operator+=(vector4<N> const &v) {
     this->x += static_cast<T>(v.x);
     this->y += static_cast<T>(v.y);
     this->z += static_cast<T>(v.z);
@@ -126,14 +152,14 @@ vector4<T>& vector4<T>::operator+=(vector4<N> const &v) {
 /* -= */
 template<typename T>
 template<typename N>
-vector<T>& vector<T>::operator-=(vector<N> const &v) {
+constexpr vector<T>& vector<T>::operator-=(vector<N> const &v) {
     this->x -= static_cast<T>(v.x);
     return *this;
 }
 
 template<typename T>
 template<typename N>
-vector2<T>& vector2<T>::operator-=(vector2<N> const &v) {
+constexpr vector2<T>& vector2<T>::operator-=(vector2<N> const &v) {
     this->x -= static_cast<T>(v.x);
     this->y -= static_cast<T>(v.y);
     return *this;
@@ -141,7 +167,7 @@ vector2<T>& vector2<T>::operator-=(vector2<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector3<T>& vector3<T>::operator-=(vector3<N> const &v) {
+constexpr vector3<T>& vector3<T>::operator-=(vector3<N> const &v) {
     this->x -= static_cast<T>(v.x);
     this->y -= static_cast<T>(v.y);
     this->z -= static_cast<T>(v.z);
@@ -150,7 +176,7 @@ vector3<T>& vector3<T>::operator-=(vector3<N> const &v) {
 
 template<typename T>
 template<typename N>
-vector4<T>& vector4<T>::operator-=(vector4<N> const &v) {
+constexpr vector4<T>& vector4<T>::operator-=(vector4<N> const &v) {
     this->x -= static_cast<T>(v.x);
     this->y -= static_cast<T>(v.y);
     this->z -= static_cast<T>(v.z);
@@ -161,14 +187,14 @@ vector4<T>& vector4<T>::operator-=(vector4<N> const &v) {
 /* *= */
 template<typename T>
 template<typename N>
-vector<T>& vector<T>::operator*=(N c) {
+constexpr vector<T>& vector<T>::operator*=(N c) {
     this->x *= static_cast<T>(c);
     return *this;
 }
 
 template<typename T>
 template<typename N>
-vector2<T>& vector2<T>::operator*=(N c) {
+constexpr vector2<T>& vector2<T>::operator*=(N c) {
     this->x *= static_cast<T>(c);
     this->y *= static_cast<T>(c);
     return *this;
@@ -176,7 +202,7 @@ vector2<T>& vector2<T>::operator*=(N c) {
 
 template<typename T>
 template<typename N>
-vector3<T>& vector3<T>::operator*=(N c) {
+constexpr vector3<T>& vector3<T>::operator*=(N c) {
     this->x *= static_cast<T>(c);
     this->y *= static_cast<T>(c);
     this->z *= static_cast<T>(c);
@@ -185,7 +211,7 @@ vector3<T>& vector3<T>::operator*=(N c) {
 
 template<typename T>
 template<typename N>
-vector4<T>& vector4<T>::operator*=(N c) {
+constexpr vector4<T>& vector4<T>::operator*=(N c) {
     this->x *= static_cast<T>(c);
     this->y *= static_cast<T>(c);
     this->z *= static_cast<T>(c);
@@ -196,14 +222,14 @@ vector4<T>& vector4<T>::operator*=(N c) {
 /* /= */
 template<typename T>
 template<typename N>
-vector<T>& vector<T>::operator/=(N c) {
+constexpr vector<T>& vector<T>::operator/=(N c) {
     this->x /= static_cast<T>(c);
     return *this;
 }
 
 template<typename T>
 template<typename N>
-vector2<T>& vector2<T>::operator/=(N c) {
+constexpr vector2<T>& vector2<T>::operator/=(N c) {
     this->x /= static_cast<T>(c);
     this->y /= static_cast<T>(c);
     return *this;
@@ -211,7 +237,7 @@ vector2<T>& vector2<T>::operator/=(N c) {
 
 template<typename T>
 template<typename N>
-vector3<T>& vector3<T>::operator/=(N c) {
+constexpr vector3<T>& vector3<T>::operator/=(N c) {
     this->x /= static_cast<T>(c);
     this->y /= static_cast<T>(c);
     this->z /= static_cast<T>(c);
@@ -220,7 +246,7 @@ vector3<T>& vector3<T>::operator/=(N c) {
 
 template<typename T>
 template<typename N>
-vector4<T>& vector4<T>::operator/=(N c) {
+constexpr vector4<T>& vector4<T>::operator/=(N c) {
     this->x /= static_cast<T>(c);
     this->y /= static_cast<T>(c);
     this->z /= static_cast<T>(c);
@@ -230,14 +256,14 @@ vector4<T>& vector4<T>::operator/=(N c) {
 
 /* Sign flip */
 template<typename T>
-vector<T> operator-(vector<T> const &v) {
+constexpr vector<T> operator-(vector<T> const &v) {
     vector<T> new_vec;
     new_vec.x = -v.x;
     return new_vec;
 }
 
 template<typename T>
-vector2<T> operator-(vector2<T> const &v) {
+constexpr vector2<T> operator-(vector2<T> const &v) {
     vector2<T> new_vec;
     new_vec.x = -v.x;
     new_vec.y = -v.y;
@@ -245,7 +271,7 @@ vector2<T> operator-(vector2<T> const &v) {
 }
 
 template<typename T>
-vector3<T> operator-(vector3<T> const &v) {
+constexpr vector3<T> operator-(vector3<T> const &v) {
     vector3<T> new_vec;
     new_vec.x = -v.x;
     new_vec.y = -v.y;
@@ -254,7 +280,7 @@ vector3<T> operator-(vector3<T> const &v) {
 }
 
 template<typename T>
-vector4<T> operator-(vector4<T> const &v) {
+constexpr vector4<T> operator-(vector4<T> const &v) {
     vector4<T> new_vec;
     new_vec.x = -v.x;
     new_vec.y = -v.y;
@@ -265,14 +291,14 @@ vector4<T> operator-(vector4<T> const &v) {
 
 /* Addition */
 template<typename T>
-vector<T> operator+(vector<T> const &v, vector<T> const& v2) {
+constexpr vector<T> operator+(vector<T> const &v, vector<T> const& v2) {
     vector<T> new_vec;
     new_vec.x = v.x + v2.x;
     return new_vec;
 }
 
 template<typename T>
-vector2<T> operator+(vector2<T> const &v, vector2<T> const& v2) {
+constexpr vector2<T> operator+(vector2<T> const &v, vector2<T> const& v2) {
     vector2<T> new_vec;
     new_vec.x = v.x + v2.x;
     new_vec.y = v.y + v2.y;
@@ -280,7 +306,7 @@ vector2<T> operator+(vector2<T> const &v, vector2<T> const& v2) {
 }
 
 template<typename T>
-vector3<T> operator+(vector3<T> const &v, vector3<T> const& v2) {
+constexpr vector3<T> operator+(vector3<T> const &v, vector3<T> const& v2) {
     vector3<T> new_vec;
     new_vec.x = v.x + v2.x;
     new_vec.y = v.y + v2.y;
@@ -289,7 +315,7 @@ vector3<T> operator+(vector3<T> const &v, vector3<T> const& v2) {
 }
 
 template<typename T>
-vector4<T> operator+(vector4<T> const &v, vector4<T> const& v2) {
+constexpr vector4<T> operator+(vector4<T> const &v, vector4<T> const& v2) {
     vector4<T> new_vec;
     new_vec.x = v.x + v2.x;
     new_vec.y = v.y + v2.y;
@@ -300,14 +326,14 @@ vector4<T> operator+(vector4<T> const &v, vector4<T> const& v2) {
 
 /* Subtraction */
 template<typename T>
-vector<T> operator-(vector<T> const &v, vector<T> const& v2) {
+constexpr vector<T> operator-(vector<T> const &v, vector<T> const& v2) {
     vector<T> new_vec;
     new_vec.x = v.x - v2.x;
     return new_vec;
 }
 
 template<typename T>
-vector2<T> operator-(vector2<T> const &v, vector2<T> const& v2) {
+constexpr vector2<T> operator-(vector2<T> const &v, vector2<T> const& v2) {
     vector2<T> new_vec;
     new_vec.x = v.x - v2.x;
     new_vec.y = v.y - v2.y;
@@ -315,7 +341,7 @@ vector2<T> operator-(vector2<T> const &v, vector2<T> const& v2) {
 }
 
 template<typename T>
-vector3<T> operator-(vector3<T> const &v, vector3<T> const& v2) {
+constexpr vector3<T> operator-(vector3<T> const &v, vector3<T> const& v2) {
     vector3<T> new_vec;
     new_vec.x = v.x - v2.x;
     new_vec.y = v.y - v2.y;
@@ -324,7 +350,7 @@ vector3<T> operator-(vector3<T> const &v, vector3<T> const& v2) {
 }
 
 template<typename T>
-vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
+constexpr vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
     vector4<T> new_vec;
     new_vec.x = v.x - v2.x;
     new_vec.y = v.y - v2.y;
@@ -335,14 +361,14 @@ vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
 
 /* Multiplication */
 template<typename T, typename N>
-vector<T> operator*(vector<T> const &v, N c) {
+constexpr vector<T> operator*(vector<T> const &v, N c) {
     vector<T> new_vec;
     new_vec.x = v.x * c;
     return new_vec;
 }
 
 template<typename T, typename N>
-vector2<T> operator*(vector2<T> const &v, N c) {
+constexpr vector2<T> operator*(vector2<T> const &v, N c) {
     vector<T> new_vec;
     new_vec.x = v.x * c;
     new_vec.y = v.y * c;
@@ -350,7 +376,7 @@ vector2<T> operator*(vector2<T> const &v, N c) {
 }
 
 template<typename T, typename N>
-vector3<T> operator*(vector3<T> const &v, N c) {
+constexpr vector3<T> operator*(vector3<T> const &v, N c) {
     vector3<T> new_vec;
     new_vec.x = v.x * c;
     new_vec.y = v.y * c;
@@ -359,7 +385,7 @@ vector3<T> operator*(vector3<T> const &v, N c) {
 }
 
 template<typename T, typename N>
-vector4<T> operator*(vector4<T> const &v, N c) {
+constexpr vector4<T> operator*(vector4<T> const &v, N c) {
     vector4<T> new_vec;
     new_vec.x = v.x * c;
     new_vec.y = v.y * c;
@@ -370,7 +396,7 @@ vector4<T> operator*(vector4<T> const &v, N c) {
 
 /* Division */
 template<typename T, typename N>
-vector<T> operator/(vector<T> const &v, N c) {
+constexpr vector<T> operator/(vector<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec;
     new_vec.x = v.x / c;
@@ -378,7 +404,7 @@ vector<T> operator/(vector<T> const &v, N c) {
 }
 
 template<typename T, typename N>
-vector2<T> operator/(vector2<T> const &v, N c) {
+constexpr vector2<T> operator/(vector2<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec;
     new_vec.x = v.x / c;
@@ -387,7 +413,7 @@ vector2<T> operator/(vector2<T> const &v, N c) {
 }
 
 template<typename T, typename N>
-vector3<T> operator/(vector3<T> const &v, N c) {
+constexpr vector3<T> operator/(vector3<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector3<T> new_vec;
     new_vec.x = v.x / c;
@@ -397,7 +423,7 @@ vector3<T> operator/(vector3<T> const &v, N c) {
 }
 
 template<typename T, typename N>
-vector4<T> operator/(vector4<T> const &v, N c) {
+constexpr vector4<T> operator/(vector4<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector4<T> new_vec;
     new_vec.x = v.x / c;
@@ -409,53 +435,53 @@ vector4<T> operator/(vector4<T> const &v, N c) {
 
 /* Dot product */
 template<typename T>
-T dot(vector<T>& v, vector<T>& b) {
+constexpr T dot(vector<T>& v, vector<T>& b) {
     return v.x * b.x;
 }
 
 template<typename T>
-T dot(vector2<T>& v, vector2<T>& b) {
+constexpr T dot(vector2<T>& v, vector2<T>& b) {
     return (v.x * b.x) + (v.y * b.y);
 }
 
 template<typename T>
-T dot(vector3<T>& v, vector3<T>& b) {
+constexpr T dot(vector3<T>& v, vector3<T>& b) {
     return (v.x * b.x) + (v.y * b.y) + (v.z * b.z);
 }
 
 template<typename T>
-T dot(vector4<T>& v, vector4<T>& b) {
+constexpr T dot(vector4<T>& v, vector4<T>& b) {
     return (v.x * b.x) + (v.y * b.y) + (v.z * b.z) + (v.w * b.w);
 }
 
 template<typename T>
-T operator*(vector<T> const &v, vector<T> const& b) {
+constexpr T operator*(vector<T> const &v, vector<T> const& b) {
     return v.x * b.x;;
 }
 
 template<typename T>
-T operator*(vector2<T> const &v, vector2<T> const& b) {
+constexpr T operator*(vector2<T> const &v, vector2<T> const& b) {
     return (v.x * b.x) + (v.y * b.y);
 }
 
 template<typename T>
-T operator*(vector3<T> const &v, vector3<T> const& b) {
+constexpr T operator*(vector3<T> const &v, vector3<T> const& b) {
     return (v.x * b.x) + (v.y * b.y) + (v.z * b.z);
 }
 
 template<typename T>
-T operator*(vector4<T> const &v, vector4<T> const& b) {
+constexpr T operator*(vector4<T> const &v, vector4<T> const& b) {
     return (v.x * b.x) + (v.y * b.y) + (v.z * b.z) + (v.w * b.w);
 }
 
 /* Bool operators */
 template<typename T>
-bool operator==(vector<T> const &v, vector<T> const &b) {
+constexpr bool operator==(vector<T> const &v, vector<T> const &b) {
     return v.x == b.x;
 }
 
 template<typename T>
-bool operator==(vector2<T> const &v, vector2<T> const &b) {
+constexpr bool operator==(vector2<T> const &v, vector2<T> const &b) {
     if(v.x == b.x && v.y == b.y) {
         return true;
     }
@@ -463,7 +489,7 @@ bool operator==(vector2<T> const &v, vector2<T> const &b) {
 }
 
 template<typename T>
-bool operator==(vector3<T> const &v, vector3<T> const &b) {
+constexpr bool operator==(vector3<T> const &v, vector3<T> const &b) {
     if(v.x == b.x && v.y == b.y && v.z == b.z) {
         return true;
     }
@@ -471,7 +497,7 @@ bool operator==(vector3<T> const &v, vector3<T> const &b) {
 }
 
 template<typename T>
-bool operator==(vector4<T> const &v, vector4<T> const &b) {
+constexpr bool operator==(vector4<T> const &v, vector4<T> const &b) {
     if(v.x == b.x && v.y == b.y && v.z == b.z && v.w == b.w) {
         return true;
     }
@@ -479,35 +505,35 @@ bool operator==(vector4<T> const &v, vector4<T> const &b) {
 }
 
 template<typename T>
-bool operator!=(vector<T> const &v, vector<T> const &b) {
+constexpr bool operator!=(vector<T> const &v, vector<T> const &b) {
     return !(v == b);
 }
 
 template<typename T>
-bool operator!=(vector2<T> const &v, vector2<T> const &b) {
+constexpr bool operator!=(vector2<T> const &v, vector2<T> const &b) {
     return !(v == b);
 }
 
 template<typename T>
-bool operator!=(vector3<T> const &v, vector3<T> const &b) {
+constexpr bool operator!=(vector3<T> const &v, vector3<T> const &b) {
     return !(v == b);
 }
 
 template<typename T>
-bool operator!=(vector4<T> const &v, vector4<T> const &b) {
+constexpr bool operator!=(vector4<T> const &v, vector4<T> const &b) {
     return !(v == b);
 }
 
 /* Brackets */
 template<typename T>
-T const& vector<T>::operator[](int i) const {
+constexpr T const& vector<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     return this->x;
 }
 
 template<typename T>
-T const& vector2<T>::operator[](int i) const {
+constexpr T const& vector2<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -515,7 +541,7 @@ T const& vector2<T>::operator[](int i) const {
 }
 
 template<typename T>
-T const& vector3<T>::operator[](int i) const {
+constexpr T const& vector3<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -524,7 +550,7 @@ T const& vector3<T>::operator[](int i) const {
 }
 
 template<typename T>
-T const& vector4<T>::operator[](int i) const {
+constexpr T const& vector4<T>::operator[](int i) const {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -534,14 +560,14 @@ T const& vector4<T>::operator[](int i) const {
 }
 
 template<typename T>
-T& vector<T>::operator[](int i) {
+constexpr T& vector<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     return this->x;
 }
 
 template<typename T>
-T& vector2<T>::operator[](int i) {
+constexpr T& vector2<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -549,7 +575,7 @@ T& vector2<T>::operator[](int i) {
 }
 
 template<typename T>
-T& vector3<T>::operator[](int i) {
+constexpr T& vector3<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -558,7 +584,7 @@ T& vector3<T>::operator[](int i) {
 }
 
 template<typename T>
-T& vector4<T>::operator[](int i) {
+constexpr T& vector4<T>::operator[](int i) {
     assert((void("index cannot be less than 0"), i >= 0));
     assert((void("index exceeds vector size"), i < this->length()));
     if(i == 0) return this->x;
@@ -568,35 +594,35 @@ T& vector4<T>::operator[](int i) {
 }
 /* Magnitude */
 template<typename T>
-T mag(vector<T>& v) {
+constexpr T mag(vector<T>& v) {
     return sqrt(v.x * v.x);
 }
 
 template<typename T>
-T mag(vector2<T>& v) {
+constexpr T mag(vector2<T>& v) {
     return sqrt((v.x * v.x) + (v.y * v.y));
 }
 
 template<typename T>
-T mag(vector3<T>& v) {
+constexpr T mag(vector3<T>& v) {
     return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 }
 
 template<typename T>
-T mag(vector4<T>& v) {
+constexpr T mag(vector4<T>& v) {
     return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
 }
 
 /* Normalize */
 template<typename T>
-vector<T> normalize(vector<T>& v) {
+constexpr vector<T> normalize(vector<T>& v) {
     vector<T> new_vec;
     new_vec.x = v.x / mag(v);
     return new_vec;
 }
 
 template<typename T>
-vector2<T> normalize(vector2<T>& v) {
+constexpr vector2<T> normalize(vector2<T>& v) {
     vector2<T> new_vec;
     new_vec.x = v.x / mag(v);
     new_vec.y = v.y / mag(v);
@@ -604,7 +630,7 @@ vector2<T> normalize(vector2<T>& v) {
 }
 
 template<typename T>
-vector3<T> normalize(vector3<T>& v) {
+constexpr vector3<T> normalize(vector3<T>& v) {
     vector3<T> new_vec;
     new_vec.x = v.x / mag(v);
     new_vec.y = v.y / mag(v);
@@ -613,7 +639,7 @@ vector3<T> normalize(vector3<T>& v) {
 }
 
 template<typename T>
-vector4<T> normalize(vector4<T>& v) {
+constexpr vector4<T> normalize(vector4<T>& v) {
     vector4<T> new_vec;
     new_vec.x = v.x / mag(v);
     new_vec.y = v.y / mag(v);
@@ -624,7 +650,7 @@ vector4<T> normalize(vector4<T>& v) {
 
 /* Angle between 2 vectors */
 template<typename T>
-float angle(vector2<T>& v, vector2<T>& b) {
+constexpr float angle(vector2<T>& v, vector2<T>& b) {
     vector2<T> normalized_v = normalize(v);
     vector2<T> normalized_b = normalize(b);
     
@@ -632,7 +658,7 @@ float angle(vector2<T>& v, vector2<T>& b) {
 }
 
 template<typename T>
-float angle(vector3<T>& v, vector3<T>& b) {
+constexpr float angle(vector3<T>& v, vector3<T>& b) {
     vector3<T> normalized_v = normalize(v);
     vector3<T> normalized_b = normalize(b);
     
@@ -640,7 +666,7 @@ float angle(vector3<T>& v, vector3<T>& b) {
 }
 
 template<typename T>
-float angle(vector4<T>& v, vector4<T>& b) {
+constexpr float angle(vector4<T>& v, vector4<T>& b) {
     vector4<T> normalized_v = normalize(v);
     vector4<T> normalized_b = normalize(b);
     
@@ -649,12 +675,12 @@ float angle(vector4<T>& v, vector4<T>& b) {
 
 /* Cross product */
 template<typename T>
-float cross(vector2<T>& v, vector2<T>& b) {
+constexpr float cross(vector2<T>& v, vector2<T>& b) {
     return (v.x * b.y) - (v.y * b.x);
 }
 
 template<typename T>
-vector3<T> cross(vector3<T>& v, vector3<T>& b) {
+constexpr vector3<T> cross(vector3<T>& v, vector3<T>& b) {
     vector3<T> new_vec;
     new_vec.x = (v.y * b.z) - (v.z * b.y);
     new_vec.y = (v.z * b.x) - (v.x * b.z);

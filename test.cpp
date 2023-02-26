@@ -88,5 +88,11 @@ int main() {
     std::cout << div_mat[1][2] << "\n";
     std::cout << "Matrix Type: " << div_mat.type() << "\n";
 
+    ggl::matrix2<int> mmul1(ggl::vector2<int> (1, 2), ggl::vector2<int> (2, 3));
+    ggl::matrix2<int> mmul2(ggl::vector2<int> (2, 1), ggl::vector2<int> (3, 2));
+
+    ggl::matrix2<int> mmul = mmul1 * mmul2;
+    ggl::print_mat(mmul);
+
     return 0;
 }
