@@ -364,7 +364,7 @@ constexpr matrix3<T> operator*(matrix3<T> const &m, matrix3<T> const &m2) {
 }
 
 template<typename T>
-constexpr matrix4<T> operator*(matrix4<T> const &m, matrix4<T> const &m) {
+constexpr matrix4<T> operator*(matrix4<T> const &m, matrix4<T> const &m2) {
     matrix4<T> new_mat;
     new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]) + (m[0][2] + m2[2][0]) + (m[0][3] * m2[3][0]);
     new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]) + (m[1][2] + m2[2][0]) + (m[1][3] * m2[3][0]);
