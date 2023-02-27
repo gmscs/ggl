@@ -252,12 +252,12 @@ constexpr vector3<T> cross(vector3<T>& v, vector3<T>& b);
 
 /* Vector to string */
 template<typename T>
-std::string to_string(vector<T> const &v);
+constexpr std::string to_string(vector<T> const &v);
 template<typename T>
-std::string to_string(vector2<T> const &v);
+constexpr std::string to_string(vector2<T> const &v);
 template<typename T>
-std::string to_string(vector3<T> const &v);
+constexpr std::string to_string(vector3<T> const &v);
 template<typename T>
-std::string to_string(vector4<T> const &v);
+constexpr std::string to_string(vector4<T> const &v);
 
 } //namespace ggl

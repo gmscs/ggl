@@ -75,7 +75,7 @@ int main() {
     std::cout << "\n";    
 
     ggl::matrix3<float> div_mat(div1, div2, div3);
-    print_mat(div_mat);    
+    ggl::print_mat(div_mat);
     std::cout << "\n";    
 
     div_mat *= 2;
@@ -93,6 +93,12 @@ int main() {
 
     ggl::matrix2<int> mmul = mmul1 * mmul2;
     ggl::print_mat(mmul);
+
+    ggl::matrix2<int> m2det(ggl::vector2<int>(1, 2), ggl::vector2<int>(3, 4));
+    std::cout << determinant(m2det) << "\n";
+
+    ggl::matrix3<int> m3det(ggl::vector3<int>(6, 1, 1), ggl::vector3<int>(4, -2, 5), ggl::vector3<int>(2, 8, 7));
+    std::cout << determinant(m3det) << "\n";
 
     return 0;
 }

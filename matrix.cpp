@@ -257,28 +257,57 @@ constexpr vector4<T>& matrix4<T>::operator[](int i) {
 /* Sign flip */
 template<typename T>
 constexpr matrix2<T> operator-(matrix2<T> const &m) {
-    matrix2<T> new_mat;
-    new_mat.row1 = -m.row1;
-    new_mat.row2 = -m.row2;
+    matrix2<T> new_mat(-m.row1, -m.row2);
     return new_mat;
 }
 
 template<typename T>
 constexpr matrix3<T> operator-(matrix3<T> const &m) {
-    matrix3<T> new_mat;
-    new_mat.row1 = -m.row1;
-    new_mat.row2 = -m.row2;
-    new_mat.row3 = -m.row3;
+    matrix3<T> new_mat(-m.row1, -m.row2, -m.row3);
     return new_mat;
 }
 
 template<typename T>
 constexpr matrix4<T> operator-(matrix4<T> const &m) {
-    matrix4<T> new_mat;
-    new_mat.row1 = -m.row1;
-    new_mat.row2 = -m.row2;
-    new_mat.row3 = -m.row3;
-    new_mat.row4 = -m.row4;
+    matrix4<T> new_mat(-m.row1, -m.row2, -m.row3, -m.row4);
+    return new_mat;
+}
+
+/* Addition */
+template<typename T>
+constexpr matrix2<T> operator+(matrix2<T> const &m, matrix2<T> const &m2) {
+    matrix2<T> new_mat(m.row1 + m2.row1, m.row2 + m2.row2);
+    return new_mat;
+}
+
+template<typename T>
+constexpr matrix3<T> operator+(matrix3<T> const &m, matrix3<T> const &m2) {
+    matrix3<T> new_mat(m.row1 + m2.row1, m.row2 + m2.row2, m.row3 + m2.row3);
+    return new_mat;
+}
+
+template<typename T>
+constexpr matrix4<T> operator+(matrix4<T> const &m, matrix4<T> const &m2) {
+    matrix4<T> new_mat(m.row1 + m2.row1, m.row2 + m2.row2, m.row3 + m2.row3, m.row4 + m2.row4);
+    return new_mat;
+}
+
+/* Subtraction */
+template<typename T>
+constexpr matrix2<T> operator-(matrix2<T> const &m, matrix2<T> const &m2) {
+    matrix2<T> new_mat(m.row1 - m2.row1, m.row2 - m2.row2);
+    return new_mat;
+}
+
+template<typename T>
+constexpr matrix3<T> operator-(matrix3<T> const &m, matrix3<T> const &m2) {
+    matrix3<T> new_mat(m.row1 - m2.row1, m.row2 - m2.row2, m.row3 - m2.row3);
+    return new_mat;
+}
+
+template<typename T>
+constexpr matrix4<T> operator-(matrix4<T> const &m, matrix4<T> const &m2) {
+    matrix4<T> new_mat(m.row1 - m2.row1, m.row2 - m2.row2, m.row3 - m2.row3, m.row4 - m2.row4);
     return new_mat;
 }
 
@@ -311,6 +340,39 @@ constexpr matrix3<T> operator*(matrix3<T> const &m, matrix3<T> const &m2) {
     new_mat[2][2] = (m[2][0] * m2[0][2]) + (m[2][1] * m2[1][2]) + (m[2][2] * m2[2][2]);
 
     return new_mat;
+}
+
+template<typename T, typename N>
+constexpr matrix2<T> operator*(matrix2<T> const &m, N c) {
+    matrix2<T> new_mat(m.row1 * c, m.row2 * c);
+    return new_mat;
+}
+
+template<typename T, typename N>
+constexpr matrix3<T> operator*(matrix3<T> const &m, N c) {
+    matrix3<T> new_mat(m.row1 * c, m.row2 * c, m.row3 * c);
+    return new_mat;
+}
+
+template<typename T, typename N>
+constexpr matrix4<T> operator*(matrix4<T> const &m, N c){
+    matrix4<T> new_mat(m.row1 * c, m.row2 * c, m.row3 * c, m.row4 * c);
+    return new_mat;
+}
+
+/* Determinant */
+template<typename T>
+constexpr T determinant(matrix2<T> const &m) {
+    return ((m[0][0] * m[1][1]) - (m[0][1] * m[1][0]));
+}
+
+template<typename T>
+constexpr T determinant(matrix3<T> const &m) {
+    T det1 = m[0][0] * ((m[1][1] * m[2][2]) - (m[1][2] * m[2][1]));
+    T det2 = m[0][1] * ((m[1][0] * m[2][2]) - (m[1][2] * m[2][0]));
+    T det3 = m[0][2] * ((m[1][0] * m[2][1]) - (m[1][1] * m[2][0]));
+
+    return det1 - det2 + det3;
 }
 
 /* Printing */

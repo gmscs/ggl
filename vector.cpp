@@ -257,140 +257,100 @@ constexpr vector4<T>& vector4<T>::operator/=(N c) {
 /* Sign flip */
 template<typename T>
 constexpr vector<T> operator-(vector<T> const &v) {
-    vector<T> new_vec;
-    new_vec.x = -v.x;
+    vector<T> new_vec(-v.x);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector2<T> operator-(vector2<T> const &v) {
-    vector2<T> new_vec;
-    new_vec.x = -v.x;
-    new_vec.y = -v.y;
+    vector2<T> new_vec(-v.x, -v.y);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector3<T> operator-(vector3<T> const &v) {
-    vector3<T> new_vec;
-    new_vec.x = -v.x;
-    new_vec.y = -v.y;
-    new_vec.z = -v.z;
+    vector3<T> new_vec(-v.x, -v.y, -v.z);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector4<T> operator-(vector4<T> const &v) {
-    vector4<T> new_vec;
-    new_vec.x = -v.x;
-    new_vec.y = -v.y;
-    new_vec.z = -v.z;
-    new_vec.w = -v.w;
+    vector4<T> new_vec(-v.x, -v.y, -v.z, -v.w);
     return new_vec;
 }
 
 /* Addition */
 template<typename T>
 constexpr vector<T> operator+(vector<T> const &v, vector<T> const& v2) {
-    vector<T> new_vec;
-    new_vec.x = v.x + v2.x;
+    vector<T> new_vec(v.x + v2.x);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector2<T> operator+(vector2<T> const &v, vector2<T> const& v2) {
-    vector2<T> new_vec;
-    new_vec.x = v.x + v2.x;
-    new_vec.y = v.y + v2.y;
+    vector2<T> new_vec(v.x + v2.x, v.y + v2.y);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector3<T> operator+(vector3<T> const &v, vector3<T> const& v2) {
-    vector3<T> new_vec;
-    new_vec.x = v.x + v2.x;
-    new_vec.y = v.y + v2.y;
-    new_vec.z = v.z + v2.z;
+    vector3<T> new_vec(v.x + v2.x, v.y + v2.y, v.z + v2.z);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector4<T> operator+(vector4<T> const &v, vector4<T> const& v2) {
-    vector4<T> new_vec;
-    new_vec.x = v.x + v2.x;
-    new_vec.y = v.y + v2.y;
-    new_vec.z = v.z + v2.z;
-    new_vec.w = v.w + v2.w;
+    vector4<T> new_vec(v.x + v2.x, v.y + v2.y, v.z + v2.z, v.w + v2.w);
     return new_vec;
 }
 
 /* Subtraction */
 template<typename T>
 constexpr vector<T> operator-(vector<T> const &v, vector<T> const& v2) {
-    vector<T> new_vec;
-    new_vec.x = v.x - v2.x;
+    vector<T> new_vec(v.x - v2.x);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector2<T> operator-(vector2<T> const &v, vector2<T> const& v2) {
-    vector2<T> new_vec;
-    new_vec.x = v.x - v2.x;
-    new_vec.y = v.y - v2.y;
+    vector2<T> new_vec(v.x - v2.x, v.y - v2.y);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector3<T> operator-(vector3<T> const &v, vector3<T> const& v2) {
-    vector3<T> new_vec;
-    new_vec.x = v.x - v2.x;
-    new_vec.y = v.y - v2.y;
-    new_vec.z = v.z - v2.z;
+    vector3<T> new_vec(v.x - v2.x, v.y - v2.y, v.z - v2.z);
     return new_vec;
 }
 
 template<typename T>
 constexpr vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
-    vector4<T> new_vec;
-    new_vec.x = v.x - v2.x;
-    new_vec.y = v.y - v2.y;
-    new_vec.z = v.z - v2.z;
-    new_vec.w = v.w - v2.w;
+    vector4<T> new_vec(v.x - v2.x, v.y - v2.y, v.z - v2.z, v.w - v2.w);
     return new_vec;
 }
 
 /* Multiplication */
 template<typename T, typename N>
 constexpr vector<T> operator*(vector<T> const &v, N c) {
-    vector<T> new_vec;
-    new_vec.x = v.x * c;
+    vector<T> new_vec(v.x * c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector2<T> operator*(vector2<T> const &v, N c) {
-    vector<T> new_vec;
-    new_vec.x = v.x * c;
-    new_vec.y = v.y * c;
+    vector<T> new_vec(v.x * c, v.y * c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector3<T> operator*(vector3<T> const &v, N c) {
-    vector3<T> new_vec;
-    new_vec.x = v.x * c;
-    new_vec.y = v.y * c;
-    new_vec.z = v.z * c;
+    vector3<T> new_vec(v.x * c, v.y * c, v.z * c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector4<T> operator*(vector4<T> const &v, N c) {
-    vector4<T> new_vec;
-    new_vec.x = v.x * c;
-    new_vec.y = v.y * c;
-    new_vec.z = v.z * c;
-    new_vec.w = v.w * c;
+    vector4<T> new_vec(v.x * c, v.y * c, v.z * c, v.w * c);
     return new_vec;
 }
 
@@ -398,38 +358,28 @@ constexpr vector4<T> operator*(vector4<T> const &v, N c) {
 template<typename T, typename N>
 constexpr vector<T> operator/(vector<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
-    vector<T> new_vec;
-    new_vec.x = v.x / c;
+    vector<T> new_vec(v.x / c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector2<T> operator/(vector2<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
-    vector<T> new_vec;
-    new_vec.x = v.x / c;
-    new_vec.y = v.y / c;
+    vector<T> new_vec(v.x / c, v.y / c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector3<T> operator/(vector3<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
-    vector3<T> new_vec;
-    new_vec.x = v.x / c;
-    new_vec.y = v.y / c;
-    new_vec.z = v.z / c;
+    vector3<T> new_vec(v.x / c, v.y / c, v.z / c);
     return new_vec;
 }
 
 template<typename T, typename N>
 constexpr vector4<T> operator/(vector4<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
-    vector4<T> new_vec;
-    new_vec.x = v.x / c;
-    new_vec.y = v.y / c;
-    new_vec.z = v.z / c;
-    new_vec.w = v.w / c;
+    vector4<T> new_vec(v.x / c, v.y / c, v.z / c, v.w / c);
     return new_vec;
 }
 
@@ -616,35 +566,25 @@ constexpr T mag(vector4<T>& v) {
 /* Normalize */
 template<typename T>
 constexpr vector<T> normalize(vector<T>& v) {
-    vector<T> new_vec;
-    new_vec.x = v.x / mag(v);
+    vector<T> new_vec(v.x / mag(v));
     return new_vec;
 }
 
 template<typename T>
 constexpr vector2<T> normalize(vector2<T>& v) {
-    vector2<T> new_vec;
-    new_vec.x = v.x / mag(v);
-    new_vec.y = v.y / mag(v);
+    vector2<T> new_vec(v.x / mag(v), v.y / mag(v));
     return new_vec;
 }
 
 template<typename T>
 constexpr vector3<T> normalize(vector3<T>& v) {
-    vector3<T> new_vec;
-    new_vec.x = v.x / mag(v);
-    new_vec.y = v.y / mag(v);
-    new_vec.z = v.z / mag(v);
+    vector3<T> new_vec(v.x / mag(v), v.y / mag(v), v.z / mag(v));
     return new_vec;
 }
 
 template<typename T>
 constexpr vector4<T> normalize(vector4<T>& v) {
-    vector4<T> new_vec;
-    new_vec.x = v.x / mag(v);
-    new_vec.y = v.y / mag(v);
-    new_vec.z = v.z / mag(v);
-    new_vec.w = v.w / mag(v);
+    vector4<T> new_vec(v.x / mag(v), v.y / mag(v), v.z / mag(v), v.w / mag(v));
     return new_vec;
 }
 
@@ -681,37 +621,34 @@ constexpr float cross(vector2<T>& v, vector2<T>& b) {
 
 template<typename T>
 constexpr vector3<T> cross(vector3<T>& v, vector3<T>& b) {
-    vector3<T> new_vec;
-    new_vec.x = (v.y * b.z) - (v.z * b.y);
-    new_vec.y = (v.z * b.x) - (v.x * b.z);
-    new_vec.z = (v.x * b.y) - (v.y * b.x);
+    vector3<T> new_vec((v.y * b.z) - (v.z * b.y), (v.z * b.x) - (v.x * b.z), (v.x * b.y) - (v.y * b.x));
     return new_vec;
 }
 
 /* Vector to String */
 template<typename T>
-std::string to_string(vector<T> const &v) {
+constexpr std::string to_string(vector<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector2<T> const &v) {
+constexpr std::string to_string(vector2<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector3<T> const &v) {
+constexpr std::string to_string(vector3<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << ", " << v.z << "]";
     return stream.str();
 }
 
 template<typename T>
-std::string to_string(vector4<T> const &v) {
+constexpr std::string to_string(vector4<T> const &v) {
     std::stringstream stream;
     stream << "[" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "]";
     return stream.str();

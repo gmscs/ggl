@@ -129,6 +129,14 @@ constexpr matrix3<T> operator+(matrix3<T> const& m, matrix3<T> const& m2);
 template<typename T>
 constexpr matrix4<T> operator+(matrix4<T> const& m, matrix4<T> const& m2);
 
+/* Subtraction */
+template<typename T>
+constexpr matrix2<T> operator-(matrix2<T> const& m, matrix2<T> const& m2);
+template<typename T>
+constexpr matrix3<T> operator-(matrix3<T> const& m, matrix3<T> const& m2);
+template<typename T>
+constexpr matrix4<T> operator-(matrix4<T> const& m, matrix4<T> const& m2);
+
 /* Multiplication */
 template<typename T>
 constexpr matrix2<T> operator*(matrix2<T> const& m, matrix2<T> const& m2);
@@ -136,6 +144,20 @@ template<typename T>
 constexpr matrix3<T> operator*(matrix3<T> const& m, matrix3<T> const& m2);
 template<typename T>
 constexpr matrix4<T> operator*(matrix4<T> const& m, matrix4<T> const& m2);
+template<typename T, typename N>
+constexpr matrix2<T> operator*(matrix2<T> const& m, N c);
+template<typename T, typename N>
+constexpr matrix3<T> operator*(matrix3<T> const& m, N c);
+template<typename T, typename N>
+constexpr matrix4<T> operator*(matrix4<T> const& m, N c);
+
+/* Determinant */
+template<typename T>
+constexpr T determinant(matrix2<T> const &m);
+template<typename T>
+constexpr T determinant(matrix3<T> const &m);
+template<typename T>
+constexpr T determinant(matrix4<T> const &m);
 
 /* Printing */
 template<typename T>
