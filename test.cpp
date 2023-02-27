@@ -100,5 +100,8 @@ int main() {
     ggl::matrix3<int> m3det(ggl::vector3<int>(6, 1, 1), ggl::vector3<int>(4, -2, 5), ggl::vector3<int>(2, 8, 7));
     std::cout << determinant(m3det) << "\n";
 
+    ggl::matrix4<float> m4i(1);
+    ggl::print_mat(m4i);
+
     return 0;
 }

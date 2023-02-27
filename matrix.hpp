@@ -5,6 +5,7 @@ struct matrix2 {
     vector2<T> row2;
 
     constexpr matrix2();
+    constexpr matrix2(T c);
     constexpr matrix2(matrix2 const& m);
     explicit constexpr matrix2(vector2<T> const &a, vector2<T> const &b);
 
@@ -43,6 +44,7 @@ struct matrix3 {
     vector3<T> row3;
 
     constexpr matrix3();
+    constexpr matrix3(T c);
     constexpr matrix3(matrix3 const& m);
     explicit constexpr matrix3(vector3<T> const &a, vector3<T> const &b, vector3<T> const &c);
 
@@ -82,6 +84,7 @@ struct matrix4 {
     vector4<T> row4;
 
     constexpr matrix4();
+    constexpr matrix4(T c);
     constexpr matrix4(matrix4 const& m);
     explicit constexpr matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &c, vector4<T> const &d);
 

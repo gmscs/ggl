@@ -24,6 +24,27 @@ constexpr matrix4<T>::matrix4() {
 }
 
 template<typename T>
+constexpr matrix2<T>::matrix2(T c) {
+    this->row1 = vector2<T>(c, 0);
+    this->row2 = vector2<T>(0, c);
+}
+
+template<typename T>
+constexpr matrix3<T>::matrix3(T c) {
+    this->row1 = vector3<T>(c, 0, 0);
+    this->row2 = vector3<T>(0, c, 0);
+    this->row3 = vector3<T>(0, 0, c);
+}
+
+template<typename T>
+constexpr matrix4<T>::matrix4(T c) {
+    this->row1 = vector4<T>(c, 0, 0, 0);
+    this->row2 = vector4<T>(0, c, 0, 0);
+    this->row3 = vector4<T>(0, 0, c, 0);
+    this->row4 = vector4<T>(0, 0, 0, c);
+}
+
+template<typename T>
 constexpr matrix2<T>::matrix2(matrix2<T> const &m) {
     this->row1 = vector2<T>(m.row1);
     this->row2 = vector2<T>(m.row2);
@@ -342,6 +363,32 @@ constexpr matrix3<T> operator*(matrix3<T> const &m, matrix3<T> const &m2) {
     return new_mat;
 }
 
+template<typename T>
+constexpr matrix4<T> operator*(matrix4<T> const &m, matrix4<T> const &m) {
+    matrix4<T> new_mat;
+    new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]) + (m[0][2] + m2[2][0]) + (m[0][3] * m2[3][0]);
+    new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]) + (m[1][2] + m2[2][0]) + (m[1][3] * m2[3][0]);
+    new_mat[2][0] = (m[2][0] * m2[0][0]) + (m[2][1] * m2[1][0]) + (m[2][2] + m2[2][0]) + (m[2][3] * m2[3][0]);
+    new_mat[3][0] = (m[3][0] * m2[0][0]) + (m[3][1] * m2[1][0]) + (m[3][2] + m2[2][0]) + (m[3][3] * m2[3][0]);
+
+    new_mat[0][1] = (m[0][0] * m2[0][1]) + (m[0][1] * m2[1][1]) + (m[0][2] + m2[2][1]) + (m[0][3] * m2[3][1]);
+    new_mat[1][1] = (m[1][0] * m2[0][1]) + (m[1][1] * m2[1][1]) + (m[1][2] + m2[2][1]) + (m[1][3] * m2[3][1]);
+    new_mat[2][1] = (m[2][0] * m2[0][1]) + (m[2][1] * m2[1][1]) + (m[2][2] + m2[2][1]) + (m[2][3] * m2[3][1]);
+    new_mat[3][1] = (m[3][0] * m2[0][1]) + (m[3][1] * m2[1][1]) + (m[3][2] + m2[2][1]) + (m[3][3] * m2[3][1]);
+
+    new_mat[0][2] = (m[0][0] * m2[0][2]) + (m[0][1] * m2[1][2]) + (m[0][2] + m2[2][2]) + (m[0][3] * m2[3][2]);
+    new_mat[1][2] = (m[1][0] * m2[0][2]) + (m[1][1] * m2[1][2]) + (m[1][2] + m2[2][2]) + (m[1][3] * m2[3][2]);
+    new_mat[2][2] = (m[2][0] * m2[0][2]) + (m[2][1] * m2[1][2]) + (m[2][2] + m2[2][2]) + (m[2][3] * m2[3][2]);
+    new_mat[3][2] = (m[3][0] * m2[0][2]) + (m[3][1] * m2[1][2]) + (m[3][2] + m2[2][2]) + (m[3][3] * m2[3][2]);
+
+    new_mat[0][3] = (m[0][0] * m2[0][3]) + (m[0][1] * m2[1][3]) + (m[0][2] + m2[2][3]) + (m[0][3] * m2[3][3]);
+    new_mat[1][3] = (m[1][0] * m2[0][3]) + (m[1][1] * m2[1][3]) + (m[1][2] + m2[2][3]) + (m[1][3] * m2[3][3]);
+    new_mat[2][3] = (m[2][0] * m2[0][3]) + (m[2][1] * m2[1][3]) + (m[2][2] + m2[2][3]) + (m[2][3] * m2[3][3]);
+    new_mat[3][3] = (m[3][0] * m2[0][3]) + (m[3][1] * m2[1][3]) + (m[3][2] + m2[2][3]) + (m[3][3] * m2[3][3]);
+
+    return new_mat;
+}
+
 template<typename T, typename N>
 constexpr matrix2<T> operator*(matrix2<T> const &m, N c) {
     matrix2<T> new_mat(m.row1 * c, m.row2 * c);
@@ -435,6 +482,21 @@ constexpr void print_mat(matrix4<T> const &m) {
 	    std::cout << ggl::to_string(m[i]) << "\n";
         i++;
     }
+}
+
+/* Projection matrix*/
+template<typename T>
+ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height)
+{
+    assert((void("The projection matrix only accepts floating point parameters."), std::numeric_limits<T>::is_iec559));
+    ggl::matrix4<T> proj;
+    float aspect_ratio = width / height;
+    proj[0][0] = (T)(1.0f / std::tan(fov/2)) / aspect_ratio;
+    proj[1][1] = (T)(1.0f / std::tan(fov/2));
+    proj[2][2] = (T)(-far - near) / (far - near);
+    proj[3][2] = (T)-1.0;
+    proj[2][3] = (T)(-2 * far * near) / (far - near);
+    return proj;
 }
 
 } //namespace ggl
