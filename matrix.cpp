@@ -360,6 +360,40 @@ constexpr matrix4<T> operator*(matrix4<T> const &m, N c){
     return new_mat;
 }
 
+/* Boolean Operators */
+template<typename T>
+constexpr bool operator==(matrix2<T> const &m, matrix2<T> const &m2) {
+    if(m.row1 == m2.row1 && m.row2 == m2.row2) return true;
+    return false;
+}
+
+template<typename T>
+constexpr bool operator==(matrix3<T> const &m, matrix3<T> const &m2) {
+    if(m.row1 == m2.row1 && m.row2 == m2.row2 && m.row3 == m2.row3) return true;
+    return false;
+}
+
+template<typename T>
+constexpr bool operator==(matrix4<T> const &m, matrix4<T> const &m2) {
+    if(m.row1 == m2.row1 && m.row2 == m2.row2 && m.row3 == m2.row3 && m.row4 == m2.row4) return true;
+    return false;
+}
+
+template<typename T>
+constexpr bool operator!=(matrix2<T> const &m, matrix2<T> const &m2) {
+    return !(m == m2);
+}
+
+template<typename T>
+constexpr bool operator!=(matrix3<T> const &m, matrix3<T> const &m2) {
+    return !(m == m2);
+}
+
+template<typename T>
+constexpr bool operator!=(matrix4<T> const &m, matrix4<T> const &m2) {
+    return !(m == m2);
+}
+
 /* Determinant */
 template<typename T>
 constexpr T determinant(matrix2<T> const &m) {

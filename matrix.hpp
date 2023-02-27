@@ -151,6 +151,20 @@ constexpr matrix3<T> operator*(matrix3<T> const& m, N c);
 template<typename T, typename N>
 constexpr matrix4<T> operator*(matrix4<T> const& m, N c);
 
+/* Bool Operators */
+template<typename T>
+constexpr bool operator==(matrix2<T> const &v, matrix2<T> const &b);
+template<typename T>
+constexpr bool operator==(matrix3<T> const &v, matrix3<T> const &b);
+template<typename T>
+constexpr bool operator==(matrix4<T> const &v, matrix4<T> const &b);
+template<typename T>
+constexpr bool operator!=(matrix2<T> const &v, matrix2<T> const &b);
+template<typename T>
+constexpr bool operator!=(matrix3<T> const &v, matrix3<T> const &b);
+template<typename T>
+constexpr bool operator!=(matrix4<T> const &v, matrix4<T> const &b);
+
 /* Determinant */
 template<typename T>
 constexpr T determinant(matrix2<T> const &m);
