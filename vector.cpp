@@ -355,31 +355,59 @@ constexpr vector4<T> operator*(vector4<T> const &v, N c) {
 }
 
 /* Division */
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector<T> operator/(vector<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec(v.x / c);
     return new_vec;
 }
 
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector2<T> operator/(vector2<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec(v.x / c, v.y / c);
     return new_vec;
 }
 
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector3<T> operator/(vector3<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector3<T> new_vec(v.x / c, v.y / c, v.z / c);
     return new_vec;
 }
 
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector4<T> operator/(vector4<T> const &v, N c) {
     assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector4<T> new_vec(v.x / c, v.y / c, v.z / c, v.w / c);
+    return new_vec;
+}
+
+template<typename N>
+constexpr vector<float> operator/(vector<int> const &v, N c) {
+    convert_to_float(v);
+    vector<float> new_vec(static_cast<float>(v.x) / c);
+    return new_vec;
+}
+
+template<typename N>
+constexpr vector2<float> operator/(vector2<int> const &v, N c) {
+    convert_to_float(v);
+    vector2<float> new_vec(static_cast<float>(v.x) / c, static_cast<float>(v.y) / c);
+    return new_vec;
+}
+
+template<typename N>
+constexpr vector3<float> operator/(vector3<int> const &v, N c) {
+    convert_to_float(v);
+    vector3<float> new_vec(static_cast<float>(v.x) / c, static_cast<float>(v.y) / c,static_cast<float>(v.z) / c);
+    return new_vec;
+}
+
+template<typename N>
+constexpr vector4<float> operator/(vector4<int> const &v, N c) {
+    convert_to_float(v);
+    vector4<float> new_vec(static_cast<float>(v.x) / c, static_cast<float>(v.y) / c, static_cast<float>(v.z) / c, static_cast<float>(v.w) / c);
     return new_vec;
 }
 
@@ -654,4 +682,28 @@ constexpr std::string to_string(vector4<T> const &v) {
     return stream.str();
 }
 
+/* Convert to float */
+template<typename T>
+constexpr vector<float> convert_to_float(vector<T> const &v) {
+    vector<float> new_vec(static_cast<float>(v.x));
+    return new_vec;
+}
+
+template<typename T>
+constexpr vector2<float> convert_to_float(vector2<T> const &v) {
+    vector2<float> new_vec(static_cast<float>(v.x), static_cast<float>(v.y));
+    return new_vec;
+}
+
+template<typename T>
+constexpr vector3<float> convert_to_float(vector3<T> const &v) {
+    vector3<float> new_vec(static_cast<float>(v.x), static_cast<float>(v.y), static_cast<float>(v.z));
+    return new_vec;
+}
+
+template<typename T>
+constexpr vector4<float> convert_to_float(vector4<T> const &v) {
+    vector4<float> new_vec(static_cast<float>(v.x), static_cast<float>(v.y), static_cast<float>(v.z), static_cast<float>(v.w));
+    return new_vec;
+}
 }//namespace ggl

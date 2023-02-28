@@ -103,5 +103,9 @@ int main() {
     ggl::matrix4<float> m4i(1);
     ggl::print_mat(m4i);
 
+    ggl::vector3<int> vdivint(1, 1, 1);
+    ggl::vector3<float> vdivintres = vdivint / 2;
+    std::cout << to_string(vdivintres) << "\n";
+
     return 0;
 }

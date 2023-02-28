@@ -499,4 +499,24 @@ ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height)
     return proj;
 }
 
+/* Convert to float */
+template<typename T>
+ggl::matrix2<float> convert_to_float(matrix2<T> const &m) {
+    ggl::matrix2<float> new_mat(convert_to_float(m.row1), convert_to_float(m.row2));
+    return new_mat;
+}
+
+template<typename T>
+ggl::matrix3<float> convert_to_float(matrix3<T> const &m) {
+    ggl::matrix3<float> new_mat(convert_to_float(m.row1), convert_to_float(m.row2), convert_to_float(m.row3));
+    return new_mat;
+}
+
+template<typename T>
+ggl::matrix4<float> convert_to_float(matrix4<T> const &m) {
+    ggl::matrix4<float> new_mat(convert_to_float(m.row1), convert_to_float(m.row2), convert_to_float(m.row3), convert_to_float(m.row4));
+    return new_mat;
+}
+
+
 } //namespace ggl

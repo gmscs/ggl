@@ -184,4 +184,11 @@ constexpr void print_mat(matrix3<T> const &m);
 template<typename T>
 constexpr void print_mat(matrix4<T> const &m);
 
+/* Convert to float */
+template<typename T>
+ggl::matrix2<float> convert_to_float(matrix2<T> const &m);
+template<typename T>
+ggl::matrix3<float> convert_to_float(matrix3<T> const &m);
+template<typename T>
+ggl::matrix4<float> convert_to_float(matrix4<T> const &m);
 }//namespace ggl

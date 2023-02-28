@@ -8,11 +8,11 @@ struct vector {
     constexpr vector(vector const& v);
     explicit constexpr vector(T c);
 
-    static inline constexpr int length() {
+    static constexpr int length() {
         return 1;
     }
 
-    static inline constexpr const char* type() {
+    static constexpr const char* type() {
         return typeid(T).name();
     }
 
@@ -40,11 +40,11 @@ struct vector2 {
     constexpr vector2(vector2 const& v);
     explicit constexpr vector2(T a, T b);
 
-    static inline constexpr int length() {
+    static constexpr int length() {
         return 2;
     }
 
-    static inline constexpr const char* type() {
+    static constexpr const char* type() {
         return typeid(T).name();
     }
 
@@ -73,11 +73,11 @@ struct vector3 {
     constexpr vector3(vector3 const& v);
     explicit constexpr vector3(T a, T b, T c);
 
-    static inline constexpr int length() {
+    static constexpr int length() {
         return 3;
     }
 
-    static inline constexpr const char* type() {
+    static constexpr const char* type() {
         return typeid(T).name();
     }
 
@@ -107,11 +107,11 @@ struct vector4 {
     constexpr vector4(vector4 const& v);
     explicit constexpr vector4(T a, T b, T c, T d);
 
-    static inline constexpr int length() {
+    static constexpr int length() {
         return 4;
     }
 
-    static inline constexpr const char* type() {
+    static constexpr const char* type() {
         return typeid(T).name();
     }
 
@@ -170,15 +170,23 @@ constexpr vector3<T> operator*(vector3<T> const &v, N c);
 template<typename T, typename N>
 constexpr vector4<T> operator*(vector4<T> const &v, N c);
 
-/* Division */ // TODO: types = divide non-floating types too
-template<typename T, typename N>
+/* Division */
+template<std::floating_point T, typename N>
 constexpr vector<T> operator/(vector<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector2<T> operator/(vector2<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector3<T> operator/(vector3<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector4<T> operator/(vector4<T> const &v, N c);
+template<typename N>
+constexpr vector<float> operator/(vector<int> const &v, N c);
+template<typename N>
+constexpr vector2<float> operator/(vector2<int> const &v, N c);
+template<typename N>
+constexpr vector3<float> operator/(vector3<int> const &v, N c);
+template<typename N>
+constexpr vector4<float> operator/(vector4<int> const &v, N c);
 
 /* Dot product */
 template<typename T>
@@ -259,5 +267,15 @@ template<typename T>
 constexpr std::string to_string(vector3<T> const &v);
 template<typename T>
 constexpr std::string to_string(vector4<T> const &v);
+
+/* Convert to float */
+template<typename T>
+constexpr vector<float> convert_to_float(vector<T> const &v);
+template<typename T>
+constexpr vector2<float> convert_to_float(vector2<T> const &v);
+template<typename T>
+constexpr vector3<float> convert_to_float(vector3<T> const &v);
+template<typename T>
+constexpr vector4<float> convert_to_float(vector4<T> const &v);
 
 } //namespace ggl
