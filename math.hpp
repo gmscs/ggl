@@ -10,5 +10,5 @@ template<typename T>
 T abs(T val);
 
 template<typename T>
-double inline sqrt(T val);
+double inline asmsqrt(T val);
 }//namespace ggl

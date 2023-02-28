@@ -60,7 +60,7 @@ int main() {
 
     std::cout << ggl::abs(-789.7) << "\n";
 
-    std::cout << ggl::sqrt(10) << "\n"; // always converts to double
+    std::cout << ggl::asmsqrt(10) << "\n"; // always converts to double
 
     ggl::matrix2<int> m(v, v2);
     std::cout << ggl::to_string(m.row1) << "\n" << ggl::to_string(m.row2) << "\n";

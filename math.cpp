@@ -27,7 +27,7 @@ T abs(T val) {
 }
 
 template<typename T> // just for fun, use std::sqrt instead since it's faster
-double inline sqrt(T val) {
+double inline asmsqrt(T val) {
     double x;
     double v = static_cast<double>(val);
 
