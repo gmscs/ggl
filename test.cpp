@@ -1,15 +1,15 @@
 #include "ggl.hpp"
 
 int main() {
-    ggl::vector2<int> v2(3, 2);
-    ggl::vector2<int> v(45, 1);
+    ggl::vector2<float> v2(3, 2);
+    ggl::vector2<float> v(45, 1);
     
     std::cout << "Type: " << v.type() << "\n";
 
     std::cout << ggl::dot(v2, v) << "\n";
     std::cout << v2 * v << "\n";
 
-    ggl::vector2<int> v3 = v2 + v;
+    ggl::vector2<float> v3 = v2 + v;
     std::cout << ggl::to_string(v3) << "\n";
 
     ggl::vector3<float> v4(3, 1, 2);
@@ -24,16 +24,16 @@ int main() {
     crossP = -crossP;
     std::cout << ggl::to_string(crossP) << "\n";
 
-    ggl::vector3<int> vvv(5, 4, 3);
-    vvv -= ggl::vector3<int>(1, 1, 1);
+    ggl::vector3<float> vvv(5, 4, 3);
+    vvv -= ggl::vector3<float>(1, 1, 1);
     std::cout << ggl::to_string(vvv) << "\n";
 
     ggl::vector4<float> ddd = ggl::vector4<float>(9, 9.5, 9, 9.5) - ggl::vector4<float>(2, 2.5, 2, 2.5);
     std::cout << ggl::to_string(ddd) << "\n";
     std::cout << "Type: " << ddd.type() << "\n";
 
-    ggl::vector3<int> eq1(1, 1, 1);
-    ggl::vector3<int> eq2(1, 2, 1);
+    ggl::vector3<double> eq1(1, 1, 1);
+    ggl::vector3<double> eq2(1, 2, 1);
     bool t1 = eq1 == eq2;
     bool t2 = eq1 != eq2;
     std::cout << t1 << "\n";
@@ -41,7 +41,7 @@ int main() {
 
     eq1 *= 3;
     std::cout << ggl::to_string(eq1) << "\n";
-    ggl::vector3<int> eq3 = eq2 * 4;
+    ggl::vector3<double> eq3 = eq2 * 4;
     std::cout << ggl::to_string(eq3) << "\n";
 
     ggl::vector3<float> div1(4, 6, 8);
@@ -62,7 +62,7 @@ int main() {
 
     std::cout << ggl::asmsqrt(10) << "\n"; // always converts to double
 
-    ggl::matrix2<int> m(v, v2);
+    ggl::matrix2<float> m(v, v2);
     std::cout << ggl::to_string(m.row1) << "\n" << ggl::to_string(m.row2) << "\n";
 
     std::cout << div1[2] << "\n";
@@ -88,22 +88,22 @@ int main() {
     std::cout << div_mat[1][2] << "\n";
     std::cout << "Matrix Type: " << div_mat.type() << "\n";
 
-    ggl::matrix2<int> mmul1(ggl::vector2<int> (1, 2), ggl::vector2<int> (2, 3));
-    ggl::matrix2<int> mmul2(ggl::vector2<int> (2, 1), ggl::vector2<int> (3, 2));
+    ggl::matrix2<float> mmul1(ggl::vector2<float> (1, 2), ggl::vector2<float> (2, 3));
+    ggl::matrix2<float> mmul2(ggl::vector2<float> (2, 1), ggl::vector2<float> (3, 2));
 
-    ggl::matrix2<int> mmul = mmul1 * mmul2;
+    ggl::matrix2<float> mmul = mmul1 * mmul2;
     ggl::print_mat(mmul);
 
-    ggl::matrix2<int> m2det(ggl::vector2<int>(1, 2), ggl::vector2<int>(3, 4));
+    ggl::matrix2<float> m2det(ggl::vector2<float>(1, 2), ggl::vector2<float>(3, 4));
     std::cout << determinant(m2det) << "\n";
 
-    ggl::matrix3<int> m3det(ggl::vector3<int>(6, 1, 1), ggl::vector3<int>(4, -2, 5), ggl::vector3<int>(2, 8, 7));
-    std::cout << determinant(m3det) << "\n";
+    ggl::matrix3<float> m3det(ggl::vector3<float>(6, 1, 1), ggl::vector3<float>(4, -2, 5), ggl::vector3<float>(2, 8, 7));
+    std::cout << ggl::determinant(m3det) << "\n";
 
     ggl::matrix4<float> m4i(1);
     ggl::print_mat(m4i);
 
-    ggl::vector3<int> vdivint(1, 1, 1);
+    ggl::vector3<float> vdivint(1, 1, 1);
     ggl::vector3<float> vdivintres = vdivint / 2;
     std::cout << to_string(vdivintres) << "\n";
 
@@ -113,6 +113,12 @@ int main() {
     ggl::matrix4<float> detmat4(ggl::vector4<float>(1, 2, 3, 4), ggl::vector4<float>(5, 2, 7, 8), ggl::vector4<float>(9, -1, -2, -3), ggl::vector4<float>(-4, -5, -6, -7));
 
     std::cout << ggl::determinant(detmat4) << "\n";
+
+    ggl::matrix2<float> invmat2(ggl::vector2<float>(4, 7), ggl::vector2<float>(2, 6));
+    ggl::print_mat(ggl::inverse(invmat2));
+    std::cout << "\n";
+    ggl::matrix2<float> mm = invmat2 * ggl::inverse(invmat2);
+    print_mat(mm);
 
     return 0;
 }

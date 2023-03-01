@@ -1,6 +1,6 @@
 namespace ggl {
 
-template<typename T>
+template<std::floating_point T>
 struct vector {
     T x;
 
@@ -16,11 +16,11 @@ struct vector {
         return typeid(T).name();
     }
 
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector<T>& operator=(vector<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector<T>& operator+=(vector<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector<T>& operator-=(vector<N> const& v);
     template<typename N>
     constexpr vector<T>& operator*=(N c);
@@ -31,7 +31,7 @@ struct vector {
 
 };
 
-template<typename T>
+template<std::floating_point T>
 struct vector2 {
     T x;
     T y;
@@ -48,11 +48,11 @@ struct vector2 {
         return typeid(T).name();
     }
 
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector2<T>& operator=(vector2<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector2<T>& operator+=(vector2<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector2<T>& operator-=(vector2<N> const& v);
     template<typename N>
     constexpr vector2<T>& operator*=(N c);
@@ -63,7 +63,7 @@ struct vector2 {
 
 };
 
-template<typename T>
+template<std::floating_point T>
 struct vector3 {
     T x;
     T y;
@@ -81,11 +81,11 @@ struct vector3 {
         return typeid(T).name();
     }
 
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector3<T>& operator=(vector3<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector3<T>& operator+=(vector3<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector3<T>& operator-=(vector3<N> const& v);
     template<typename N>
     constexpr vector3<T>& operator*=(N c);
@@ -96,7 +96,7 @@ struct vector3 {
 
 };
 
-template<typename T>
+template<std::floating_point T>
 struct vector4 {
     T x;
     T y;
@@ -115,11 +115,11 @@ struct vector4 {
         return typeid(T).name();
     }
 
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector4<T>& operator=(vector4<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector4<T>& operator+=(vector4<N> const& v);
-    template<typename N>
+    template<std::floating_point N>
     constexpr vector4<T>& operator-=(vector4<N> const& v);
     template<typename N>
     constexpr vector4<T>& operator*=(N c);
@@ -131,43 +131,43 @@ struct vector4 {
 };
 
 /* Sign flip */
-template<typename T>
+template<std::floating_point T>
 constexpr vector<T> operator-(vector<T> const& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector2<T> operator-(vector2<T> const& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector3<T> operator-(vector3<T> const& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector4<T> operator-(vector4<T> const& v);
 
 /* Addition */
-template<typename T>
+template<std::floating_point T>
 constexpr vector<T> operator+(vector<T> const& v, vector<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector2<T> operator+(vector2<T> const& v, vector2<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector3<T> operator+(vector3<T> const& v, vector3<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector4<T> operator+(vector4<T> const& v, vector4<T> const& v2);
 
 /* Subtraction */
-template<typename T>
+template<std::floating_point T>
 constexpr vector<T> operator-(vector<T> const& v, vector<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector2<T> operator-(vector2<T> const& v, vector2<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector3<T> operator-(vector3<T> const& v, vector3<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr vector4<T> operator-(vector4<T> const& v, vector4<T> const& v2);
 
 /* Multiplication */
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector<T> operator*(vector<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector2<T> operator*(vector2<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector3<T> operator*(vector3<T> const &v, N c);
-template<typename T, typename N>
+template<std::floating_point T, typename N>
 constexpr vector4<T> operator*(vector4<T> const &v, N c);
 
 /* Division */
@@ -179,103 +179,85 @@ template<std::floating_point T, typename N>
 constexpr vector3<T> operator/(vector3<T> const &v, N c);
 template<std::floating_point T, typename N>
 constexpr vector4<T> operator/(vector4<T> const &v, N c);
-template<typename N>
-constexpr vector<float> operator/(vector<int> const &v, N c);
-template<typename N>
-constexpr vector2<float> operator/(vector2<int> const &v, N c);
-template<typename N>
-constexpr vector3<float> operator/(vector3<int> const &v, N c);
-template<typename N>
-constexpr vector4<float> operator/(vector4<int> const &v, N c);
 
 /* Dot product */
-template<typename T>
+template<std::floating_point T>
 constexpr T dot(vector<T>& v, vector<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr T dot(vector2<T>& v, vector2<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr T dot(vector3<T>& v, vector3<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr T dot(vector4<T>& v, vector4<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr T operator*(vector<T> const& v, vector<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr T operator*(vector2<T> const& v, vector2<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr T operator*(vector3<T> const& v, vector3<T> const& v2);
-template<typename T>
+template<std::floating_point T>
 constexpr T operator*(vector4<T> const& v, vector4<T> const& v2);
 
 /* Bool operators */
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator==(vector<T> const &v, vector<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator==(vector2<T> const &v, vector2<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator==(vector3<T> const &v, vector3<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator==(vector4<T> const &v, vector4<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator!=(vector<T> const &v, vector<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator!=(vector2<T> const &v, vector2<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator!=(vector3<T> const &v, vector3<T> const &b);
-template<typename T>
+template<std::floating_point T>
 constexpr bool operator!=(vector4<T> const &v, vector4<T> const &b);
 
 /* Magnitude */
-template<typename T>
+template<std::floating_point T>
 constexpr T mag(vector<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr T mag(vector2<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr T mag(vector3<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr T mag(vector4<T>& v);
 
 /* Normalize */
-template<typename T>
+template<std::floating_point T>
 constexpr vector<T> normalize(vector<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector2<T> normalize(vector2<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector3<T> normalize(vector3<T>& v);
-template<typename T>
+template<std::floating_point T>
 constexpr vector4<T> normalize(vector4<T>& v);
 
 /* Angle */
-template<typename T>
+template<std::floating_point T>
 constexpr float angle(vector2<T>& v, vector2<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr float angle(vector3<T>& v, vector3<T>& b);
-template<typename T>
+template<std::floating_point T>
 constexpr float angle(vector4<T>& v, vector4<T>& b);
 
 /* Cross product */
-template<typename T>
-constexpr float cross(vector2<T>& v, vector2<T>& b);
-template<typename T>
+template<std::floating_point T>
+constexpr T cross(vector2<T>& v, vector2<T>& b);
+template<std::floating_point T>
 constexpr vector3<T> cross(vector3<T>& v, vector3<T>& b);
 
 /* Vector to string */
-template<typename T>
+template<std::floating_point T>
 constexpr std::string to_string(vector<T> const &v);
-template<typename T>
+template<std::floating_point T>
 constexpr std::string to_string(vector2<T> const &v);
-template<typename T>
+template<std::floating_point T>
 constexpr std::string to_string(vector3<T> const &v);
-template<typename T>
+template<std::floating_point T>
 constexpr std::string to_string(vector4<T> const &v);
-
-/* Convert to float */
-template<typename T>
-constexpr vector<float> convert_to_float(vector<T> const &v);
-template<typename T>
-constexpr vector2<float> convert_to_float(vector2<T> const &v);
-template<typename T>
-constexpr vector3<float> convert_to_float(vector3<T> const &v);
-template<typename T>
-constexpr vector4<float> convert_to_float(vector4<T> const &v);
 
 } //namespace ggl
