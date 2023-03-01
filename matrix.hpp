@@ -190,6 +190,14 @@ constexpr T determinant(matrix3<T> const &m);
 template<typename T>
 constexpr T determinant(matrix4<T> const &m);
 
+/* Inverse */
+template<typename T>
+constexpr matrix2<float> inverse(matrix2<T> const &m);
+template<typename T>
+constexpr matrix3<float> inverse(matrix3<T> const &m);
+template<typename T>
+constexpr matrix4<float> inverse(matrix4<T> const &m);
+
 /* Printing */
 template<typename T>
 constexpr void print_mat(matrix2<T> const &m);
@@ -197,6 +205,10 @@ template<typename T>
 constexpr void print_mat(matrix3<T> const &m);
 template<typename T>
 constexpr void print_mat(matrix4<T> const &m);
+
+/* Special matrices */
+template<typename T>
+ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height);
 
 /* Convert to float */
 template<typename T>

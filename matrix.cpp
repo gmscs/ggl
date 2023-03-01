@@ -508,6 +508,14 @@ constexpr T determinant(matrix4<T> const &m) {
     return det1 - det2 + det3 - det4;
 }
 
+/* Inverse */
+template<typename T>
+constexpr matrix2<float> inverse(matrix2<T> const &m) {
+    matrix2<float> new_mat(vector2<float>(static_cast<float>(m[1][1]), -1*static_cast<float>(m[0][1])), vector2<float>(static_cast<float>(-1*m[1][0]), static_cast<float>(m[0][0])));
+    new_mat *= 1/determinant(new_mat);
+    return new_mat;
+}
+
 /* Printing */
 template<typename T>
 constexpr void print_mat(matrix2<T> const &m) {
