@@ -110,5 +110,9 @@ int main() {
     ggl::matrix4<float> mdiv = m4i / 4;
     ggl::print_mat(mdiv);
 
+    ggl::matrix4<float> detmat4(ggl::vector4<float>(1, 2, 3, 4), ggl::vector4<float>(5, 2, 7, 8), ggl::vector4<float>(9, -1, -2, -3), ggl::vector4<float>(-4, -5, -6, -7));
+
+    std::cout << ggl::determinant(detmat4) << "\n";
+
     return 0;
 }

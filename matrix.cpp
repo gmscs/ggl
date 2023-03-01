@@ -493,6 +493,21 @@ constexpr T determinant(matrix3<T> const &m) {
     return det1 - det2 + det3;
 }
 
+template<typename T>
+constexpr T determinant(matrix4<T> const &m) {
+    matrix3<T> mat1(vector3<T>(m[1][1], m[1][2], m[1][3]), vector3<T>(m[2][1], m[2][2], m[2][3]), vector3<T>(m[3][1], m[3][2], m[3][3]));
+    matrix3<T> mat2(vector3<T>(m[1][0], m[1][2], m[1][3]), vector3<T>(m[2][0], m[2][2], m[2][3]), vector3<T>(m[3][0], m[3][2], m[3][3]));
+    matrix3<T> mat3(vector3<T>(m[1][0], m[1][1], m[1][3]), vector3<T>(m[2][0], m[2][1], m[2][3]), vector3<T>(m[3][0], m[3][1], m[3][3]));
+    matrix3<T> mat4(vector3<T>(m[1][0], m[1][1], m[1][2]), vector3<T>(m[2][0], m[2][1], m[2][2]), vector3<T>(m[3][0], m[3][1], m[3][2]));
+
+    T det1 = m[0][0] * determinant(mat1);
+    T det2 = m[0][1] * determinant(mat2);
+    T det3 = m[0][2] * determinant(mat3);
+    T det4 = m[0][3] * determinant(mat4);
+
+    return det1 - det2 + det3 - det4;
+}
+
 /* Printing */
 template<typename T>
 constexpr void print_mat(matrix2<T> const &m) {
