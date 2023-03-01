@@ -407,6 +407,43 @@ constexpr matrix4<T> operator*(matrix4<T> const &m, N c){
     return new_mat;
 }
 
+/* Division */
+template<std::floating_point T, typename N>
+constexpr matrix2<T> operator/(matrix2<T> const &m, N c) {
+    matrix2<T> new_mat(m.row1 / c, m.row2 / c);
+    return new_mat;
+}
+
+template<std::floating_point T, typename N>
+constexpr matrix3<T> operator/(matrix3<T> const &m, N c) {
+    matrix3<T> new_mat(m.row1 / c, m.row2 / c, m.row3 / c);
+    return new_mat;
+}
+
+template<std::floating_point T, typename N>
+constexpr matrix4<T> operator/(matrix4<T> const &m, N c) {
+    matrix4<T> new_mat(m.row1 / c, m.row2 / c, m.row3 / c, m.row4 / c);
+    return new_mat;
+}
+
+template<typename N>
+constexpr matrix2<float> operator/(matrix2<int> const &m, N c) {
+    matrix2<float> new_mat(m.row1 / c, m.row2 / c);
+    return new_mat;
+}
+
+template<typename N>
+constexpr matrix3<float> operator/(matrix3<int> const &m, N c) {
+    matrix3<float> new_mat(m.row1 / c, m.row2 / c, m.row3 / c);
+    return new_mat;
+}
+
+template<typename N>
+constexpr matrix4<float> operator/(matrix4<int> const &m, N c) {
+    matrix4<float> new_mat(m.row1 / c, m.row2 / c, m.row3 / c, m.row4 / c);
+    return new_mat;
+}
+
 /* Boolean Operators */
 template<typename T>
 constexpr bool operator==(matrix2<T> const &m, matrix2<T> const &m2) {

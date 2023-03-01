@@ -154,6 +154,20 @@ constexpr matrix3<T> operator*(matrix3<T> const& m, N c);
 template<typename T, typename N>
 constexpr matrix4<T> operator*(matrix4<T> const& m, N c);
 
+/* Division */
+template<std::floating_point T, typename N>
+constexpr matrix2<T> operator/(matrix2<T> const &m, N c);
+template<std::floating_point T, typename N>
+constexpr matrix3<T> operator/(matrix3<T> const &m, N c);
+template<std::floating_point T, typename N>
+constexpr matrix4<T> operator/(matrix4<T> const &m, N c);
+template<typename N>
+constexpr matrix2<float> operator/(matrix2<int> const &m, N c);
+template<typename N>
+constexpr matrix3<float> operator/(matrix3<int> const &m, N c);
+template<typename N>
+constexpr matrix4<float> operator/(matrix4<int> const &m, N c);
+
 /* Bool Operators */
 template<typename T>
 constexpr bool operator==(matrix2<T> const &v, matrix2<T> const &b);
