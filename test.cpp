@@ -119,6 +119,11 @@ int main() {
     std::cout << "\n";
     ggl::matrix2<float> mm = invmat2 * ggl::inverse(invmat2);
     print_mat(mm);
+    std::cout << "\n";
+
+    ggl::matrix3<float> mat3(ggl::vector3<float>(3, 0, 2), ggl::vector3<float>(2, 0, -2), ggl::vector3<float>(0, 1, 1));
+    ggl::matrix3<float> mat3inv = ggl::inverse(mat3);
+    ggl::print_mat(mat3inv);
 
     return 0;
 }

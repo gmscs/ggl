@@ -186,11 +186,11 @@ constexpr T determinant(matrix4<T> const &m);
 
 /* Inverse */
 template<std::floating_point T>
-constexpr matrix2<float> inverse(matrix2<T> const &m);
+constexpr matrix2<T> inverse(matrix2<T> const &m);
 template<std::floating_point T>
-constexpr matrix3<float> inverse(matrix3<T> const &m);
+constexpr matrix3<T> inverse(matrix3<T> const &m);
 template<std::floating_point T>
-constexpr matrix4<float> inverse(matrix4<T> const &m);
+constexpr matrix4<T> inverse(matrix4<T> const &m);
 
 /* Printing */
 template<std::floating_point T>

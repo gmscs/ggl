@@ -354,31 +354,75 @@ constexpr vector4<T> operator*(vector4<T> const &v, N c) {
     return new_vec;
 }
 
+template<std::floating_point T, typename N>
+constexpr vector<T> operator*(N c, vector<T> const &v) {
+    vector<T> new_vec(v.x * c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator*(N c, vector2<T> const &v) {
+    vector<T> new_vec(v.x * c, v.y * c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator*(N c, vector3<T> const &v) {
+    vector3<T> new_vec(v.x * c, v.y * c, v.z * c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator*(N c, vector4<T> const &v) {
+    vector4<T> new_vec(v.x * c, v.y * c, v.z * c, v.w * c);
+    return new_vec;
+}
+
 /* Division */
 template<std::floating_point T, typename N>
 constexpr vector<T> operator/(vector<T> const &v, N c) {
-    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec(v.x / c);
     return new_vec;
 }
 
 template<std::floating_point T, typename N>
 constexpr vector2<T> operator/(vector2<T> const &v, N c) {
-    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector<T> new_vec(v.x / c, v.y / c);
     return new_vec;
 }
 
 template<std::floating_point T, typename N>
 constexpr vector3<T> operator/(vector3<T> const &v, N c) {
-    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
     vector3<T> new_vec(v.x / c, v.y / c, v.z / c);
     return new_vec;
 }
 
 template<std::floating_point T, typename N>
 constexpr vector4<T> operator/(vector4<T> const &v, N c) {
-    assert((void("division only accepts floating point parameters"), std::numeric_limits<T>::is_iec559));
+    vector4<T> new_vec(v.x / c, v.y / c, v.z / c, v.w / c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector<T> operator/(N c, vector<T> const &v) {
+    vector<T> new_vec(v.x / c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator/(N c, vector2<T> const &v) {
+    vector<T> new_vec(v.x / c, v.y / c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator/(N c, vector3<T> const &v) {
+    vector3<T> new_vec(v.x / c, v.y / c, v.z / c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator/(N c, vector4<T> const &v) {
     vector4<T> new_vec(v.x / c, v.y / c, v.z / c, v.w / c);
     return new_vec;
 }
