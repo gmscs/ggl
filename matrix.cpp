@@ -694,4 +694,35 @@ ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
     return new_mat;
 }
 
+/* Translation */
+template<std::floating_point T>
+ggl::matrix2<T> translate(matrix2<T> const &m, vector2<T> const &v) {
+    return matrix2<T>(m.row1 + v.x, m.row2 + v.y);
+}
+
+template<std::floating_point T>
+ggl::matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v) {
+    return matrix3<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z);
+}
+
+template<std::floating_point T>
+ggl::matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v) {
+    return matrix3<T>(m.row1 + v.x, m.row2 + v.y, m.row3);
+}
+
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v) {
+    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z, m.row4 + v.w);
+}
+
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v) {
+    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z, m.row4);
+}
+
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector2<T> const &v) {
+    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3, m.row4);
+}
+
 } //namespace ggl

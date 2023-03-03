@@ -304,6 +304,54 @@ constexpr vector4<T> operator+(vector4<T> const &v, vector4<T> const& v2) {
     return new_vec;
 }
 
+template<std::floating_point T, typename N>
+constexpr vector<T> operator+(vector<T> const &v, N c) {
+    vector<T> new_vec(v.x + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator+(vector2<T> const &v, N c) {
+    vector2<T> new_vec(v.x + c, v.y + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator+(vector3<T> const &v, N c) {
+    vector3<T> new_vec(v.x + c, v.y + c, v.z + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator+(vector4<T> const &v, N c) {
+    vector4<T> new_vec(v.x + c, v.y + c, v.z + c, v.w + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector<T> operator+(N c, vector<T> const &v) {
+    vector<T> new_vec(v.x + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator+(N c, vector2<T> const &v) {
+    vector2<T> new_vec(v.x + c, v.y + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator+(N c, vector3<T> const &v) {
+    vector3<T> new_vec(v.x + c, v.y + c, v.z + c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator+(N c, vector4<T> const &v) {
+    vector4<T> new_vec(v.x + c, v.y + c, v.z + c, v.w + c);
+    return new_vec;
+}
+
 /* Subtraction */
 template<std::floating_point T>
 constexpr vector<T> operator-(vector<T> const &v, vector<T> const& v2) {
@@ -326,6 +374,54 @@ constexpr vector3<T> operator-(vector3<T> const &v, vector3<T> const& v2) {
 template<std::floating_point T>
 constexpr vector4<T> operator-(vector4<T> const &v, vector4<T> const& v2) {
     vector4<T> new_vec(v.x - v2.x, v.y - v2.y, v.z - v2.z, v.w - v2.w);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector<T> operator-(vector<T> const &v, N c) {
+    vector<T> new_vec(v.x - c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator-(vector2<T> const &v, N c) {
+    vector2<T> new_vec(v.x - c, v.y - c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator-(vector3<T> const &v, N c) {
+    vector3<T> new_vec(v.x - c, v.y - c, v.z - c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator-(vector4<T> const &v, N c) {
+    vector4<T> new_vec(v.x - c, v.y - c, v.z - c, v.w - c);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector<T> operator-(N c, vector<T> const &v) {
+    vector<T> new_vec(c - v.x);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator-(N c, vector2<T> const &v) {
+    vector2<T> new_vec(c - v.x, c - v.y);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator-(N c, vector3<T> const &v) {
+    vector3<T> new_vec(c - v.x, c - v.y, c - v.z);
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator-(N c, vector4<T> const &v) {
+    vector4<T> new_vec(c - v.x, c - v.y, c - v.z, c - v.w);
     return new_vec;
 }
 

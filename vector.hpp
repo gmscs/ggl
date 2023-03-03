@@ -149,6 +149,22 @@ template<std::floating_point T>
 constexpr vector3<T> operator+(vector3<T> const& v, vector3<T> const& v2);
 template<std::floating_point T>
 constexpr vector4<T> operator+(vector4<T> const& v, vector4<T> const& v2);
+template<std::floating_point T, typename N>
+constexpr vector<T> operator+(vector<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator+(vector2<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator+(vector3<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator+(vector4<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector<T> operator+(N c, vector<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator+(N c, vector2<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator+(N c, vector3<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator+(N c, vector4<T> const &v);
 
 /* Subtraction */
 template<std::floating_point T>
@@ -159,6 +175,22 @@ template<std::floating_point T>
 constexpr vector3<T> operator-(vector3<T> const& v, vector3<T> const& v2);
 template<std::floating_point T>
 constexpr vector4<T> operator-(vector4<T> const& v, vector4<T> const& v2);
+template<std::floating_point T, typename N>
+constexpr vector<T> operator-(vector<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator-(vector2<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator-(vector3<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator-(vector4<T> const &v, N c);
+template<std::floating_point T, typename N>
+constexpr vector<T> operator-(N c, vector<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector2<T> operator-(N c, vector2<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector3<T> operator-(N c, vector3<T> const &v);
+template<std::floating_point T, typename N>
+constexpr vector4<T> operator-(N c, vector4<T> const &v);
 
 /* Multiplication */
 template<std::floating_point T, typename N>

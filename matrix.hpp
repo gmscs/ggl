@@ -215,4 +215,18 @@ template<std::floating_point T>
 ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
 template<std::floating_point T>
 ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
+
+/* Translation */
+template<std::floating_point T>
+ggl::matrix2<T> translate(matrix2<T> const &m, vector2<T> const &v);
+template<std::floating_point T>
+ggl::matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v);
+template<std::floating_point T>
+ggl::matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v);
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v);
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v);
+template<std::floating_point T>
+ggl::matrix4<T> translate(matrix4<T> const &m, vector2<T> const &v);
 }//namespace ggl

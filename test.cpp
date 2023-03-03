@@ -131,5 +131,9 @@ int main() {
     ggl::print_mat(mat4inv);
     std::cout << "\n";
 
+    ggl::matrix4<float> mt = ggl::translate(mat4inv, ggl::vector4<float>(2, 2, 2, 2));
+    ggl::print_mat(mt);
+    std::cout << "\n";
+
     return 0;
 }
