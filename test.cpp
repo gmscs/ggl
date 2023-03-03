@@ -124,6 +124,12 @@ int main() {
     ggl::matrix3<float> mat3(ggl::vector3<float>(3, 0, 2), ggl::vector3<float>(2, 0, -2), ggl::vector3<float>(0, 1, 1));
     ggl::matrix3<float> mat3inv = ggl::inverse(mat3);
     ggl::print_mat(mat3inv);
+    std::cout << "\n";
+
+    ggl::matrix4<float> mat4(ggl::vector4<float>(1,1,1,-1), ggl::vector4<float>(1,1,-1,1), ggl::vector4<float>(1,-1,1,1), ggl::vector4<float>(-1,1,1,1));
+    ggl::matrix4<float> mat4inv = ggl::inverse(mat4);
+    ggl::print_mat(mat4inv);
+    std::cout << "\n";
 
     return 0;
 }

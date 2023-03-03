@@ -543,6 +543,15 @@ constexpr matrix3<T> inverse(matrix3<T> const &m) {
     return inverse;
 }
 
+template<std::floating_point T>
+constexpr matrix4<T> inverse(matrix4<T> const &m) {
+    matrix4<T> min = minors_matrix(m);
+    matrix4<T> cof = cofactors_matrix(min);
+    matrix4<T> transpose = transpose_matrix(cof);
+    matrix4<T> inverse = (1 / determinant(m)) * transpose;
+    return inverse;
+}
+
 /* Printing */
 template<std::floating_point T>
 constexpr void print_mat(matrix2<T> const &m) {
@@ -605,12 +614,53 @@ ggl::matrix3<T> minors_matrix(matrix3<T> const &m) {
 }
 
 template<std::floating_point T>
+ggl::matrix4<T> minors_matrix(matrix4<T> const & m) {
+    matrix4<T> new_mat;
+
+    new_mat[0][0] = determinant(matrix3<T>(vector3<T>(m[1][1], m[1][2], m[1][3]), vector3<T>(m[2][1], m[2][2], m[2][3]), vector3<T>(m[3][1], m[3][2], m[3][3])));
+    new_mat[0][1] = determinant(matrix3<T>(vector3<T>(m[1][0], m[1][2], m[1][3]), vector3<T>(m[2][0], m[2][2], m[2][3]), vector3<T>(m[3][0], m[3][2], m[3][3])));
+    new_mat[0][2] = determinant(matrix3<T>(vector3<T>(m[1][0], m[1][1], m[1][3]), vector3<T>(m[2][0], m[2][1], m[2][3]), vector3<T>(m[3][0], m[3][1], m[3][3])));
+    new_mat[0][3] = determinant(matrix3<T>(vector3<T>(m[1][0], m[1][1], m[1][2]), vector3<T>(m[2][0], m[2][1], m[2][2]), vector3<T>(m[3][0], m[3][1], m[3][2])));
+
+    new_mat[1][0] = determinant(matrix3<T>(vector3<T>(m[0][1], m[0][2], m[0][3]), vector3<T>(m[2][1], m[2][2], m[2][3]), vector3<T>(m[3][1], m[3][2], m[3][3])));
+    new_mat[1][1] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][2], m[0][3]), vector3<T>(m[2][0], m[2][2], m[2][3]), vector3<T>(m[3][0], m[3][2], m[3][3])));
+    new_mat[1][2] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][3]), vector3<T>(m[2][0], m[2][1], m[2][3]), vector3<T>(m[3][0], m[3][1], m[3][3])));
+    new_mat[1][3] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][2]), vector3<T>(m[2][0], m[2][1], m[2][2]), vector3<T>(m[3][0], m[3][1], m[3][2])));
+
+    new_mat[2][0] = determinant(matrix3<T>(vector3<T>(m[0][1], m[0][2], m[0][3]), vector3<T>(m[1][1], m[1][2], m[1][3]), vector3<T>(m[3][1], m[3][2], m[3][3])));
+    new_mat[2][1] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][2], m[0][3]), vector3<T>(m[1][0], m[1][2], m[1][3]), vector3<T>(m[3][0], m[3][2], m[3][3])));
+    new_mat[2][2] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][3]), vector3<T>(m[1][0], m[1][1], m[1][3]), vector3<T>(m[3][0], m[3][1], m[3][3])));
+    new_mat[2][3] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][2]), vector3<T>(m[1][0], m[1][1], m[1][2]), vector3<T>(m[3][0], m[3][1], m[3][2])));
+
+    new_mat[3][0] = determinant(matrix3<T>(vector3<T>(m[0][1], m[0][2], m[0][3]), vector3<T>(m[1][1], m[1][2], m[1][3]), vector3<T>(m[2][1], m[2][2], m[2][3])));
+    new_mat[3][1] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][2], m[0][3]), vector3<T>(m[1][0], m[1][2], m[1][3]), vector3<T>(m[2][0], m[2][2], m[2][3])));
+    new_mat[3][2] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][3]), vector3<T>(m[1][0], m[1][1], m[1][3]), vector3<T>(m[2][0], m[2][1], m[2][3])));
+    new_mat[3][3] = determinant(matrix3<T>(vector3<T>(m[0][0], m[0][1], m[0][2]), vector3<T>(m[1][0], m[1][1], m[1][2]), vector3<T>(m[2][0], m[2][1], m[2][2])));
+
+    return new_mat;
+}
+
+template<std::floating_point T>
 ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m) {
     matrix3<T> new_mat = m;
     new_mat[0][1] *= -1;
     new_mat[1][0] *= -1;
     new_mat[1][2] *= -1;
     new_mat[2][1] *= -1;
+    return new_mat;
+}
+
+template<std::floating_point T>
+ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m) {
+    matrix4<T> new_mat = m;
+    new_mat[0][1] *= -1;
+    new_mat[0][3] *= -1;
+    new_mat[1][0] *= -1;
+    new_mat[1][2] *= -1;
+    new_mat[2][1] *= -1;
+    new_mat[2][3] *= -1;
+    new_mat[3][0] *= -1;
+    new_mat[3][2] *= -1;
     return new_mat;
 }
 
@@ -623,6 +673,24 @@ ggl::matrix3<T> transpose_matrix(matrix3<T> const &m) {
     new_mat[2][0] = m[0][2];
     new_mat[1][2] = m[2][1];
     new_mat[2][1] = m[1][2];
+    return new_mat;
+}
+
+template<std::floating_point T>
+ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
+    matrix4<T> new_mat = m;
+    new_mat[0][1] = m[1][0];
+    new_mat[1][0] = m[0][1];
+    new_mat[0][2] = m[2][0];
+    new_mat[2][0] = m[0][2];
+    new_mat[1][2] = m[2][1];
+    new_mat[2][1] = m[1][2];
+    new_mat[0][3] = m[3][0];
+    new_mat[3][0] = m[0][3];
+    new_mat[1][3] = m[3][1];
+    new_mat[3][1] = m[1][3];
+    new_mat[3][2] = m[2][3];
+    new_mat[2][3] = m[3][2];
     return new_mat;
 }
 

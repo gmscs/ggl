@@ -203,5 +203,16 @@ constexpr void print_mat(matrix4<T> const &m);
 /* Special matrices */
 template<std::floating_point T>
 ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height);
-
+template<std::floating_point T>
+ggl::matrix3<T> minors_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> minots_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
 }//namespace ggl
