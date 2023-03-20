@@ -153,6 +153,12 @@ template<std::floating_point T, typename N>
 constexpr matrix3<T> operator*(matrix3<T> const& m, N c);
 template<std::floating_point T, typename N>
 constexpr matrix4<T> operator*(matrix4<T> const& m, N c);
+template<std::floating_point T, typename N>
+constexpr ggl::vector2<T> operator*(matrix2<T> const &m, ggl::vector2<T> const &v);
+template<std::floating_point T, typename N>
+constexpr ggl::vector3<T> operator*(matrix3<T> const &m, ggl::vector3<T> const &v);
+template<std::floating_point T, typename N>
+constexpr ggl::vector4<T> operator*(matrix4<T> const &m, ggl::vector4<T> const &v);
 
 /* Division */
 template<std::floating_point T, typename N>
@@ -215,18 +221,36 @@ template<std::floating_point T>
 ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
 template<std::floating_point T>
 ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+constexpr matrix3<T> translation_matrix(vector3<T> const &v);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> rotation_matrix(T angle);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> scaling_matrix(T width, T height);
+template<std::floating_point T>
+constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth);
 
 /* Translation */
 template<std::floating_point T>
-ggl::matrix2<T> translate(matrix2<T> const &m, vector2<T> const &v);
-template<std::floating_point T>
-ggl::matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v);
-template<std::floating_point T>
-ggl::matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v);
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v);
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v);
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector2<T> const &v);
+constexpr vector3<T> translate(vector3<T> const &v, vector3<T> const &d);
+
+/* Rotation */
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate(vector2<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate(vector3<T> const &v, N angle);
+
+/* Scaling */
+template<std::floating_point T, typename N>
+constexpr vector3<T> scale(vector2<T> const &v, N width, N height);
+
+template<std::floating_point T, typename N>
+constexpr vector3<T> scale(vector3<T> const &v, N width, N height);
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> scale(vector3<T> const &v, N width, N height, N depth);
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> scale(vector4<T> const &v, N width, N height, N depth);
 }//namespace ggl

@@ -131,9 +131,20 @@ int main() {
     ggl::print_mat(mat4inv);
     std::cout << "\n";
 
-    ggl::matrix4<float> mt = ggl::translate(mat4inv, ggl::vector4<float>(2, 2, 2, 2));
-    ggl::print_mat(mt);
-    std::cout << "\n";
+    //ggl::matrix4<float> mt = ggl::translate(mat4inv, ggl::vector4<float>(2, 2, 2, 2));
+    //ggl::print_mat(mt);
+
+    ggl::vector3<float> vectrot(1, 0, 1);
+    ggl::vector3<float> vvvv = ggl::rotate(vectrot, (float)0.2);
+    std::cout << ggl::to_string(vvvv) << "\n";
+
+    ggl::vector3<float> vscale(3,2,1);
+    vscale = scale(vscale, 2, 3);
+    std::cout << ggl::to_string(vscale) << "\n";
+
+    ggl::vector3<float> vtranslate(1, 2, 1);
+    vtranslate = translate(vtranslate, ggl::vector3<float>(2, 2, 1));
+    std::cout << ggl::to_string(vtranslate) << "\n";
 
     return 0;
 }

@@ -425,6 +425,25 @@ constexpr matrix4<T> operator*(N c, matrix4<T> const &m){
     return new_mat;
 }
 
+template<std::floating_point T>
+constexpr ggl::vector2<T> operator*(matrix2<T> const &m, ggl::vector2<T> const &v) {
+    ggl::vector2<T> new_vec((m.row1.x * v.x + m.row1.y * v.y), (m.row2.x * v.x + m.row2.y * v.y));
+    return new_vec;
+}
+
+template<std::floating_point T>
+constexpr ggl::vector3<T> operator*(matrix3<T> const &m, ggl::vector3<T> const &v) {
+    ggl::vector3<T> new_vec((m.row1.x * v.x + m.row1.y * v.y + m.row1.z * v.z), (m.row2.x * v.x + m.row2.y * v.y + m.row2.z * v.z), (m.row3.x * v.x + m.row3.y * v.y + m.row3.z * v.z));
+    return new_vec;
+}
+
+
+template<std::floating_point T>
+constexpr ggl::vector4<T> operator*(matrix4<T> const &m, ggl::vector4<T> const &v) {
+    ggl::vector4<T> new_vec((m.row1.x * v.x + m.row1.y * v.y + m.row1.z * v.z + m.row1.w * v.w), (m.row2.x * v.x + m.row2.y * v.y + m.row2.z * v.z + m.row2.w * v.w), (m.row3.x * v.x + m.row3.y * v.y + m.row3.z * v.z + m.row3.w * v.w), (m.row4.x * v.x + m.row4.y * v.y + m.row4.z * v.z + m.row4.w * v.w));
+    return new_vec;
+}
+
 /* Division */
 template<std::floating_point T, typename N>
 constexpr matrix2<T> operator/(matrix2<T> const &m, N c) {
@@ -694,35 +713,90 @@ ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
     return new_mat;
 }
 
+template<std::floating_point T>
+constexpr matrix3<T> translation_matrix(vector3<T> const &v) {
+    ggl::matrix3<T> new_mat(1);
+    new_mat.row1.z = v.x;
+    new_mat.row2.z = v.y;
+    return new_mat;
+}
+
+template<std::floating_point T>
+constexpr ggl::matrix3<T> rotation_matrix(T angle) {
+    ggl::matrix3<T> new_mat(1);
+    new_mat.row1.x = std::cos(angle);
+    new_mat.row1.y = -1 * std::sin(angle);
+    new_mat.row2.x = std::sin(angle);
+    new_mat.row2.y = std::cos(angle);
+    return new_mat;
+}
+
+template<std::floating_point T>
+constexpr ggl::matrix3<T> scaling_matrix(T width, T height) {
+    ggl::matrix3<T> new_mat(1);
+    new_mat.row1.x = width;
+    new_mat.row2.y = height;
+    return new_mat;
+}
+
+template<std::floating_point T>
+constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth) {
+    ggl::matrix4<T> new_mat(1);
+    new_mat.row1.x = width;
+    new_mat.row2.y = height;
+    new_mat.row3.z = depth;
+    return new_mat;
+}
+
 /* Translation */
 template<std::floating_point T>
-ggl::matrix2<T> translate(matrix2<T> const &m, vector2<T> const &v) {
-    return matrix2<T>(m.row1 + v.x, m.row2 + v.y);
+constexpr vector3<T> translate(vector3<T> const &v, vector3<T> const &d) {
+    vector3<T> new_vec;
+    new_vec = translation_matrix(d) * v;
+    return new_vec;
 }
 
-template<std::floating_point T>
-ggl::matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v) {
-    return matrix3<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z);
+/* Rotation */
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate(vector2<T> const &v, N angle) {
+    vector3<T> new_vec(v.x, v.y, 1);
+    angle = static_cast<T>(angle);
+    new_vec = rotation_matrix(angle) * new_vec;
+    return new_vec;
 }
 
-template<std::floating_point T>
-ggl::matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v) {
-    return matrix3<T>(m.row1 + v.x, m.row2 + v.y, m.row3);
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate(vector3<T> const &v, N angle) {
+    vector3<T> new_vec;
+    new_vec = rotation_matrix(angle) * v;
+    return new_vec;
 }
 
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v) {
-    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z, m.row4 + v.w);
+/* Scaling */
+template<std::floating_point T, typename N>
+constexpr vector3<T> scale(vector2<T> const &v, N width, N height) {
+    vector3<T> v2(v.x, v.y, 1);
+    vector3<T> new_vec = scaling_matrix(static_cast<T>(width), static_cast<T>(height)) * v2;
+    return new_vec;
 }
 
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v) {
-    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3 + v.z, m.row4);
+template<std::floating_point T, typename N>
+constexpr vector3<T> scale(vector3<T> const &v, N width, N height) {
+    vector3<T> new_vec = scaling_matrix(static_cast<T>(width), static_cast<T>(height)) * v;
+    return new_vec;
 }
 
-template<std::floating_point T>
-ggl::matrix4<T> translate(matrix4<T> const &m, vector2<T> const &v) {
-    return matrix4<T>(m.row1 + v.x, m.row2 + v.y, m.row3, m.row4);
+template<std::floating_point T, typename N>
+constexpr vector4<T> scale(vector3<T> const &v, N width, N height, N depth) {
+    vector4<T> v2(v.x, v.y, v.z, 1);
+    vector4<T> new_vec = scaling_matrix(static_cast<T>(width), static_cast<T>(height), static_cast<T>(depth)) * v2;
+    return new_vec;
+}
+
+template<std::floating_point T, typename N>
+constexpr vector4<T> scale(vector4<T> const &v, N width, N height, N depth) {
+    vector4<T> new_vec = scaling_matrix(static_cast<T>(width), static_cast<T>(height), static_cast<T>(depth)) * v;
+    return new_vec;
 }
 
 } //namespace ggl
