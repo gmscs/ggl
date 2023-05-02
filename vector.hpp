@@ -51,6 +51,8 @@ struct vector2 {
     template<std::floating_point N>
     constexpr vector2<T>& operator=(vector2<N> const& v);
     template<std::floating_point N>
+    constexpr vector2<T>& operator=(vector<N> const &v);
+    template<std::floating_point N>
     constexpr vector2<T>& operator+=(vector2<N> const& v);
     template<std::floating_point N>
     constexpr vector2<T>& operator-=(vector2<N> const& v);
@@ -83,6 +85,10 @@ struct vector3 {
 
     template<std::floating_point N>
     constexpr vector3<T>& operator=(vector3<N> const& v);
+    template<std::floating_point N>
+    constexpr vector3<T>& operator=(vector2<N> const &v);
+    template<std::floating_point N>
+    constexpr vector3<T>& operator=(vector<N> const &v);
     template<std::floating_point N>
     constexpr vector3<T>& operator+=(vector3<N> const& v);
     template<std::floating_point N>
@@ -117,6 +123,12 @@ struct vector4 {
 
     template<std::floating_point N>
     constexpr vector4<T>& operator=(vector4<N> const& v);
+    template<std::floating_point N>
+    constexpr vector4<T>& operator=(vector3<N> const& v);
+    template<std::floating_point N>
+    constexpr vector4<T>& operator=(vector2<N> const& v);
+    template<std::floating_point N>
+    constexpr vector4<T>& operator=(vector<N> const& v);
     template<std::floating_point N>
     constexpr vector4<T>& operator+=(vector4<N> const& v);
     template<std::floating_point N>

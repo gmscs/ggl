@@ -97,10 +97,36 @@ constexpr vector2<T>& vector2<T>::operator=(vector2<N> const &v) {
 
 template<std::floating_point T>
 template<std::floating_point N>
+constexpr vector2<T>& vector2<T>::operator=(vector<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(0);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
 constexpr vector3<T>& vector3<T>::operator=(vector3<N> const &v) {
     this->x = static_cast<T>(v.x);
     this->y = static_cast<T>(v.y);
     this->z = static_cast<T>(v.z);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
+constexpr vector3<T>& vector3<T>::operator=(vector2<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(v.y);
+    this->z = static_cast<T>(0);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
+constexpr vector3<T>& vector3<T>::operator=(vector<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(0);
+    this->z = static_cast<T>(0);
     return *this;
 }
 
@@ -111,6 +137,36 @@ constexpr vector4<T>& vector4<T>::operator=(vector4<N> const &v) {
     this->y = static_cast<T>(v.y);
     this->z = static_cast<T>(v.z);
     this->w = static_cast<T>(v.w);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
+constexpr vector4<T>& vector4<T>::operator=(vector3<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(v.y);
+    this->z = static_cast<T>(v.z);
+    this->w = static_cast<T>(0);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
+constexpr vector4<T>& vector4<T>::operator=(vector2<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(v.y);
+    this->z = static_cast<T>(0);
+    this->w = static_cast<T>(0);
+    return *this;
+}
+
+template<std::floating_point T>
+template<std::floating_point N>
+constexpr vector4<T>& vector4<T>::operator=(vector<N> const &v) {
+    this->x = static_cast<T>(v.x);
+    this->y = static_cast<T>(0);
+    this->z = static_cast<T>(0);
+    this->w = static_cast<T>(0);
     return *this;
 }
 
@@ -682,6 +738,7 @@ constexpr T& vector4<T>::operator[](int i) {
     else if(i == 2) return this->z;
     return this->w;
 }
+
 /* Magnitude */
 template<std::floating_point T>
 constexpr T mag(vector<T>& v) {
