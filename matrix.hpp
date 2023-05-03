@@ -221,8 +221,12 @@ template<std::floating_point T>
 ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
 template<std::floating_point T>
 ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
+
 template<std::floating_point T>
-constexpr matrix3<T> translation_matrix(vector3<T> const &v);
+constexpr ggl::matrix4<T> translation_matrix(vector3<T> const &v);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> translation_matrix(vector2<T> const &v);
+
 template<std::floating_point T>
 constexpr ggl::matrix3<T> rotation_matrix(T angle);
 template<std::floating_point T>
@@ -234,23 +238,97 @@ constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth);
 template<std::floating_point T>
 constexpr vector3<T> translate(vector3<T> const &v, vector3<T> const &d);
 
+template<std::floating_point T>
+constexpr vector4<T> translate(vector4<T> const &v, vector4<T> const &d);
+
+template<std::floating_point T>
+constexpr matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v);
+
+template<std::floating_point T>
+constexpr matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v);
+
+template<std::floating_point T>
+constexpr matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v);
+
+template<std::floating_point T>
+constexpr matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v);
+
 /* Rotation */
 template<std::floating_point T, std::floating_point N>
-constexpr vector3<T> rotate(vector2<T> const &v, N angle);
+constexpr vector3<T> rotate_x(vector2<T> const &v, N angle);
 
 template<std::floating_point T, std::floating_point N>
-constexpr vector3<T> rotate(vector3<T> const &v, N angle);
+constexpr vector3<T> rotate_y(vector2<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate_z(vector2<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate_x(vector3<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate_y(vector3<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> rotate_z(vector3<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector4<T> rotate_x(vector4<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector4<T> rotate_y(vector4<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector4<T> rotate_z(vector4<T> const &v, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix3<T> rotate_x(matrix3<T> const &m, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix3<T> rotate_y(matrix3<T> const &m, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix3<T> rotate_z(matrix3<T> const &m, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix4<T> rotate_x(matrix4<T> const &m, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix4<T> rotate_y(matrix4<T> const &m, N angle);
+
+template<std::floating_point T, std::floating_point N>
+constexpr matrix4<T> rotate_z(matrix4<T> const &m, N angle);
 
 /* Scaling */
 template<std::floating_point T, typename N>
-constexpr vector3<T> scale(vector2<T> const &v, N width, N height);
+constexpr vector3<T> scale(vector3<T> const &v, vector2<N> const &d);
 
 template<std::floating_point T, typename N>
-constexpr vector3<T> scale(vector3<T> const &v, N width, N height);
+constexpr vector4<T> scale(vector4<T> const &v, vector3<N> const &d);
 
 template<std::floating_point T, typename N>
-constexpr vector4<T> scale(vector3<T> const &v, N width, N height, N depth);
+constexpr matrix3<T> scale(matrix3<T> const &m, vector2<N> const &d);
 
 template<std::floating_point T, typename N>
-constexpr vector4<T> scale(vector4<T> const &v, N width, N height, N depth);
+constexpr matrix4<T> scale(matrix4<T> const &m, vector3<N> const &d);
+
+/* Pointers */
+template<typename T>
+constexpr auto const* pointer(matrix2<T> const &m);
+
+template<typename T>
+constexpr auto* pointer(matrix2<T> &m);
+
+template<typename T>
+constexpr auto const* pointer(matrix3<T> const &m);
+
+template<typename T>
+constexpr auto* pointer(matrix3<T> &m);
+
+template<typename T>
+constexpr auto const* pointer(matrix4<T> const &m);
+
+template<typename T>
+constexpr auto* pointer(matrix4<T> &m);
+
 }//namespace ggl

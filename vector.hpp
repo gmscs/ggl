@@ -304,4 +304,22 @@ constexpr std::string to_string(vector3<T> const &v);
 template<std::floating_point T>
 constexpr std::string to_string(vector4<T> const &v);
 
+/* Pointers */
+template<typename T>
+constexpr auto const* pointer(vector<T> const &v);
+template<typename T>
+constexpr auto* pointer(vector<T> &v);
+template<typename T>
+constexpr auto const* pointer(vector2<T> const &v);
+template<typename T>
+constexpr auto* pointer(vector2<T> &v);
+template<typename T>
+constexpr auto const* pointer(vector3<T> const &v);
+template<typename T>
+constexpr auto* pointer(vector3<T> &v);
+template<typename T>
+constexpr auto const* pointer(vector4<T> const &v);
+template<typename T>
+constexpr auto* pointer(vector4<T> &v);
+
 } //namespace ggl

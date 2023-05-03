@@ -714,19 +714,19 @@ ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
 }
 
 template<std::floating_point T>
-constexpr matrix3<T> translation_matrix(vector3<T> const &v) {
+constexpr matrix3<T> translation_matrix(vector2<T> const &v) {
     ggl::matrix3<T> new_mat(1);
-    new_mat.row1.z = v.x;
-    new_mat.row2.z = v.y;
+    new_mat.row1.z = static_cast<T>(v.x);
+    new_mat.row2.z = static_cast<T>(v.y);
     return new_mat;
 }
 
 template<std::floating_point T>
-constexpr matrix4<T> translation_matrix(vector4<T> const &v) {
+constexpr matrix4<T> translation_matrix(vector3<T> const &v) {
     ggl::matrix4<T> new_mat(1);
-    new_mat.row1.w = v.x;
-    new_mat.row2.w = v.y;
-    new_mat.row3.w = v.z;
+    new_mat.row1.w = static_cast<T>(v.x);
+    new_mat.row2.w = static_cast<T>(v.y);
+    new_mat.row3.w = static_cast<T>(v.z);
     return new_mat;
 }
 
@@ -991,32 +991,32 @@ constexpr matrix4<T> scale(matrix4<T> const &m, vector3<N> const &d) {
 
 /* Pointers */
 template<typename T>
-constexpr T const* pointer(matrix2<T> const &m) {
+constexpr auto const* pointer(matrix2<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr T* pointer(matrix2<T> &m) {
+constexpr auto* pointer(matrix2<T> &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr T const* pointer(matrix3<T> const &m) {
+constexpr auto const* pointer(matrix3<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr T* pointer(matrix3<T> &m) {
+constexpr auto* pointer(matrix3<T> &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr T const* pointer(matrix4<T> const &m) {
+constexpr auto const* pointer(matrix4<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr T* pointer(matrix4<T> &m) {
+constexpr auto* pointer(matrix4<T> &m) {
     return &m[0][0];
 }
 

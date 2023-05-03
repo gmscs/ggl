@@ -850,4 +850,46 @@ constexpr std::string to_string(vector4<T> const &v) {
     stream << "[" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "]";
     return stream.str();
 }
+
+/* Pointers */
+template<typename T>
+constexpr auto const* pointer(vector<T> const &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto* pointer(vector<T> &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto const* pointer(vector2<T> const &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto* pointer(vector2<T> &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto const* pointer(vector3<T> const &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto* pointer(vector3<T> &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto const* pointer(vector4<T> const &v) {
+    return &v[0];
+}
+
+template<typename T>
+constexpr auto* pointer(vector4<T> &v) {
+    return &v[0];
+}
+
 }//namespace ggl
