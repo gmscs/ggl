@@ -135,11 +135,11 @@ int main() {
     //ggl::print_mat(mt);
 
     ggl::vector3<float> vectrot(1, 0, 1);
-    ggl::vector3<float> vvvv = ggl::rotate(vectrot, (float)0.2);
+    ggl::vector3<float> vvvv = ggl::rotate_z(vectrot, (float)0.2);
     std::cout << ggl::to_string(vvvv) << "\n";
 
     ggl::vector3<float> vscale(3,2,1);
-    vscale = scale(vscale, 2, 3);
+    vscale = scale(vscale, ggl::vector2<float>(2, 3));
     std::cout << ggl::to_string(vscale) << "\n";
 
     ggl::vector3<float> vtranslate(1, 2, 1);

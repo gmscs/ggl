@@ -851,6 +851,25 @@ constexpr std::string to_string(vector4<T> const &v) {
     return stream.str();
 }
 
+/* Translation */
+template<std::floating_point T, std::floating_point N>
+constexpr vector2<T> translate(vector2<T> const &v, vector2<N> const &d) {
+    vector2<T> new_vec(v.x + static_cast<T>(d.x), v.y + static_cast<T>(d.y));
+    return new_vec;
+}
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> translate(vector3<T> const &v, vector3<N> const &d) {
+    vector3<T> new_vec(v.x + static_cast<T>(d.x), v.y + static_cast<T>(d.y), v.z + static_cast<T>(d.z));
+    return new_vec;
+}
+
+template<std::floating_point T, std::floating_point N>
+constexpr vector4<T> translate(vector4<T> const &v, vector4<N> const &d) {
+    vector4<T> new_vec(v.x + static_cast<T>(d.x), v.y + static_cast<T>(d.y), v.z + static_cast<T>(d.z), v.w + static_cast<T>(d.w));
+    return new_vec;
+}
+
 /* Pointers */
 template<typename T>
 constexpr auto const* pointer(vector<T> const &v) {

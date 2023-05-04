@@ -304,6 +304,14 @@ constexpr std::string to_string(vector3<T> const &v);
 template<std::floating_point T>
 constexpr std::string to_string(vector4<T> const &v);
 
+/* Translation */
+template<std::floating_point T, std::floating_point N>
+constexpr vector2<T> translate(vector2<T> const &v, vector2<N> const &d);
+template<std::floating_point T, std::floating_point N>
+constexpr vector3<T> translate(vector3<T> const &v, vector3<N> const &d);
+template<std::floating_point T, std::floating_point N>
+constexpr vector4<T> translate(vector4<T> const &v, vector4<N> const &d);
+
 /* Pointers */
 template<typename T>
 constexpr auto const* pointer(vector<T> const &v);

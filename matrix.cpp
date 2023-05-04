@@ -779,20 +779,6 @@ constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth) {
 
 /* Translation */
 template<std::floating_point T>
-constexpr vector3<T> translate(vector3<T> const &v, vector3<T> const &d) {
-    vector3<T> new_vec;
-    new_vec = translation_matrix(d) * v;
-    return new_vec;
-}
-
-template<std::floating_point T>
-constexpr vector4<T> translate(vector4<T> const &v, vector4<T> const &d) {
-    vector4<T> new_vec;
-    new_vec = translation_matrix(d) * v;
-    return new_vec;
-}
-
-template<std::floating_point T>
 constexpr matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v) {
     matrix3<T> new_mat(m);
     new_mat.row4 = m.row1 * v.x + m.row2 * v.y + m.row3 * v.z;    
