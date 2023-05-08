@@ -16,4 +16,4 @@ Output of test.cpp as of 8afab60 (15/02/2023):
 
 Output of tangram-test.cpp as of 93acda9:
 
-!][](tangram.png)
+![](tangram.png)
