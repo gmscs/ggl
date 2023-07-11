@@ -1,5 +1,6 @@
 # ggl
 Auxiliary libs for personal use.
+Not ready for much use yet.
 
 test.cpp:
 Compile with -std=c++20 for concepts.

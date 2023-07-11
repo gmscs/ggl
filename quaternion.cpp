@@ -110,8 +110,8 @@ constexpr T mag(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T> norm(quaternion<T> const& q, T m) {
-    return q / m;
+constexpr quaternion<T> norm(quaternion<T> const& q) {
+    return q / mag(q);
 }
 
 }
