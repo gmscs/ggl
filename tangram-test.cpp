@@ -358,7 +358,7 @@ int main()
     glDeleteVertexArrays(1, &parallelogram_vao);
 
     /*
-     * Delete objects after deleting references to avoid segafults or out-of-memory problems
+     * Delete objects after deleting references to avoid segfaults or out-of-memory problems
      * Should be deleted when no longer in use at all.
      * In our case - on program termination.
     */
