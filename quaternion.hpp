@@ -28,6 +28,9 @@ struct quaternion {
     constexpr quaternion<T>& operator*=(N c);
     template<std::floating_point N>
     constexpr quaternion<T>& operator/=(N c);
+    
+    constexpr T const& operator[](int i) const;
+    constexpr T& operator[](int i);
 };
 
 template<std::floating_point T>
