@@ -6,7 +6,7 @@ struct quaternion {
     T y;
     T z;
     
-    constexpr quaterion();
+    constexpr quaternion();
     constexpr quaternion(quaternion const& q);
     constexpr quaternion(vector<T> const& v);
     constexpr quaternion(vector2<T> const& v);
@@ -14,20 +14,13 @@ struct quaternion {
     constexpr quaternion(vector4<T> const& v);
     explicit constexpr quaternion(T w, T x, T y, T z);
     
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator=(quaternion<N> const &q);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator+=(quaternion<N> const &q);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator-=(quaternion<N> const &q);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator*=(quaternion<N> const &q);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator/=(quaternion<N> const &q);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator*=(N c);
-    template<std::floating_point N>
-    constexpr quaternion<T>& operator/=(N c);
+    constexpr quaternion<T>& operator=(quaternion<T> const &q);
+    constexpr quaternion<T>& operator+=(quaternion<T> const &q);
+    constexpr quaternion<T>& operator-=(quaternion<T> const &q);
+    constexpr quaternion<T>& operator*=(quaternion<T> const &q);
+    constexpr quaternion<T>& operator/=(quaternion<T> const &q);
+    constexpr quaternion<T>& operator*=(T c);
+    constexpr quaternion<T>& operator/=(T c);
     
     constexpr T const& operator[](int i) const;
     constexpr T& operator[](int i);
@@ -58,11 +51,15 @@ template<std::floating_point T>
 constexpr quaternion<T> operator*(T c, quaternion<T> const& q);
 
 template<std::floating_point T>
-constexpr quaternion<T> operator/(quaternion<T> const &q, quaternion<T> const &q2);
+constexpr quaternion<T> operator/(quaternion<T> const& q, quaternion<T> const &q2);
 
 template<std::floating_point T>
 constexpr quaternion<T> operator/(quaternion<T> const& q, T c);
 
 template<std::floating_point T>
 constexpr quaternion<T> operator/(T c, quaternion<T> const& q);
+
+template<std::floating_point T>
+constexpr matrix4<T> quatToMatrix(quaternion<T> const& q);
+
 }

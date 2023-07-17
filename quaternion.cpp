@@ -2,7 +2,7 @@
 
 namespace ggl {
 
-template<std::floating_type T>
+template<std::floating_point T>
 constexpr quaternion<T>::quaternion() {
     this->w = 0;
     this->x = 0;
@@ -59,7 +59,7 @@ constexpr quaternion<T>::quaternion(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator=(quaternion<T> const& q) {
+constexpr quaternion<T>& quaternion<T>::operator=(quaternion<T> const& q) {
     this->w = q.w;
     this->x = q.x;
     this->y = q.y;
@@ -68,7 +68,7 @@ constexpr quaternion<T>& operator=(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator+=(quaternion<T> const& q) {
+constexpr quaternion<T>& quaternion<T>::operator+=(quaternion<T> const& q) {
     this->w += q.w;
     this->x += q.x;
     this->y += q.y;
@@ -77,7 +77,7 @@ constexpr quaternion<T>& operator+=(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator-=(quaternion<T> const& q) {
+constexpr quaternion<T>& quaternion<T>::operator-=(quaternion<T> const& q) {
     this->w -= q.w;
     this->x -= q.x;
     this->y -= q.y;
@@ -86,7 +86,7 @@ constexpr quaternion<T>& operator-=(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator*=(quaternion<T> const& q) {
+constexpr quaternion<T>& quaternion<T>::operator*=(quaternion<T> const& q) {
     quaternion<T> new_quat(this->w, this->x, this->y, this->z);
     new_quat = new_quat * q;
     this->w = new_quat.w;
@@ -97,7 +97,7 @@ constexpr quaternion<T>& operator*=(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator/=(quaternion<T> const& q) {
+constexpr quaternion<T>& quaternion<T>::operator/=(quaternion<T> const& q) {
     quaternion<T> new_quat(this->w, this->x, this->y, this->z);
     new_quat = new_quat / q;
     this->w = new_quat.w;
@@ -108,7 +108,7 @@ constexpr quaternion<T>& operator/=(quaternion<T> const& q) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator*=(T c) {
+constexpr quaternion<T>& quaternion<T>::operator*=(T c) {
     this->w *= c;
     this->x *= c;
     this->y *= c;
@@ -117,7 +117,7 @@ constexpr quaternion<T>& operator*=(T c) {
 }
 
 template<std::floating_point T>
-constexpr quaternion<T>& operator/=(T c) {
+constexpr quaternion<T>& quaternion<T>::operator/=(T c) {
     this->w /= c;
     this->x /= c;
     this->y /= c;
@@ -171,7 +171,7 @@ constexpr quaternion<T> operator*(T c, quaternion<T> const& q) {
 
 template<std::floating_point T>
 constexpr quaternion<T> operator*(quaternion<T> const& q, quaternion<T> const& q2) {
-    quaternion<T> new_quat();
+    quaternion<T> new_quat;
     new_quat.w = (q.w * q2.w) - (q.x * q2.x) - (q.y * q2.y) - (q.z * q2.z);
     new_quat.x = (q.w * q2.x) + (q.x * q2.w) + (q.y * q2.z) - (q.z * q2.y);
     new_quat.y = (q.w * q2.y) - (q.x * q2.z) + (q.y * q2.w) + (q.z * q2.x);
@@ -199,7 +199,7 @@ constexpr quaternion<T> operator/(quaternion<T> const& q, quaternion<T> const& q
 
 template<std::floating_point T>
 constexpr T mag(quaternion<T> const& q) {
-    return sqrt(w*w + x*x + y*y + z*z); 
+    return sqrt(q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z); 
 }
 
 template<std::floating_point T>
@@ -218,6 +218,24 @@ constexpr quaternion<T> inverse(quaternion<T> const& q) {
     T magn = mag(q);
     quaternion<T> new_quat = (con(q) / (magn * magn));
     return new_quat; 
+}
+
+template<std::floating_point T>
+constexpr matrix4<T> quatToMatrix(quaternion<T> const& q) {
+    matrix4<T> new_mat(1);
+    new_mat[0][0] = 1 - 2 * (q.y * q.y) - 2 * (q.z * q.z);
+    new_mat[0][1] = 2 * (q.x * q.y) - 2 * (q.z * q.w);
+    new_mat[0][2] = 2 * (q.x * q.z) + 2 * (q.y * q.w);
+    
+    new_mat[1][0] = 2 * (q.x * q.y) + 2 * (q.z * q.w);
+    new_mat[1][1] = 1 - 2 * (q.x * q.x) - 2 * (q.z * q.z);
+    new_mat[1][2] = 2 * (q.y * q.z) - 2 * (q.x * q.w);
+    
+    new_mat[2][0] = 2 * (q.x * q.z) - 2 * (q.y * q.w);
+    new_mat[2][1] = 2 * (q.y * q.z) + 2 * (q.x * q.w);
+    new_mat[2][2] = 1 - 2 * (q.x * q.x) - 2 * (q.y * q.y);
+    
+    return new_mat;
 }
 
 }

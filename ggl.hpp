@@ -24,6 +24,7 @@
 #include "vector.cpp"
 #include "math.cpp"
 #include "matrix.cpp"
+#include "quaternion.cpp"
 
 namespace ggl {
 
