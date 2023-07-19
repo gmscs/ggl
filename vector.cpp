@@ -741,46 +741,46 @@ constexpr T& vector4<T>::operator[](int i) {
 
 /* Magnitude */
 template<std::floating_point T>
-constexpr T mag(vector<T>& v) {
+constexpr T mag(vector<T> const& v) {
     return sqrt(v.x * v.x);
 }
 
 template<std::floating_point T>
-constexpr T mag(vector2<T>& v) {
+constexpr T mag(vector2<T> const& v) {
     return sqrt((v.x * v.x) + (v.y * v.y));
 }
 
 template<std::floating_point T>
-constexpr T mag(vector3<T>& v) {
+constexpr T mag(vector3<T> const& v) {
     return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 }
 
 template<std::floating_point T>
-constexpr T mag(vector4<T>& v) {
+constexpr T mag(vector4<T> const& v) {
     return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
 }
 
 /* Normalize */
 template<std::floating_point T>
-constexpr vector<T> normalize(vector<T>& v) {
+constexpr vector<T> normalize(vector<T> const& v) {
     vector<T> new_vec(v.x / mag(v));
     return new_vec;
 }
 
 template<std::floating_point T>
-constexpr vector2<T> normalize(vector2<T>& v) {
+constexpr vector2<T> normalize(vector2<T> const& v) {
     vector2<T> new_vec(v.x / mag(v), v.y / mag(v));
     return new_vec;
 }
 
 template<std::floating_point T>
-constexpr vector3<T> normalize(vector3<T>& v) {
+constexpr vector3<T> normalize(vector3<T> const& v) {
     vector3<T> new_vec(v.x / mag(v), v.y / mag(v), v.z / mag(v));
     return new_vec;
 }
 
 template<std::floating_point T>
-constexpr vector4<T> normalize(vector4<T>& v) {
+constexpr vector4<T> normalize(vector4<T> const& v) {
     vector4<T> new_vec(v.x / mag(v), v.y / mag(v), v.z / mag(v), v.w / mag(v));
     return new_vec;
 }

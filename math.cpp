@@ -2,7 +2,8 @@
 
 namespace ggl {
 
-constexpr std::floating_point auto radians_to_degrees(std::floating_point auto radians) {
+template<std::floating_point T>
+constexpr T radians_to_degrees(T radians) {
     return radians * (180/PI);
 }
 
@@ -11,7 +12,8 @@ float radians_to_degrees(int radians) {
     return radians * (180/PI);
 }
 
-constexpr std::floating_point auto degrees_to_radians(std::floating_point auto degrees) {
+template<std::floating_point T>
+constexpr T degrees_to_radians(T degrees) {
     return degrees * (PI/180);
 }
 
@@ -19,6 +21,18 @@ float degrees_to_radians(int degrees) {
     degrees = static_cast<float>(degrees);
     return degrees * (PI/180);
 }
+
+template<std::floating_point T>
+constexpr T get_aspect_ratio(T width, T height) {
+    return width / height;
+}
+
+float get_aspect_ratio(int width, int height) {
+    width = static_cast<float>(width);
+    height = static_cast<float>(height);
+    return width / height;
+}
+
 
 template<typename T>
 T abs(T val) {

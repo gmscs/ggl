@@ -1006,4 +1006,41 @@ constexpr auto* pointer(matrix4<T> &m) {
     return &m[0][0];
 }
 
+
+template<typename T>
+constexpr matrix4<T> get_projection_matrix(T fov, T aspect_ratio, T near, T far)
+{
+    matrix4 proj((GLfloat)0.0);
+    proj[0][0] = (GLfloat)(1.0f / tanf(fov/2)) / aspect_ratio;
+    proj[1][1] = (GLfloat)(1.0f / tanf(fov/2));
+    proj[2][2] = (GLfloat)(-far - near) / (far - near);
+    proj[3][2] = (GLfloat)-1.0;
+    proj[2][3] = (GLfloat)(-2 * far * near) / (far - near);
+    return proj;
+}
+
+template<std::floating_point T>
+constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> target_position, vector3<T> up)
+{
+    vector3<T> forward = normalize(camera_position - target_position);
+    vector3<T> right = normalize(cross(up, forward));
+
+    matrix4<T> translation = translate(matrix4(1.0f), camera_position);
+    matrix4<T> rotation(1.0f);
+
+    rotation[0][0] = right[0];
+    rotation[1][0] = right[1];
+    rotation[2][0] = right[2];
+
+    rotation[0][1] = up[0];
+    rotation[1][1] = up[1];
+    rotation[2][1] = up[2];
+
+    rotation[0][2] = -1 * forward[0];
+    rotation[1][2] = -1 * forward[1];
+    rotation[2][2] = -1 * forward[2];
+
+    return rotation * translation;
+}
+
 } //namespace ggl

@@ -262,23 +262,23 @@ constexpr bool operator!=(vector4<T> const &v, vector4<T> const &b);
 
 /* Magnitude */
 template<std::floating_point T>
-constexpr T mag(vector<T>& v);
+constexpr T mag(vector<T> const& v);
 template<std::floating_point T>
-constexpr T mag(vector2<T>& v);
+constexpr T mag(vector2<T> const& v);
 template<std::floating_point T>
-constexpr T mag(vector3<T>& v);
+constexpr T mag(vector3<T> const& v);
 template<std::floating_point T>
-constexpr T mag(vector4<T>& v);
+constexpr T mag(vector4<T> const& v);
 
 /* Normalize */
 template<std::floating_point T>
-constexpr vector<T> normalize(vector<T>& v);
+constexpr vector<T> normalize(vector<T> const& v);
 template<std::floating_point T>
-constexpr vector2<T> normalize(vector2<T>& v);
+constexpr vector2<T> normalize(vector2<T> const& v);
 template<std::floating_point T>
-constexpr vector3<T> normalize(vector3<T>& v);
+constexpr vector3<T> normalize(vector3<T> const& v);
 template<std::floating_point T>
-constexpr vector4<T> normalize(vector4<T>& v);
+constexpr vector4<T> normalize(vector4<T> const& v);
 
 /* Angle */
 template<std::floating_point T>
