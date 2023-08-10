@@ -366,25 +366,25 @@ constexpr matrix3<T> operator*(matrix3<T> const &m, matrix3<T> const &m2) {
 template<std::floating_point T>
 constexpr matrix4<T> operator*(matrix4<T> const &m, matrix4<T> const &m2) {
     matrix4<T> new_mat;
-    new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]) + (m[0][2] + m2[2][0]) + (m[0][3] * m2[3][0]);
-    new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]) + (m[1][2] + m2[2][0]) + (m[1][3] * m2[3][0]);
-    new_mat[2][0] = (m[2][0] * m2[0][0]) + (m[2][1] * m2[1][0]) + (m[2][2] + m2[2][0]) + (m[2][3] * m2[3][0]);
-    new_mat[3][0] = (m[3][0] * m2[0][0]) + (m[3][1] * m2[1][0]) + (m[3][2] + m2[2][0]) + (m[3][3] * m2[3][0]);
+    new_mat[0][0] = (m[0][0] * m2[0][0]) + (m[0][1] * m2[1][0]) + (m[0][2] * m2[2][0]) + (m[0][3] * m2[3][0]);
+    new_mat[1][0] = (m[1][0] * m2[0][0]) + (m[1][1] * m2[1][0]) + (m[1][2] * m2[2][0]) + (m[1][3] * m2[3][0]);
+    new_mat[2][0] = (m[2][0] * m2[0][0]) + (m[2][1] * m2[1][0]) + (m[2][2] * m2[2][0]) + (m[2][3] * m2[3][0]);
+    new_mat[3][0] = (m[3][0] * m2[0][0]) + (m[3][1] * m2[1][0]) + (m[3][2] * m2[2][0]) + (m[3][3] * m2[3][0]);
 
-    new_mat[0][1] = (m[0][0] * m2[0][1]) + (m[0][1] * m2[1][1]) + (m[0][2] + m2[2][1]) + (m[0][3] * m2[3][1]);
-    new_mat[1][1] = (m[1][0] * m2[0][1]) + (m[1][1] * m2[1][1]) + (m[1][2] + m2[2][1]) + (m[1][3] * m2[3][1]);
-    new_mat[2][1] = (m[2][0] * m2[0][1]) + (m[2][1] * m2[1][1]) + (m[2][2] + m2[2][1]) + (m[2][3] * m2[3][1]);
-    new_mat[3][1] = (m[3][0] * m2[0][1]) + (m[3][1] * m2[1][1]) + (m[3][2] + m2[2][1]) + (m[3][3] * m2[3][1]);
+    new_mat[0][1] = (m[0][0] * m2[0][1]) + (m[0][1] * m2[1][1]) + (m[0][2] * m2[2][1]) + (m[0][3] * m2[3][1]);
+    new_mat[1][1] = (m[1][0] * m2[0][1]) + (m[1][1] * m2[1][1]) + (m[1][2] * m2[2][1]) + (m[1][3] * m2[3][1]);
+    new_mat[2][1] = (m[2][0] * m2[0][1]) + (m[2][1] * m2[1][1]) + (m[2][2] * m2[2][1]) + (m[2][3] * m2[3][1]);
+    new_mat[3][1] = (m[3][0] * m2[0][1]) + (m[3][1] * m2[1][1]) + (m[3][2] * m2[2][1]) + (m[3][3] * m2[3][1]);
 
-    new_mat[0][2] = (m[0][0] * m2[0][2]) + (m[0][1] * m2[1][2]) + (m[0][2] + m2[2][2]) + (m[0][3] * m2[3][2]);
-    new_mat[1][2] = (m[1][0] * m2[0][2]) + (m[1][1] * m2[1][2]) + (m[1][2] + m2[2][2]) + (m[1][3] * m2[3][2]);
-    new_mat[2][2] = (m[2][0] * m2[0][2]) + (m[2][1] * m2[1][2]) + (m[2][2] + m2[2][2]) + (m[2][3] * m2[3][2]);
-    new_mat[3][2] = (m[3][0] * m2[0][2]) + (m[3][1] * m2[1][2]) + (m[3][2] + m2[2][2]) + (m[3][3] * m2[3][2]);
+    new_mat[0][2] = (m[0][0] * m2[0][2]) + (m[0][1] * m2[1][2]) + (m[0][2] * m2[2][2]) + (m[0][3] * m2[3][2]);
+    new_mat[1][2] = (m[1][0] * m2[0][2]) + (m[1][1] * m2[1][2]) + (m[1][2] * m2[2][2]) + (m[1][3] * m2[3][2]);
+    new_mat[2][2] = (m[2][0] * m2[0][2]) + (m[2][1] * m2[1][2]) + (m[2][2] * m2[2][2]) + (m[2][3] * m2[3][2]);
+    new_mat[3][2] = (m[3][0] * m2[0][2]) + (m[3][1] * m2[1][2]) + (m[3][2] * m2[2][2]) + (m[3][3] * m2[3][2]);
 
-    new_mat[0][3] = (m[0][0] * m2[0][3]) + (m[0][1] * m2[1][3]) + (m[0][2] + m2[2][3]) + (m[0][3] * m2[3][3]);
-    new_mat[1][3] = (m[1][0] * m2[0][3]) + (m[1][1] * m2[1][3]) + (m[1][2] + m2[2][3]) + (m[1][3] * m2[3][3]);
-    new_mat[2][3] = (m[2][0] * m2[0][3]) + (m[2][1] * m2[1][3]) + (m[2][2] + m2[2][3]) + (m[2][3] * m2[3][3]);
-    new_mat[3][3] = (m[3][0] * m2[0][3]) + (m[3][1] * m2[1][3]) + (m[3][2] + m2[2][3]) + (m[3][3] * m2[3][3]);
+    new_mat[0][3] = (m[0][0] * m2[0][3]) + (m[0][1] * m2[1][3]) + (m[0][2] * m2[2][3]) + (m[0][3] * m2[3][3]);
+    new_mat[1][3] = (m[1][0] * m2[0][3]) + (m[1][1] * m2[1][3]) + (m[1][2] * m2[2][3]) + (m[1][3] * m2[3][3]);
+    new_mat[2][3] = (m[2][0] * m2[0][3]) + (m[2][1] * m2[1][3]) + (m[2][2] * m2[2][3]) + (m[2][3] * m2[3][3]);
+    new_mat[3][3] = (m[3][0] * m2[0][3]) + (m[3][1] * m2[1][3]) + (m[3][2] * m2[2][3]) + (m[3][3] * m2[3][3]);
 
     return new_mat;
 }
@@ -1014,16 +1014,16 @@ constexpr matrix4<T> get_projection_matrix(T fov, T aspect_ratio, T near, T far)
     proj[0][0] = (1 / tanf(fov/2)) / aspect_ratio;
     proj[1][1] = (1 / tanf(fov/2));
     proj[2][2] = -((far + near) / (far - near));
+    proj[2][3] = (-2 * far * near) / (far - near);    
     proj[3][2] = -1;
-    proj[3][0] = (-2 * far * near) / (far - near);
     return proj;
 }
 
 template<std::floating_point T>
 constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> target_position, vector3<T> upVec)
 {
-    vector3<T> forward = normalize(camera_position - target_position);
-    vector3<T> right = normalize(cross(upVec, forward));
+    vector3<T> forward = normalize(target_position - camera_position);
+    vector3<T> right = normalize(cross(forward, upVec));
     vector3<T> up = cross(right, forward);
    
     matrix4<T> view(1.0f);
@@ -1036,11 +1036,11 @@ constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> targ
     view[2][0] = -forward.x;
     view[2][1] = -forward.y;
     view[2][2] = -forward.z;
-    view[0][3] = dot(right, camera_position);
-    view[1][3] = -dot(up, camera_position);
-    view[2][3] = -dot(forward, camera_position);
+    view[3][0] = -dot(right, camera_position);
+    view[3][1] = -dot(up, camera_position);
+    view[3][2] = dot(forward, camera_position);
 
-    return view;
+    return transpose_matrix(view);
 }
 
 } //namespace ggl
