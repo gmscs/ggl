@@ -4,7 +4,7 @@ namespace ggl {
 
 template<std::floating_point T>
 constexpr quaternion<T>::quaternion() {
-    this->w = 0;
+    this->w = 1;
     this->x = 0;
     this->y = 0;
     this->z = 0;
@@ -20,7 +20,7 @@ constexpr quaternion<T>::quaternion(T w, T x, T y, T z) {
 
 template<std::floating_point T>
 constexpr quaternion<T>::quaternion(vector<T> const& v) {
-    this->w = 0;
+    this->w = 1;
     this->x = v.x;
     this->y = 0;
     this->z = 0;
@@ -28,7 +28,7 @@ constexpr quaternion<T>::quaternion(vector<T> const& v) {
 
 template<std::floating_point T>
 constexpr quaternion<T>::quaternion(vector2<T> const& v) {
-    this->w = 0;
+    this->w = 1;
     this->x = v.x;
     this->y = v.y;
     this->z = 0;
@@ -36,7 +36,7 @@ constexpr quaternion<T>::quaternion(vector2<T> const& v) {
 
 template<std::floating_point T>
 constexpr quaternion<T>::quaternion(vector3<T> const& v) {
-    this->w = 0;
+    this->w = 1;
     this->x = v.x;
     this->y = v.y;
     this->z = v.z;
@@ -223,17 +223,22 @@ constexpr quaternion<T> inverse(quaternion<T> const& q) {
 template<std::floating_point T>
 constexpr matrix4<T> quatToMatrix(quaternion<T> const& q) {
     matrix4<T> new_mat(1);
-    new_mat[0][0] = 1 - 2 * (q.y * q.y) - 2 * (q.z * q.z);
+    
+    std::cout << q.x << "\n";
+    std::cout << q.y << "\n";
+    std::cout << q.z << "\n";
+    
+    new_mat[0][0] = 1 - 2 * (q.y * q.y) + 2 * (q.z * q.z);
     new_mat[0][1] = 2 * (q.x * q.y) - 2 * (q.z * q.w);
     new_mat[0][2] = 2 * (q.x * q.z) + 2 * (q.y * q.w);
     
     new_mat[1][0] = 2 * (q.x * q.y) + 2 * (q.z * q.w);
-    new_mat[1][1] = 1 - 2 * (q.x * q.x) - 2 * (q.z * q.z);
-    new_mat[1][2] = 2 * (q.y * q.z) - 2 * (q.x * q.w);
+    new_mat[1][1] = 1 - 2 * (q.x * q.x) + 2 * (q.z * q.z);
+    new_mat[1][2] = 2 * (q.y * q.z) + 2 * (q.x * q.w);
     
     new_mat[2][0] = 2 * (q.x * q.z) - 2 * (q.y * q.w);
     new_mat[2][1] = 2 * (q.y * q.z) + 2 * (q.x * q.w);
-    new_mat[2][2] = 1 - 2 * (q.x * q.x) - 2 * (q.y * q.y);
+    new_mat[2][2] = 1 - 2 * (q.x * q.x) + 2 * (q.y * q.y);
     
     return new_mat;
 }

@@ -600,18 +600,6 @@ constexpr void print_mat(matrix4<T> const &m) {
 }
 
 /* Special Matrices*/
-template<std::floating_point T>
-ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height)
-{
-    ggl::matrix4<T> proj;
-    float aspect_ratio = width / height;
-    proj[0][0] = (T)(1.0f / std::tan(fov/2)) / aspect_ratio;
-    proj[1][1] = (T)(1.0f / std::tan(fov/2));
-    proj[2][2] = (T)(-far - near) / (far - near);
-    proj[3][2] = (T)-1.0;
-    proj[2][3] = (T)(-2 * far * near) / (far - near);
-    return proj;
-}
 
 template<std::floating_point T>
 ggl::matrix3<T> minors_matrix(matrix3<T> const &m) {
