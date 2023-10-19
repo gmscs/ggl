@@ -224,10 +224,6 @@ template<std::floating_point T>
 constexpr matrix4<T> quatToMatrix(quaternion<T> const& q) {
     matrix4<T> new_mat(1);
     
-    std::cout << q.x << "\n";
-    std::cout << q.y << "\n";
-    std::cout << q.z << "\n";
-    
     new_mat[0][0] = 1 - 2 * (q.y * q.y) + 2 * (q.z * q.z);
     new_mat[0][1] = 2 * (q.x * q.y) - 2 * (q.z * q.w);
     new_mat[0][2] = 2 * (q.x * q.z) + 2 * (q.y * q.w);
