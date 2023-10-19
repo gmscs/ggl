@@ -771,7 +771,7 @@ constexpr matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v) {
     matrix3<T> new_mat(m);
     new_mat.row4 = m.row1 * v.x + m.row2 * v.y + m.row3 * v.z;    
 
-    return new_mat;
+    return transpose_matrix(new_mat);
 }
 
 template<std::floating_point T>
@@ -779,7 +779,7 @@ constexpr matrix3<T> translate(matrix3<T> const &m, vector2<T> const &v) {
     matrix3<T> new_mat(m);
     new_mat.row4 = m.row1 * v.x + m.row2 * v.y + m.row3;    
 
-    return new_mat;
+    return transpose_matrix(new_mat);
 }
 
 template<std::floating_point T>
@@ -787,7 +787,7 @@ constexpr matrix4<T> translate(matrix4<T> const &m, vector4<T> const &v) {
     matrix4<T> new_mat(m);
     new_mat.row4 = m.row1 * v.x + m.row2 * v.y + m.row3 * v.z + m.row4 * v.w;    
 
-    return new_mat;
+    return transpose_matrix(new_mat);
 }
 
 template<std::floating_point T>
@@ -795,7 +795,7 @@ constexpr matrix4<T> translate(matrix4<T> const &m, vector3<T> const &v) {
     matrix4<T> new_mat(m);
     new_mat.row4 = m.row1 * v.x + m.row2 * v.y + m.row3 * v.z + m.row4;
 
-    return new_mat;
+    return transpose_matrix(new_mat);
 }
 
 /* Rotation */

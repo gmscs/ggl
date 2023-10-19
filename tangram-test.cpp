@@ -271,21 +271,21 @@ int main()
         matrix = ggl::scale(ggl::matrix4<float>(1.0), ggl::vector3<float>(2.0, 2.0, 0.0));
         matrix = ggl::rotate_z(matrix, ggl::degrees_to_radians(-90));
         matrix = ggl::translate(matrix, ggl::vector3<float>(-0.18, 0.1, 1.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(chest_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         
         //// HAIR LEFT
         matrix = ggl::rotate_z(ggl::matrix4<float>(1.0), ggl::degrees_to_radians(-90));
         matrix = ggl::translate(matrix, ggl::vector3<float>(-0.695, -0.142, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(hair_left_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         //// HAIR RIGHT
         matrix = ggl::rotate_z(ggl::matrix4<float>(1.0), ggl::degrees_to_radians(90.0f));
         matrix = ggl::translate(matrix, ggl::vector3<float>(0.695, -0.142, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(hair_right_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -293,27 +293,27 @@ int main()
         matrix = ggl::scale(ggl::matrix4<float>(1.0), ggl::vector3<float>(2.0, 2.0, 0.0));
         matrix = ggl::rotate_z(matrix, ggl::degrees_to_radians(90));
         matrix = ggl::translate(matrix, ggl::vector3<float>(0.041, 0.04, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(legs_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         
         /// DRESS
         matrix = ggl::scale(ggl::matrix4<float>(1.0), ggl::vector3<float>(1.5, 1.5, 0.0));
         matrix = ggl::translate(matrix, ggl::vector3<float>(-0.02, 0.022, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(dress_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         //// FACE
         matrix = ggl::rotate_z(ggl::matrix4<float>(1.0), ggl::degrees_to_radians(45));
         matrix = ggl::translate(matrix, ggl::vector3<float>(0.492, 0.492, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(square_vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
         //// GUN
         matrix = ggl::translate(ggl::matrix4<float>(1.0), ggl::vector3<float>(0.263, 0.5, 0.0));
-        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, ggl::pointer(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_TRUE, ggl::pointer(matrix));
         glBindVertexArray(parallelogram_vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
