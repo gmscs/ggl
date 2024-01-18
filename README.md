@@ -11,10 +11,13 @@ For compilation of all examples just run make.
 
 Output of test.cpp as of 8afab60 (15/02/2023):
 
-![](example.png) 
-
-
+<img src='images/example.png' width='200'>
 
 Output of tangram-test.cpp as of 93acda9:
 
-![](tangram.png)
+<img src='images/tangram.png' width='200'>
+
+
+Output of the ggl branch of the OpenGL dice project as of d7d7df6:
+
+<img src='images/dice.png' width='200'>

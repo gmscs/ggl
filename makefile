@@ -2,16 +2,16 @@ CC = g++
 CFLAGS = -lGLEW -lGL -lX11 -lGLU -lOpenGL -lglfw -lrt -lm -ldl -std=c++20
 CFLAGS2 = -std=c++20
 
-TARGET = leia-tangram
-TARGET2 = example
+TARGET = examples/leia-tangram
+TARGET2 = examples/example
 
 all: $(TARGET) $(TARGET2)
 
-$(TARGET): tangram-test.cpp
-	$(CC) -o $(TARGET) tangram-test.cpp $(CFLAGS)
+$(TARGET): examples/tangram-test.cpp
+	$(CC) -o $(TARGET) examples/tangram-test.cpp $(CFLAGS)
 
-$(TARGET2): test.cpp
-	$(CC) -o $(TARGET2) test.cpp $(CFLAGS2)
+$(TARGET2): examples/test.cpp
+	$(CC) -o $(TARGET2) examples/test.cpp $(CFLAGS2)
 
 clean:
 	$(RM) $(TARGET)

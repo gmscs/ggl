@@ -1,4 +1,4 @@
-#include "ggl.hpp"
+#include "../ggl.hpp"
 
 int main() {
     ggl::vector2<float> v2(3, 2);

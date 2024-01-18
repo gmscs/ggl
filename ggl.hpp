@@ -21,10 +21,10 @@
 // #include "../stb/stb_image_resize.h"
 // #include "../stb/stb_image_write.h"
 
-#include "vector.cpp"
-#include "math.cpp"
-#include "matrix.cpp"
-#include "quaternion.cpp"
+#include "math/vector.cpp"
+#include "math/math.cpp"
+#include "math/matrix.cpp"
+#include "math/quaternion.cpp"
 
 namespace ggl {
 
