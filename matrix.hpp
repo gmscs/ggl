@@ -294,17 +294,17 @@ template<std::floating_point T, std::floating_point N>
 constexpr matrix4<T> rotate_z(matrix4<T> const &m, N angle);
 
 /* Scaling */
-template<std::floating_point T, typename N>
-constexpr vector3<T> scale(vector3<T> const &v, vector2<N> const &d);
+template<std::floating_point T>
+constexpr vector3<T> scale(vector3<T> const &v, vector2<T> const &d);
 
-template<std::floating_point T, typename N>
-constexpr vector4<T> scale(vector4<T> const &v, vector3<N> const &d);
+template<std::floating_point T>
+constexpr vector4<T> scale(vector4<T> const &v, vector3<T> const &d);
 
-template<std::floating_point T, typename N>
-constexpr matrix3<T> scale(matrix3<T> const &m, vector2<N> const &d);
+template<std::floating_point T>
+constexpr matrix3<T> scale(matrix3<T> const &m, vector2<T> const &d);
 
-template<std::floating_point T, typename N>
-constexpr matrix4<T> scale(matrix4<T> const &m, vector3<N> const &d);
+template<std::floating_point T>
+constexpr matrix4<T> scale(matrix4<T> const &m, vector3<T> const &d);
 
 /* Pointers */
 template<typename T>
