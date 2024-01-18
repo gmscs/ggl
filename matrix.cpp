@@ -826,7 +826,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_x(vector2<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec(v.x, v.y, 0);
-    new_vec = rotation_matrix_x(angle) * new_vec;
+    new_vec = rotation_matrix3_x(angle) * new_vec;
     return new_vec;
 }
 
@@ -834,7 +834,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_y(vector2<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec(v.x, v.y, 0);
-    new_vec = rotation_matrix_y(angle) * new_vec;
+    new_vec = rotation_matrix3_y(angle) * new_vec;
     return new_vec;
 }
 
@@ -842,7 +842,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_z(vector2<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec(v.x, v.y, 0);
-    new_vec = rotation_matrix_z(angle) * new_vec;
+    new_vec = rotation_matrix3_z(angle) * new_vec;
     return new_vec;
 }
 
@@ -850,7 +850,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_x(vector3<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec;
-    new_vec = rotation_matrix_x(angle) * v;
+    new_vec = rotation_matrix3_x(angle) * v;
     return new_vec;
 }
 
@@ -858,7 +858,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_y(vector3<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec;
-    new_vec = rotation_matrix_y(angle) * v;
+    new_vec = rotation_matrix3_y(angle) * v;
     return new_vec;
 }
 
@@ -866,7 +866,7 @@ template<std::floating_point T, std::floating_point N>
 constexpr vector3<T> rotate_z(vector3<T> const &v, N angle) {
     angle = static_cast<T>(angle);
     vector3<T> new_vec;
-    new_vec = rotation_matrix_z(angle) * v;
+    new_vec = rotation_matrix3_z(angle) * v;
     return new_vec;
 }
 
