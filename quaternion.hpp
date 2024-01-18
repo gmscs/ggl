@@ -62,4 +62,8 @@ constexpr quaternion<T> operator/(T c, quaternion<T> const& q);
 template<std::floating_point T>
 constexpr matrix4<T> quatToMatrix(quaternion<T> const& q);
 
+/* Printing */
+template<std::floating_point T>
+constexpr void print_quat(quaternion<T> const& q);
+
 }

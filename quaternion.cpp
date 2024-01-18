@@ -224,19 +224,25 @@ template<std::floating_point T>
 constexpr matrix4<T> quatToMatrix(quaternion<T> const& q) {
     matrix4<T> new_mat(1);
     
-    new_mat[0][0] = 1 - 2 * (q.y * q.y) + 2 * (q.z * q.z);
+    new_mat[0][0] = 1 - 2 * (q.y * q.y) - 2 * (q.z * q.z);
     new_mat[0][1] = 2 * (q.x * q.y) - 2 * (q.z * q.w);
     new_mat[0][2] = 2 * (q.x * q.z) + 2 * (q.y * q.w);
     
     new_mat[1][0] = 2 * (q.x * q.y) + 2 * (q.z * q.w);
-    new_mat[1][1] = 1 - 2 * (q.x * q.x) + 2 * (q.z * q.z);
-    new_mat[1][2] = 2 * (q.y * q.z) + 2 * (q.x * q.w);
+    new_mat[1][1] = 1 - 2 * (q.x * q.x) - 2 * (q.z * q.z);
+    new_mat[1][2] = 2 * (q.y * q.z) - 2 * (q.x * q.w);
     
     new_mat[2][0] = 2 * (q.x * q.z) - 2 * (q.y * q.w);
     new_mat[2][1] = 2 * (q.y * q.z) + 2 * (q.x * q.w);
-    new_mat[2][2] = 1 - 2 * (q.x * q.x) + 2 * (q.y * q.y);
+    new_mat[2][2] = 1 - 2 * (q.x * q.x) - 2 * (q.y * q.y);
     
     return new_mat;
 }
 
+/* Printing */
+template<std::floating_point T>
+constexpr void print_quat(quaternion<T> const& q) {
+    std::cout << "{" << q.w << ", " << q.x << ", " << q.y << ", " << q.z << "}\n";
 }
+
+} //namespace ggl
