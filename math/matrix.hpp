@@ -206,34 +206,6 @@ constexpr void print_mat(matrix3<T> const &m);
 template<std::floating_point T>
 constexpr void print_mat(matrix4<T> const &m);
 
-/* Special matrices */
-template<std::floating_point T>
-ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height);
-template<std::floating_point T>
-ggl::matrix3<T> minors_matrix(matrix3<T> const &m);
-template<std::floating_point T>
-ggl::matrix4<T> minots_matrix(matrix4<T> const &m);
-template<std::floating_point T>
-ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m);
-template<std::floating_point T>
-ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m);
-template<std::floating_point T>
-ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
-template<std::floating_point T>
-ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
-
-template<std::floating_point T>
-constexpr ggl::matrix4<T> translation_matrix(vector3<T> const &v);
-template<std::floating_point T>
-constexpr ggl::matrix3<T> translation_matrix(vector2<T> const &v);
-
-template<std::floating_point T>
-constexpr ggl::matrix3<T> rotation_matrix(T angle);
-template<std::floating_point T>
-constexpr ggl::matrix3<T> scaling_matrix(T width, T height);
-template<std::floating_point T>
-constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth);
-
 /* Translation */
 template<std::floating_point T>
 constexpr matrix3<T> translate(matrix3<T> const &m, vector3<T> const &v);
@@ -324,5 +296,33 @@ constexpr auto const* pointer(matrix4<T> const &m);
 
 template<typename T>
 constexpr auto* pointer(matrix4<T> &m);
+
+/* Special matrices */
+template<std::floating_point T>
+ggl::matrix4<T> get_projection_matrix(T near, T far, T fov, T width, T height);
+template<std::floating_point T>
+constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> target_position, vector3<T> upVec);
+template<std::floating_point T>
+ggl::matrix3<T> minors_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> minots_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+ggl::matrix3<T> transpose_matrix(matrix3<T> const &m);
+template<std::floating_point T>
+ggl::matrix4<T> transpose_matrix(matrix4<T> const &m);
+template<std::floating_point T>
+constexpr ggl::matrix4<T> translation_matrix(vector3<T> const &v);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> translation_matrix(vector2<T> const &v);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> rotation_matrix(T angle);
+template<std::floating_point T>
+constexpr ggl::matrix3<T> scaling_matrix(T width, T height);
+template<std::floating_point T>
+constexpr ggl::matrix4<T> scaling_matrix(T width, T height, T depth);
 
 }//namespace ggl

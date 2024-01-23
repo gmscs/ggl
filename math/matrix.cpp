@@ -931,7 +931,6 @@ constexpr matrix4<T> rotate_z(matrix4<T> const &m, N angle) {
 }
 
 /* Scaling */
-
 template<std::floating_point T>
 constexpr ggl::matrix3<T> scaling_matrix(T width, T height) {
     ggl::matrix3<T> new_mat(1);
@@ -1030,19 +1029,19 @@ constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> targ
    
     matrix4<T> view(1.0f);
     view[0][0] = right.x;
-    view[0][1] = right.y;
-    view[0][2] = right.z;
-    view[1][0] = up.x;
+    view[1][0] = right.y;
+    view[2][0] = right.z;
+    view[0][1] = up.x;
     view[1][1] = up.y;
-    view[1][2] = up.z;
-    view[2][0] = -forward.x;
-    view[2][1] = -forward.y;
+    view[2][1] = up.z;
+    view[0][2] = -forward.x;
+    view[1][2] = -forward.y;
     view[2][2] = -forward.z;
-    view[3][0] = -dot(right, camera_position);
-    view[3][1] = -dot(up, camera_position);
-    view[3][2] = dot(forward, camera_position);
+    view[0][3] = -dot(right, camera_position);
+    view[1][3] = -dot(up, camera_position);
+    view[2][3] = dot(forward, camera_position);
 
-    return transpose_matrix(view);
+    return view;
 }
 
 } //namespace ggl
