@@ -25,6 +25,8 @@
 #include "math/math.cpp"
 #include "math/matrix.cpp"
 #include "math/quaternion.cpp"
+#include "physics/particle.cpp"
+#include "physics/spring.cpp"
 
 namespace ggl {
 
