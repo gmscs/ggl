@@ -1,279 +1,289 @@
-#include "matrix.hpp"
+#ifndef MATRIX_H
+#define MATRIX_H
+
+#include <concepts>
+#include <math.h>
+#include <cassert>
+#include <typeinfo>
+#include <iostream>
+#include "vector.hpp"
 
 namespace ggl {
+template<std::floating_point T>
+struct matrix2 {
+    vector2<T> row1;
+    vector2<T> row2;
+
+    constexpr matrix2(){
+        this->row1 = vector2<T>();
+        this->row2 = vector2<T>();
+    }
+    constexpr matrix2(T c){
+        this->row1 = vector2<T>(c, 0);
+        this->row2 = vector2<T>(0, c);
+    }
+    constexpr matrix2(matrix2 const& m){
+        this->row1 = vector2<T>(m.row1);
+        this->row2 = vector2<T>(m.row2);
+    }
+    explicit constexpr matrix2(vector2<T> const &a, vector2<T> const &b){
+        this->row1 = a;
+        this->row2 = b;
+    }
+
+    static inline constexpr int numRows() {
+        return 2;
+    }
+
+    static inline constexpr int numCols() {
+        return 2;
+    }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
+    template<std::floating_point N>
+    constexpr matrix2<T>& operator=(matrix2<N> const& m){
+        this->row1 = m.row1;
+        this->row2 = m.row2;
+        return *this;
+    }
+    template<std::floating_point N>
+        constexpr matrix2<T>& operator+=(matrix2<N> const& m){
+        this->row1 += m.row1;
+        this->row2 += m.row2;
+        return *this;
+    }
+    template<std::floating_point N>
+    constexpr matrix2<T>& operator-=(matrix2<N> const& m){
+        this->row1 -= m.row1;
+        this->row2 -= m.row2;
+        return *this;
+    }
+    // template<std::floating_point N>
+    // constexpr matrix2<T>& operator*=(matrix2<N> const& m);
+    template<typename N>
+    constexpr matrix2<T>& operator*=(N c){
+        this->row1 *= c;
+        this->row2 *= c;
+        return *this;
+    }
+    template<typename N>
+    constexpr matrix2<T>& operator/=(N c){
+        this->row2 /= c;
+        this->row1 /= c;
+        return *this;
+    }
+    constexpr vector2<T> const& operator[](int i) const{
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        return this->row2;
+    }
+    constexpr vector2<T>& operator[](int i){
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        return this->row2;
+    }
+};
 
 template<std::floating_point T>
-constexpr matrix2<T>::matrix2() {
-    this->row1 = vector2<T>();
-    this->row2 = vector2<T>();
-}
+struct matrix3 {
+    vector3<T> row1;
+    vector3<T> row2;
+    vector3<T> row3;
+
+    constexpr matrix3(){
+        this->row1 = vector3<T>();
+        this->row2 = vector3<T>();
+        this->row3 = vector3<T>();
+    }
+    constexpr matrix3(T c){
+        this->row1 = vector3<T>(c, 0, 0);
+        this->row2 = vector3<T>(0, c, 0);
+        this->row3 = vector3<T>(0, 0, c);
+    }
+    constexpr matrix3(matrix3 const& m){
+        this->row1 = vector3<T>(m.row1);
+        this->row2 = vector3<T>(m.row2);
+        this->row3 = vector3<T>(m.row3);
+    }
+    explicit constexpr matrix3(vector3<T> const &a, vector3<T> const &b, vector3<T> const &c){
+        this->row1 = a;
+        this->row2 = b;
+        this->row3 = c;
+    }
+
+    static inline constexpr int numRows() {
+        return 3;
+    }
+
+    static inline constexpr int numCols() {
+        return 3;
+    }
+
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
+
+    template<std::floating_point N>
+    constexpr matrix3<T>& operator=(matrix3<N> const& m){
+        this->row1 = m.row1;
+        this->row2 = m.row2;
+        this->row3 = m.row3;
+        return *this;
+    }
+    template<std::floating_point N>
+    constexpr matrix3<T>& operator+=(matrix3<N> const& m){
+        this->row1 += m.row1;
+        this->row2 += m.row2;
+        this->row3 += m.row3;
+        return *this;
+    }
+    template<std::floating_point N>
+    constexpr matrix3<T>& operator-=(matrix3<N> const& m){
+        this->row1 -= m.row1;
+        this->row2 -= m.row2;
+        this->row3 -= m.row3;
+        return *this;
+    }
+    // template<std::floating_point N>
+    // constexpr matrix3<T>& operator*=(matrix3<N> const& m);
+    template<typename N>
+    constexpr matrix3<T>& operator*=(N c){
+        this->row1 *= c;
+        this->row2 *= c;
+        this->row3 *= c;
+        return *this;
+    }
+    template<typename N>
+    constexpr matrix3<T>& operator/=(N c){
+        this->row1 /= c;
+        this->row2 /= c;
+        this->row3 /= c;
+        return *this;
+    }
+    constexpr vector3<T> const& operator[](int i) const{
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        else if(i == 1) return this->row2;
+        return this->row3;
+    }
+    constexpr vector3<T>& operator[](int i){
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        else if(i == 1) return this->row2;
+        return this->row3;
+    }
+};
 
 template<std::floating_point T>
-constexpr matrix3<T>::matrix3() {
-    this->row1 = vector3<T>();
-    this->row2 = vector3<T>();
-    this->row3 = vector3<T>();
-}
+struct matrix4 {
+    vector4<T> row1;
+    vector4<T> row2;
+    vector4<T> row3;
+    vector4<T> row4;
 
-template<std::floating_point T>
-constexpr matrix4<T>::matrix4() {
-    this->row1 = vector4<T>();
-    this->row2 = vector4<T>();
-    this->row3 = vector4<T>();
-    this->row4 = vector4<T>();
-}
+    constexpr matrix4(){
+        this->row1 = vector4<T>();
+        this->row2 = vector4<T>();
+        this->row3 = vector4<T>();
+        this->row4 = vector4<T>();
+    }
+    constexpr matrix4(T c){
+        this->row1 = vector4<T>(c, 0, 0, 0);
+        this->row2 = vector4<T>(0, c, 0, 0);
+        this->row3 = vector4<T>(0, 0, c, 0);
+        this->row4 = vector4<T>(0, 0, 0, c);
+    }
+    constexpr matrix4(matrix4 const& m){
+        this->row1 = vector4<T>(m.row1);
+        this->row2 = vector4<T>(m.row2);
+        this->row3 = vector4<T>(m.row3);
+        this->row4 = vector4<T>(m.row4);
+    }
+    explicit constexpr matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &c, vector4<T> const &d){
+        this->row1 = a;
+        this->row2 = b;
+        this->row3 = c;
+        this->row4 = d;
+    }
 
-template<std::floating_point T>
-constexpr matrix2<T>::matrix2(T c) {
-    this->row1 = vector2<T>(c, 0);
-    this->row2 = vector2<T>(0, c);
-}
+    static inline constexpr int numRows() {
+        return 4;
+    }
 
-template<std::floating_point T>
-constexpr matrix3<T>::matrix3(T c) {
-    this->row1 = vector3<T>(c, 0, 0);
-    this->row2 = vector3<T>(0, c, 0);
-    this->row3 = vector3<T>(0, 0, c);
-}
+    static inline constexpr int numCols() {
+        return 4;
+    }
 
-template<std::floating_point T>
-constexpr matrix4<T>::matrix4(T c) {
-    this->row1 = vector4<T>(c, 0, 0, 0);
-    this->row2 = vector4<T>(0, c, 0, 0);
-    this->row3 = vector4<T>(0, 0, c, 0);
-    this->row4 = vector4<T>(0, 0, 0, c);
-}
+    static inline constexpr const char* type() {
+        return typeid(T).name();
+    }
 
-template<std::floating_point T>
-constexpr matrix2<T>::matrix2(matrix2<T> const &m) {
-    this->row1 = vector2<T>(m.row1);
-    this->row2 = vector2<T>(m.row2);
-}
-
-template<std::floating_point T>
-constexpr matrix3<T>::matrix3(matrix3<T> const &m) {
-    this->row1 = vector3<T>(m.row1);
-    this->row2 = vector3<T>(m.row2);
-    this->row3 = vector3<T>(m.row3);
-}
-
-template<std::floating_point T>
-constexpr matrix4<T>::matrix4(matrix4<T> const &m) {
-    this->row1 = vector4<T>(m.row1);
-    this->row2 = vector4<T>(m.row2);
-    this->row3 = vector4<T>(m.row3);
-    this->row4 = vector4<T>(m.row4);
-}
-
-template<std::floating_point T>
-constexpr matrix2<T>::matrix2(vector2<T> const &a, vector2<T> const &b) {
-    this->row1 = a;
-    this->row2 = b;
-}
-
-template<std::floating_point T>
-constexpr matrix3<T>::matrix3(vector3<T> const &a, vector3<T> const &b, vector3<T> const &c) {
-    this->row1 = a;
-    this->row2 = b;
-    this->row3 = c;
-}
-
-template<std::floating_point T>
-constexpr matrix4<T>::matrix4(vector4<T> const &a, vector4<T> const &b, vector4<T> const &c, vector4<T> const &d) {
-    this->row1 = a;
-    this->row2 = b;
-    this->row3 = c;
-    this->row4 = d;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix2<T>& matrix2<T>::operator=(matrix2<N> const &m) {
-    this->row1 = m.row1;
-    this->row2 = m.row2;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix3<T>& matrix3<T>::operator=(matrix3<N> const &m) {
-    this->row1 = m.row1;
-    this->row2 = m.row2;
-    this->row3 = m.row3;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix4<T>& matrix4<T>::operator=(matrix4<N> const &m) {
-    this->row1 = m.row1;
-    this->row2 = m.row2;
-    this->row3 = m.row3;
-    this->row4 = m.row4;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix2<T>& matrix2<T>::operator+=(matrix2<N> const &m) {
-    this->row1 += m.row1;
-    this->row2 += m.row2;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix3<T>& matrix3<T>::operator+=(matrix3<N> const &m) {
-    this->row1 += m.row1;
-    this->row2 += m.row2;
-    this->row3 += m.row3;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix4<T>& matrix4<T>::operator+=(matrix4<N> const &m) {
-    this->row1 += m.row1;
-    this->row2 += m.row2;
-    this->row3 += m.row3;
-    this->row4 += m.row4;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix2<T>& matrix2<T>::operator-=(matrix2<N> const &m) {
-    this->row1 -= m.row1;
-    this->row2 -= m.row2;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix3<T>& matrix3<T>::operator-=(matrix3<N> const &m) {
-    this->row1 -= m.row1;
-    this->row2 -= m.row2;
-    this->row3 -= m.row3;
-    return *this;
-}
-
-template<std::floating_point T>
-template<std::floating_point N>
-constexpr matrix4<T>& matrix4<T>::operator-=(matrix4<N> const &m) {
-    this->row1 -= m.row1;
-    this->row2 -= m.row2;
-    this->row3 -= m.row3;
-    this->row4 -= m.row4;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix2<T>& matrix2<T>::operator*=(N c) {
-    this->row1 *= c;
-    this->row2 *= c;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix3<T>& matrix3<T>::operator*=(N c) {
-    this->row1 *= c;
-    this->row2 *= c;
-    this->row3 *= c;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix4<T>& matrix4<T>::operator*=(N c) {
-    this->row1 *= c;
-    this->row2 *= c;
-    this->row3 *= c;
-    this->row4 *= c;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix2<T>& matrix2<T>::operator/=(N c) {
-    this->row2 /= c;
-    this->row1 /= c;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix3<T>& matrix3<T>::operator/=(N c) {
-    this->row1 /= c;
-    this->row2 /= c;
-    this->row3 /= c;
-    return *this;
-}
-
-template<std::floating_point T>
-template<typename N>
-constexpr matrix4<T>& matrix4<T>::operator/=(N c) {
-    this->row1 /= c;
-    this->row2 /= c;
-    this->row3 /= c;
-    this->row4 /= c;
-    return *this;
-}
-
-template<std::floating_point T>
-constexpr vector2<T> const& matrix2<T>::operator[](int i) const {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    return this->row2;
-}
-
-template<std::floating_point T>
-constexpr vector3<T> const& matrix3<T>::operator[](int i) const {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    else if(i == 1) return this->row2;
-    return this->row3;
-}
-
-template<std::floating_point T>
-constexpr vector4<T> const& matrix4<T>::operator[](int i) const {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    else if(i == 1) return this->row2;
-    else if(i == 2) return this->row3;
-    return this->row4;
-}
-
-template<std::floating_point T>
-constexpr vector2<T>& matrix2<T>::operator[](int i) {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    return this->row2;
-}
-
-template<std::floating_point T>
-constexpr vector3<T>& matrix3<T>::operator[](int i) {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    else if(i == 1) return this->row2;
-    return this->row3;
-}
-
-template<std::floating_point T>
-constexpr vector4<T>& matrix4<T>::operator[](int i) {
-    assert((void("index cannot be less than 0"), i >= 0));
-    assert((void("index exceeds vector size"), i < this->numRows()));
-    if(i == 0) return this->row1;
-    else if(i == 1) return this->row2;
-    else if(i == 2) return this->row3;
-    return this->row4;
-}
+    template<std::floating_point N>
+    constexpr matrix4<T>& operator=(matrix4<N> const& m){
+        this->row1 = m.row1;
+        this->row2 = m.row2;
+        this->row3 = m.row3;
+        this->row4 = m.row4;
+        return *this;
+    }
+    template<std::floating_point N>
+    constexpr matrix4<T>& operator+=(matrix4<N> const& m){
+        this->row1 += m.row1;
+        this->row2 += m.row2;
+        this->row3 += m.row3;
+        this->row4 += m.row4;
+        return *this;
+    }
+    template<std::floating_point N>
+    constexpr matrix4<T>& operator-=(matrix4<N> const& m){
+        this->row1 -= m.row1;
+        this->row2 -= m.row2;
+        this->row3 -= m.row3;
+        this->row4 -= m.row4;
+        return *this;
+    }
+    // template<std::floating_point N>
+    // constexpr matrix4<T>& operator*=(matrix4<N> const& m);
+    template<typename N>
+    constexpr matrix4<T>& operator*=(N c){
+        this->row1 *= c;
+        this->row2 *= c;
+        this->row3 *= c;
+        this->row4 *= c;
+        return *this;
+    }
+    template<typename N>
+    constexpr matrix4<T>& operator/=(N c){
+        this->row1 /= c;
+        this->row2 /= c;
+        this->row3 /= c;
+        this->row4 /= c;
+        return *this;
+    }
+    constexpr vector4<T> const& operator[](int i) const{
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        else if(i == 1) return this->row2;
+        else if(i == 2) return this->row3;
+        return this->row4;
+    }
+    constexpr vector4<T>& operator[](int i){
+        assert((void("index cannot be less than 0"), i >= 0));
+        assert((void("index exceeds vector size"), i < this->numRows()));
+        if(i == 0) return this->row1;
+        else if(i == 1) return this->row2;
+        else if(i == 2) return this->row3;
+        return this->row4;
+    }
+};
 
 /* Sign flip */
 template<std::floating_point T>
@@ -602,7 +612,7 @@ constexpr void print_mat(matrix4<T> const &m) {
 /* Special Matrices*/
 
 template<std::floating_point T>
-ggl::matrix3<T> minors_matrix(matrix3<T> const &m) {
+constexpr ggl::matrix3<T> minors_matrix(matrix3<T> const &m) {
     matrix3<T> new_mat;
 
     new_mat[0][0] = determinant(matrix2<T>(vector2<T>(m[1][1], m[1][2]), vector2<T>(m[2][1], m[2][2])));
@@ -621,7 +631,7 @@ ggl::matrix3<T> minors_matrix(matrix3<T> const &m) {
 }
 
 template<std::floating_point T>
-ggl::matrix4<T> minors_matrix(matrix4<T> const & m) {
+constexpr ggl::matrix4<T> minors_matrix(matrix4<T> const & m) {
     matrix4<T> new_mat;
 
     new_mat[0][0] = determinant(matrix3<T>(vector3<T>(m[1][1], m[1][2], m[1][3]), vector3<T>(m[2][1], m[2][2], m[2][3]), vector3<T>(m[3][1], m[3][2], m[3][3])));
@@ -648,7 +658,7 @@ ggl::matrix4<T> minors_matrix(matrix4<T> const & m) {
 }
 
 template<std::floating_point T>
-ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m) {
+constexpr ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m) {
     matrix3<T> new_mat = m;
     new_mat[0][1] *= -1;
     new_mat[1][0] *= -1;
@@ -658,7 +668,7 @@ ggl::matrix3<T> cofactors_matrix(matrix3<T> const &m) {
 }
 
 template<std::floating_point T>
-ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m) {
+constexpr ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m) {
     matrix4<T> new_mat = m;
     new_mat[0][1] *= -1;
     new_mat[0][3] *= -1;
@@ -672,7 +682,7 @@ ggl::matrix4<T> cofactors_matrix(matrix4<T> const &m) {
 }
 
 template<std::floating_point T>
-ggl::matrix3<T> transpose_matrix(matrix3<T> const &m) {
+constexpr ggl::matrix3<T> transpose_matrix(matrix3<T> const &m) {
     matrix3<T> new_mat = m;
     new_mat[0][1] = m[1][0];
     new_mat[1][0] = m[0][1];
@@ -684,7 +694,7 @@ ggl::matrix3<T> transpose_matrix(matrix3<T> const &m) {
 }
 
 template<std::floating_point T>
-ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
+constexpr ggl::matrix4<T> transpose_matrix(matrix4<T> const &m) {
     matrix4<T> new_mat = m;
     new_mat[0][1] = m[1][0];
     new_mat[1][0] = m[0][1];
@@ -978,32 +988,32 @@ constexpr matrix4<T> scale(matrix4<T> const &m, vector3<T> const &d) {
 
 /* Pointers */
 template<typename T>
-constexpr auto const* pointer(matrix2<T> const &m) {
+constexpr T const* pointer(matrix2<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr auto* pointer(matrix2<T> &m) {
+constexpr T* pointer(matrix2<T> &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr auto const* pointer(matrix3<T> const &m) {
+constexpr T const* pointer(matrix3<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr auto* pointer(matrix3<T> &m) {
+constexpr T* pointer(matrix3<T> &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr auto const* pointer(matrix4<T> const &m) {
+constexpr T const* pointer(matrix4<T> const &m) {
     return &m[0][0];
 }
 
 template<typename T>
-constexpr auto* pointer(matrix4<T> &m) {
+constexpr T* pointer(matrix4<T> &m) {
     return &m[0][0];
 }
 
@@ -1044,4 +1054,6 @@ constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> targ
     return view;
 }
 
-} //namespace ggl
+}//namespace ggl
+
+#endif //MATRIX_H

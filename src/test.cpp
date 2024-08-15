@@ -1,4 +1,6 @@
-#include "../ggl.hpp"
+#include "../include/ggl.hpp"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 int main() {
     ggl::vector2<float> v2(3, 2);

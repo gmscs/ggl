@@ -1,5 +1,7 @@
-#include "../ggl.hpp"
+#include "../include/ggl.hpp"
 #include <vector>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 const char* fragment_shader =
 "#version 330 core\n"
