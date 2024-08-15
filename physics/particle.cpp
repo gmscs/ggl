@@ -12,6 +12,15 @@ constexpr particle<T>::particle() {
 }
 
 template<std::floating_point T>
+constexpr particle<T>::particle(T c) {
+    this->position = vector3<T>(0);
+    this->velocity = vector3<T>(0);
+    this->force = vector3<T>(0);
+    this->mass = 0.0f;
+    this->is_fixed = false;
+}
+
+template<std::floating_point T>
 constexpr particle<T>::particle(particle<T> const &p) {
     this->position = vector3<T>(p.position);
     this->velocity = vector3<T>(p.velocity);
@@ -38,6 +47,23 @@ constexpr particle<T>& particle<T>:: operator=(particle<T> const &p) {
     this->is_fixed = p.is_fixed;
 
     return *this;
+}
+
+template<std::floating_point T>
+constexpr particle<T> verlet_int(particle<T> const &p, T delta_time, T damping) {
+    particle<T> new_particle;
+    if(!p.is_fixed) {
+        ggl::vector3 accel = p.force / p.mass;
+        ggl::vector3 new_pos = p.position + p.velocity * delta_time + 0.5f * accel * delta_time * delta_time;
+        new_particle.velocity = (new_pos - p.position) / delta_time;
+        new_particle.velocity *= damping;
+        new_particle.position = new_pos;
+        new_particle.force = p.force;
+        new_particle.mass = p.mass;
+        new_particle.is_fixed = false;
+        return new_particle;
+    }
+    return p;
 }
 
 } //namespace ggl

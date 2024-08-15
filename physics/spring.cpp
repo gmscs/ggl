@@ -26,4 +26,12 @@ constexpr spring<T>::spring(int i, int j, T rest_length, T stiffness) {
     this->stiffness = stiffness;
 }
 
+template<std::floating_point T>
+constexpr vector3<T> spring_force(spring<T> const &s, particle<T> const &p1, particle<T> const &p2) {
+    float distance = mag(p2.position - p1.position);
+    vector3 force = s.stiffness * (distance - s.rest_length) * normalize(p2.position - p1.position);
+    return force;
+}
+
+
 } //namespace ggl

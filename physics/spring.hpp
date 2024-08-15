@@ -17,4 +17,7 @@ struct spring {
     }
 };
 
+template<std::floating_point T>
+constexpr vector3<T> spring_force(spring<T> const &s, particle<T> const &p1, particle<T> const &p2);
+
 } //namespace ggl

@@ -10,6 +10,7 @@ struct particle {
     bool is_fixed;
 
     constexpr particle();
+    constexpr particle(T c);
     constexpr particle(particle const& p);
     explicit constexpr particle(vector3<T> const &p, vector3<T> const &v, vector3<T> const &f, T m, bool is_fixed);
 
@@ -19,5 +20,8 @@ struct particle {
 
     constexpr particle<T>& operator=(particle<T> const& p);
 };
+
+template<std::floating_point T>
+constexpr particle<T> verlet_int(particle<T> const &p, T delta_time, T damping);
 
 } //namespace ggl
