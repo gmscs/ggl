@@ -1,4 +1,4 @@
-#include "../include/ggl.hpp"
+#include "../ggl/ggl.hpp"
 #include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

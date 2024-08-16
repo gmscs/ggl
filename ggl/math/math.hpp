@@ -25,13 +25,13 @@ constexpr typename std::enable_if<is_allowed_type<T>::value, float>::type degree
     return static_cast<float>(degrees) * (PI/180);
 }
 
-template<std::floating_point T>
-constexpr T get_aspect_ratio(T width, T height) {
-    return width / height;
+template<typename T>
+constexpr typename std::enable_if<is_allowed_type<T>::value, float>::type get_aspect_ratio(T width, T height) {
+    return static_cast<float>(width) / static_cast<float>(height);
 }
 
 template<typename T>
-T abs(T val){
+constexpr T abs(T val){
     if(val >= 0) return val;
     return val * -1;
 }

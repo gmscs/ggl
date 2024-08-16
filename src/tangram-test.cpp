@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "../include/ggl.hpp"
+#include "../ggl/ggl.hpp"
 
 const char* fragment_shader =
 "#version 330 core\n"
