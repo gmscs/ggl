@@ -1017,7 +1017,6 @@ constexpr T* pointer(matrix4<T> &m) {
     return &m[0][0];
 }
 
-
 template<std::floating_point T>
 constexpr matrix4<T> get_projection_matrix(T fov, T aspect_ratio, T near, T far)
 {
@@ -1025,8 +1024,8 @@ constexpr matrix4<T> get_projection_matrix(T fov, T aspect_ratio, T near, T far)
     proj[0][0] = (1 / tanf(fov/2)) / aspect_ratio;
     proj[1][1] = (1 / tanf(fov/2));
     proj[2][2] = -((far + near) / (far - near));
-    proj[2][3] = (-2 * far * near) / (far - near);    
-    proj[3][2] = -1;
+    proj[2][3] = -1;    
+    proj[3][2] = (-2 * far * near) / (far - near);
     return proj;
 }
 
@@ -1039,16 +1038,18 @@ constexpr matrix4<T> get_view_matrix(vector3<T> camera_position, vector3<T> targ
    
     matrix4<T> view(1.0f);
     view[0][0] = right.x;
-    view[1][0] = right.y;
-    view[2][0] = right.z;
-    view[0][1] = up.x;
-    view[1][1] = up.y;
-    view[2][1] = up.z;
-    view[0][2] = -forward.x;
-    view[1][2] = -forward.y;
-    view[2][2] = -forward.z;
+    view[0][1] = right.y;
+    view[0][2] = right.z;
     view[0][3] = -dot(right, camera_position);
+
+    view[1][0] = up.x;
+    view[1][1] = up.y;
+    view[1][2] = up.z;
     view[1][3] = -dot(up, camera_position);
+
+    view[2][0] = -forward.x;
+    view[2][1] = -forward.y;
+    view[2][2] = -forward.z;
     view[2][3] = dot(forward, camera_position);
 
     return view;
