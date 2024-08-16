@@ -725,8 +725,7 @@ constexpr matrix3<T> translation_matrix3(vector3<T> const &v) {
     ggl::matrix3<T> new_mat(1);
     new_mat.row1.z = static_cast<T>(v.x);
     new_mat.row2.z = static_cast<T>(v.y);
-    new_mat.row3.x = static_cast<T>(v.z);
-    new_mat.row3.y = static_cast<T>(v.z);
+    new_mat.row3.z = static_cast<T>(v.z);
     return new_mat;
 }
 
@@ -742,12 +741,9 @@ constexpr matrix4<T> translation_matrix4(vector3<T> const &v) {
 template<std::floating_point T>
 constexpr matrix4<T> translation_matrix4(vector4<T> const &v) {
     ggl::matrix4<T> new_mat(1);
-    new_mat.row1.w = static_cast<T>(v.x);
-    new_mat.row2.w = static_cast<T>(v.y);
-    new_mat.row3.w = static_cast<T>(v.z);
-    new_mat.row4.x = static_cast<T>(v.w);
-    new_mat.row4.y = static_cast<T>(v.w);
-    new_mat.row4.z = static_cast<T>(v.w);
+    new_mat.row4.x = static_cast<T>(v.x);
+    new_mat.row4.y = static_cast<T>(v.y);
+    new_mat.row4.z = static_cast<T>(v.z);
     return new_mat;
 }
 
